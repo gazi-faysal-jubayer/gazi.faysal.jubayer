@@ -13,6 +13,9 @@ import {
   Terminal,
   Globe,
   Settings,
+  Calculator,
+  Play,
+  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import { useOSStore } from "@/store/useOSStore";
@@ -28,6 +31,9 @@ const ICON_MAP: Record<string, LucideIcon> = {
   terminal: Terminal,
   globe: Globe,
   settings: Settings,
+  calculator: Calculator,
+  play: Play,
+  book: BookOpen,
 };
 
 export default function StartMenu() {
@@ -68,12 +74,20 @@ export default function StartMenu() {
             exit={{ opacity: 0, y: 10, scale: 0.98 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
             className={cn(
-              "fixed bottom-14 left-1/2 -translate-x-1/2 z-50",
+              "fixed z-50",
               "w-[640px] max-w-[calc(100vw-32px)]",
               "rounded-win-lg overflow-hidden",
-              isDarkMode ? "glass-dark glass-border-dark" : "glass glass-border",
               isDarkMode ? "window-shadow-dark" : "window-shadow"
             )}
+            style={{
+              bottom: "50px",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backdropFilter: "blur(60px) saturate(150%)",
+              WebkitBackdropFilter: "blur(60px) saturate(150%)",
+              backgroundColor: isDarkMode ? "rgba(32, 32, 32, 0.8)" : "rgba(255, 255, 255, 0.8)",
+              border: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.3)"}`,
+            }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search bar */}

@@ -1,64 +1,229 @@
 export const PROFILE = {
   name: "Gazi Faysal Jubayer",
-  tagline: "Bridging Mechanics and Software",
-  bio: "A Mechanical Engineer passionate about automation, CAD design, and full-stack web development.",
-  email: "gazi@example.com",
-  github: "https://github.com/gazifaysaljubayer",
-  linkedin: "https://linkedin.com/in/gazifaysaljubayer",
+  tagline: "CAD designer | Programmer",
+  bio: "As a dedicated and passionate professional in the fields of mechanical design, programming and software development, I bring a unique blend of engineering and IT expertise to the table. I thrive on solving complex problems and driving innovation.",
+  email: "gazi.faysal.jubayer@gmail.com",
+  phone: "+8801315669261",
+  location: "Khulna, Bangladesh",
+  github: "https://github.com/gazi-faysal-jubayer",
+  linkedin: "https://www.linkedin.com/in/gazi",
+  website: "https://gazi.faysal.jubayer",
 } as const;
 
 export const SKILLS = {
-  engineering: ["SolidWorks", "AutoCAD", "ANSYS", "Thermodynamics", "Matlab"],
-  programming: ["Next.js", "Python", "C++", "Three.js", "React", "TypeScript"],
+  engineering: [
+    "SolidWorks",
+    "AutoCAD",
+    "Blender",
+    "KeyShot",
+    "Competitor analysis",
+    "Business research",
+    "Data Analysis",
+  ],
+  programming: [
+    "Python",
+    "C",
+    "Dart",
+    "JavaScript",
+    "TypeScript",
+    "Next.js",
+    "React",
+    "Flutter",
+    "Computer Vision",
+  ],
 } as const;
 
-export const PROJECTS = [
-  {
-    id: "proj_1",
-    type: "code",
-    title: "Portfolio OS",
-    description: "This website - a Windows 11 themed portfolio built with Next.js",
-    tech: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS"],
-    link: "/",
-  },
-  {
-    id: "proj_2",
-    type: "mechanical",
-    title: "Gearbox Assembly",
-    description: "3D CAD Model and Stress Analysis of a multi-stage gearbox",
-    tech: ["SolidWorks", "ANSYS"],
-  },
-  {
-    id: "proj_3",
-    type: "code",
-    title: "Automation Dashboard",
-    description: "Real-time monitoring dashboard for industrial sensors",
-    tech: ["React", "Python", "MQTT"],
-  },
-  {
-    id: "proj_4",
-    type: "mechanical",
-    title: "Heat Exchanger Design",
-    description: "Shell and tube heat exchanger with thermal analysis",
-    tech: ["AutoCAD", "Matlab"],
-  },
+export const LANGUAGES = [
+  { name: "Bangla", level: "Native" },
+  { name: "English", level: "Professional" },
 ] as const;
 
 export const EDUCATION = [
   {
-    degree: "Bachelor of Science in Mechanical Engineering",
-    institution: "Bangladesh University of Engineering & Technology",
-    year: "2020 - 2024",
-    gpa: "3.75/4.00",
+    degree: "Mechanical Engineering",
+    institution: "Khulna University of Engineering and Technology",
+    year: "2022 - 2027",
+    location: "Khulna, Bangladesh",
+  },
+  {
+    degree: "HSC at science department",
+    institution: "Khulna Public College",
+    year: "2019 - 2021",
+    location: "Khulna, Bangladesh",
   },
 ] as const;
 
 export const EXPERIENCE = [
   {
-    title: "Mechanical Design Intern",
-    company: "Example Engineering Ltd.",
-    period: "Jun 2023 - Aug 2023",
-    description: "Assisted in CAD modeling and FEA analysis of mechanical components.",
+    title: "Assistant IT and Resources Officer",
+    company: "CADers",
+    period: "March 2024 - Present",
+    description: "CADers is a club of KUET which works with CAD (Computer Aided Design).",
+  },
+  {
+    title: "Chief Information Officer (CIO)",
+    company: "উদ্ধার - Uddhar",
+    period: "August 2024 - Present",
+    description:
+      "During the Flood of 2024 in Feni, Bangladesh, I with some of my friends created this charity website and organization, uddharbd.org, to help people during the time of disaster. From then, we work continuously. Now, our team has about 30 members along with volunteers. We will publish our app version soon.",
+  },
+  {
+    title: "Co-Founder and Tech Lead",
+    company: "VSB - Virtual Solution Book",
+    period: "January 2024 - Present",
+    description:
+      "vsbbd.com is a platform where we provide solutions the problems of the students of HSC and admission students.",
+  },
+  {
+    title: "Campus Ambassador",
+    company: "SEAN Publication",
+    period: "October 2024 - Present",
+    description: "",
+  },
+  {
+    title: "Junior Marketing Executive",
+    company: "BANGLADESH 3DExperience & Solidworks User Group netwoRk",
+    period: "October 2024 - Present",
+    description: "",
+  },
+  {
+    title: "Assistant Partnership Manager",
+    company: "Autodesk User Group Network Bangladesh",
+    period: "November 2024 - Present",
+    description: "",
+  },
+  {
+    title: "Trainee Member at Autonomous Sub-Team",
+    company: "Team Durbar",
+    period: "July 2024 - Present",
+    description: "",
+  },
+  {
+    title: "Local Ambassador",
+    company: "মেঘ Magazine",
+    period: "February 2022 - 2023",
+    description: "",
+  },
+] as const;
+
+export const PUBLICATIONS = [
+  {
+    title:
+      "Analyzing the impact of opportunistic maintenance optimization on manufacturing industries in Bangladesh: An empirical study",
+    date: "August 2024",
+    status: "Available online: 9",
+    doi: "https://doi.org/10.1016/j.tbench.2024.100172",
+  },
+] as const;
+
+export const ACHIEVEMENTS = [
+  {
+    title: "Regional 1st Runner-Up and Global Nominee",
+    event: "NASA International Space Apps Challenge 2023",
+    date: "November 2023",
+    description:
+      "I participated in the NASA Space App Challenge 2023, an international hackathon addressing global challenges through collaboration. Our team was recognized as 1st Runner-Up and Global Nominee, earning me the title of Galactic Problem Solver for innovative contributions to the space industry and real-world problem-solving.",
+  },
+  {
+    title: "Regional 2nd Runner-Up and Global Nominee",
+    event: "NASA International Space Apps Challenge 2024",
+    date: "October 2023",
+    description:
+      "I participated in the NASA Space App Challenge 2024, a global hackathon focused on solving real-world challenges through innovation and teamwork. Our project earned 2nd Runner-Up and Global Nominee honors, along with the title of Galactic Problem Solver, recognizing my contributions to addressing critical issues in the space industry.",
+  },
+  {
+    title: "2 Time Galactic Problem Solver Titel",
+    event: "NASA International Space Apps",
+    date: "November 2023 - October 2023",
+    description: "First Time in the NASA Space App Challenge 2023. Second Time in the NASA Space App Challenge 2024.",
+  },
+  {
+    title: "1st Runner-Up in National CAD contest",
+    event: "Calibration 1.0",
+    date: "February 2024",
+    description: "",
+  },
+] as const;
+
+export const CERTIFICATIONS = [
+  {
+    name: "Solidworks Weldments Professional (CSWPA-WD)",
+    organization: "Dassault Systèmes",
+    date: "July 2024",
+    credentialUrl: "https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-FDSF19ASCX",
+  },
+  {
+    name: "Solidworks Sheet Metal Professional (CSWPA-SM)",
+    organization: "Dassault Systèmes",
+    date: "June 2024",
+    credentialUrl: "https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-RAFH5TKCCV",
+  },
+  {
+    name: "Solidworks CAD Design Professional (CSWP)",
+    organization: "Dassault Systèmes",
+    date: "June 2024",
+    credentialUrl: "https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-XRLJHD7BAM",
+  },
+  {
+    name: "Solidworks CAD Design Associate (CSWA)",
+    organization: "Dassault Systèmes",
+    date: "April 2024",
+    credentialUrl: "https://cv.virtualtester.com/qr/?b=SLDWRKS&i=C-GT9ZTD3EUK",
+  },
+  {
+    name: "Python Project for AI and Application Development",
+    organization: "Credly by Pearson",
+    date: "April 2024",
+    credentialUrl:
+      "https://www.credly.com/badges/6ea01fb6-f78d-424f-a040-62e72b3dcb8b/public_url",
+  },
+  {
+    name: "Developing AI Applications with Python and Flask by IBM",
+    organization: "Coursera",
+    date: "April 2024",
+    credentialUrl:
+      "https://www.coursera.org/account/accomplishments/certificate/Z5T6FJDAQR",
+  },
+] as const;
+
+export const PROJECTS = [
+  {
+    id: "proj_1",
+    type: "code",
+    title: "GaziOS Portfolio",
+    description: "This website - a Windows 11 themed portfolio built with Next.js",
+    tech: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS", "Framer Motion"],
+    link: "/",
+  },
+  {
+    id: "proj_2",
+    type: "charity",
+    title: "উদ্ধার - Uddhar",
+    description: "Charity website and organization helping people during disasters",
+    tech: ["Next.js", "React", "Database"],
+    link: "https://uddharbd.org",
+  },
+  {
+    id: "proj_3",
+    type: "code",
+    title: "VSB - Virtual Solution Book",
+    description: "Platform providing solutions for HSC and admission students",
+    tech: ["Web Development", "Educational Platform"],
+    link: "https://vsbbd.com",
+  },
+  {
+    id: "proj_4",
+    type: "mechanical",
+    title: "NASA Space Apps Challenge 2023",
+    description: "Galactic Problem Solver - Regional 1st Runner-Up and Global Nominee",
+    tech: ["Innovation", "Problem Solving", "Collaboration"],
+  },
+  {
+    id: "proj_5",
+    type: "mechanical",
+    title: "NASA Space Apps Challenge 2024",
+    description: "Galactic Problem Solver - Regional 2nd Runner-Up and Global Nominee",
+    tech: ["Innovation", "Problem Solving", "Teamwork"],
   },
 ] as const;
 
@@ -105,23 +270,23 @@ export const NOTIFICATIONS = [
   {
     id: "1",
     title: "New commit pushed",
-    message: "Gazi just pushed to portfolio-os",
+    message: "Gazi just pushed to GaziOS Portfolio",
     time: "2 hours ago",
     icon: "git",
   },
   {
     id: "2",
-    title: "CAD design updated",
-    message: "Gearbox assembly revision 3.2",
+    title: "Certificate earned",
+    message: "SolidWorks Professional (CSWP) certified",
     time: "5 hours ago",
-    icon: "cube",
+    icon: "award",
   },
   {
     id: "3",
-    title: "Certificate earned",
-    message: "Completed Advanced SolidWorks",
+    title: "Achievement unlocked",
+    message: "NASA Space Apps 2x winner",
     time: "1 day ago",
-    icon: "award",
+    icon: "trophy",
   },
 ] as const;
 
@@ -138,13 +303,18 @@ export const FILE_SYSTEM = {
             name: "Code",
             type: "folder",
             children: {
-              "portfolio-os": {
-                name: "portfolio-os",
+              "gazios-portfolio": {
+                name: "gazios-portfolio",
                 type: "project",
                 projectId: "proj_1",
               },
-              "automation-dashboard": {
-                name: "automation-dashboard",
+              "uddhar-website": {
+                name: "uddhar-website",
+                type: "project",
+                projectId: "proj_2",
+              },
+              "vsb-platform": {
+                name: "vsb-platform",
                 type: "project",
                 projectId: "proj_3",
               },
@@ -169,6 +339,11 @@ export const FILE_SYSTEM = {
                     type: "file",
                     fileType: "pdf",
                   },
+                  "Publication.pdf": {
+                    name: "Publication.pdf",
+                    type: "file",
+                    fileType: "pdf",
+                  },
                 },
               },
             },
@@ -189,15 +364,13 @@ export const FILE_SYSTEM = {
             name: "CAD",
             type: "folder",
             children: {
-              "gearbox-assembly": {
-                name: "gearbox-assembly",
-                type: "project",
-                projectId: "proj_2",
+              "solidworks-projects": {
+                name: "solidworks-projects",
+                type: "folder",
               },
-              "heat-exchanger": {
-                name: "heat-exchanger",
-                type: "project",
-                projectId: "proj_4",
+              "autocad-designs": {
+                name: "autocad-designs",
+                type: "folder",
               },
             },
           },
@@ -217,13 +390,49 @@ export const FILE_SYSTEM = {
             name: "Certificates",
             type: "folder",
             children: {
-              "SolidWorks-Cert.pdf": {
-                name: "SolidWorks-Cert.pdf",
+              "CSWPA-WD.pdf": {
+                name: "CSWPA-WD.pdf",
                 type: "file",
                 fileType: "pdf",
               },
-              "React-Cert.pdf": {
-                name: "React-Cert.pdf",
+              "CSWPA-SM.pdf": {
+                name: "CSWPA-SM.pdf",
+                type: "file",
+                fileType: "pdf",
+              },
+              "CSWP.pdf": {
+                name: "CSWP.pdf",
+                type: "file",
+                fileType: "pdf",
+              },
+              "CSWA.pdf": {
+                name: "CSWA.pdf",
+                type: "file",
+                fileType: "pdf",
+              },
+              "Python-AI-Cert.pdf": {
+                name: "Python-AI-Cert.pdf",
+                type: "file",
+                fileType: "pdf",
+              },
+              "IBM-Flask-Cert.pdf": {
+                name: "IBM-Flask-Cert.pdf",
+                type: "file",
+                fileType: "pdf",
+              },
+            },
+          },
+          Achievements: {
+            name: "Achievements",
+            type: "folder",
+            children: {
+              "NASA-2023.pdf": {
+                name: "NASA-2023.pdf",
+                type: "file",
+                fileType: "pdf",
+              },
+              "NASA-2024.pdf": {
+                name: "NASA-2024.pdf",
                 type: "file",
                 fileType: "pdf",
               },
@@ -236,7 +445,7 @@ export const FILE_SYSTEM = {
 } as const;
 
 export const CODE_SNIPPETS = {
-  "portfolio-os": {
+  "gazios-portfolio": {
     language: "typescript",
     filename: "useOSStore.ts",
     code: `import { create } from 'zustand';
@@ -274,110 +483,212 @@ export const useOSStore = create<OSState>((set) => ({
   })),
 }));`,
   },
-  "automation-dashboard": {
-    language: "python",
-    filename: "sensor_monitor.py",
-    code: `import paho.mqtt.client as mqtt
-import json
-from datetime import datetime
+  "uddhar-website": {
+    language: "javascript",
+    filename: "charity.js",
+    code: `// Uddhar - Charity Platform
+// Helping people during disasters
 
-class SensorMonitor:
-    def __init__(self, broker: str, port: int = 1883):
-        self.client = mqtt.Client()
-        self.client.on_message = self.on_message
-        self.client.connect(broker, port)
-        self.data_buffer = []
+const donationManager = {
+  campaigns: [],
+  volunteers: [],
+  
+  async createCampaign(name, goal, location) {
+    const campaign = {
+      id: Date.now(),
+      name,
+      goal,
+      raised: 0,
+      location,
+      status: 'active'
+    };
+    this.campaigns.push(campaign);
+    return campaign;
+  },
+  
+  async processDonation(campaignId, amount) {
+    const campaign = this.campaigns.find(c => c.id === campaignId);
+    if (campaign) {
+      campaign.raised += amount;
+      return { success: true, message: 'Donation processed' };
+    }
+    return { success: false, message: 'Campaign not found' };
+  }
+};`,
+  },
+  "vsb-platform": {
+    language: "python",
+    filename: "solutions.py",
+    code: `# VSB - Virtual Solution Book
+# Educational platform for HSC students
+
+class SolutionProvider:
+    def __init__(self):
+        self.subjects = ['Physics', 'Chemistry', 'Math', 'Biology']
+        self.solutions = {}
     
-    def on_message(self, client, userdata, msg):
-        payload = json.loads(msg.payload)
-        reading = {
-            'timestamp': datetime.now().isoformat(),
-            'sensor_id': payload['id'],
-            'temperature': payload['temp'],
-            'pressure': payload['pressure']
+    def add_solution(self, subject, chapter, problem, solution):
+        key = f"{subject}_{chapter}_{problem}"
+        self.solutions[key] = {
+            'subject': subject,
+            'chapter': chapter,
+            'problem': problem,
+            'solution': solution,
+            'views': 0
         }
-        self.data_buffer.append(reading)
-        self.process_reading(reading)
     
-    def process_reading(self, reading: dict):
-        if reading['temperature'] > 85:
-            self.trigger_alert('HIGH_TEMP', reading)
-        if reading['pressure'] > 150:
-            self.trigger_alert('HIGH_PRESSURE', reading)
+    def get_solution(self, subject, chapter, problem):
+        key = f"{subject}_{chapter}_{problem}"
+        if key in self.solutions:
+            self.solutions[key]['views'] += 1
+            return self.solutions[key]
+        return None
     
-    def start(self):
-        self.client.subscribe('sensors/#')
-        self.client.loop_forever()`,
+    def search_solutions(self, query):
+        results = []
+        for solution in self.solutions.values():
+            if query.lower() in solution['problem'].lower():
+                results.append(solution)
+        return results`,
   },
 } as const;
 
 export const RESUME_CONTENT = `
 ═══════════════════════════════════════════════════════════════
                     GAZI FAYSAL JUBAYER
-               Mechanical Engineer & Developer
+                CAD designer | Programmer
 ═══════════════════════════════════════════════════════════════
 
 CONTACT
 ───────────────────────────────────────────────────────────────
-Email: gazi@example.com
-GitHub: github.com/gazifaysaljubayer
-LinkedIn: linkedin.com/in/gazifaysaljubayer
-Location: Dhaka, Bangladesh
+Location: Khulna, Bangladesh
+Phone: +8801315669261
+Email: gazi.faysal.jubayer@gmail.com
+LinkedIn: linkedin.com/in/gazi
+GitHub: github.com/gazi-faysal-jubayer
 
 PROFESSIONAL SUMMARY
 ───────────────────────────────────────────────────────────────
-Mechanical Engineering graduate with a strong foundation in 
-CAD design, thermal analysis, and programming. Passionate about
-bridging the gap between traditional engineering and modern
-software development. Experienced in creating automation tools
-and web applications that solve real engineering problems.
+As a dedicated and passionate professional in the fields of 
+mechanical design, programming and software development, I bring
+a unique blend of engineering and IT expertise to the table. 
+I thrive on solving complex problems and driving innovation.
+
+WORK EXPERIENCE
+───────────────────────────────────────────────────────────────
+Assistant IT and Resources Officer
+CADers | March 2024 - Present
+• CADers is a club of KUET which works with CAD (Computer 
+  Aided Design).
+
+Chief Information Officer (CIO)
+উদ্ধার - Uddhar | August 2024 - Present
+• Created charity website uddharbd.org during Flood 2024
+• Team has about 30 members along with volunteers
+• App version coming soon
+
+Co-Founder and Tech Lead
+VSB - Virtual Solution Book | January 2024 - Present
+• vsbbd.com provides solutions for HSC and admission students
+
+Campus Ambassador
+SEAN Publication | October 2024 - Present
+
+Junior Marketing Executive
+BANGLADESH 3DExperience & Solidworks User Group
+October 2024 - Present
+
+Assistant Partnership Manager
+Autodesk User Group Network Bangladesh
+November 2024 - Present
+
+Trainee Member at Autonomous Sub-Team
+Team Durbar | July 2024 - Present
+
+Local Ambassador
+মেঘ Magazine | February 2022 - 2023
 
 EDUCATION
 ───────────────────────────────────────────────────────────────
-Bachelor of Science in Mechanical Engineering
-Bangladesh University of Engineering & Technology
-2020 - 2024 | GPA: 3.75/4.00
+Mechanical Engineering
+Khulna University of Engineering and Technology
+2022 - 2027 | Khulna, Bangladesh
 
-TECHNICAL SKILLS
+HSC at science department
+Khulna Public College
+2019 - 2021 | Khulna, Bangladesh
+
+PUBLICATION
 ───────────────────────────────────────────────────────────────
-Engineering:    SolidWorks, AutoCAD, ANSYS, Matlab
-                Thermodynamics, Fluid Mechanics, FEA
+Analyzing the impact of opportunistic maintenance 
+optimization on manufacturing industries in Bangladesh: 
+An empirical study
+August 2024 | Available online: 9
+DOI: https://doi.org/10.1016/j.tbench.2024.100172
 
-Programming:    Python, JavaScript/TypeScript, C++
-                React, Next.js, Three.js, Node.js
-
-Tools:          Git, Docker, Linux, VS Code
-
-PROJECTS
+ACHIEVEMENTS
 ───────────────────────────────────────────────────────────────
-Portfolio OS (2024)
-  - Windows 11 themed portfolio website using Next.js
-  - Interactive 3D CAD model viewer with Three.js
-  - Custom terminal emulator with portfolio commands
+Regional 1st Runner-Up and Global Nominee
+NASA International Space Apps Challenge 2023
+November 2023
+• Earned title of Galactic Problem Solver
+• Innovative contributions to space industry
 
-Gearbox Assembly Design (2023)
-  - Multi-stage gearbox design in SolidWorks
-  - Stress analysis and optimization using ANSYS
-  - Reduced weight by 15% while maintaining strength
+Regional 2nd Runner-Up and Global Nominee
+NASA International Space Apps Challenge 2024
+October 2023
+• 2nd time Galactic Problem Solver
+• Addressing critical issues in space industry
 
-Automation Dashboard (2023)
-  - Real-time sensor monitoring system
-  - MQTT protocol for IoT communication
-  - Python backend with React frontend
+2 Time Galactic Problem Solver Title
+NASA International Space Apps
+• First Time: Challenge 2023
+• Second Time: Challenge 2024
 
-EXPERIENCE
+1st Runner-Up in National CAD contest
+Calibration 1.0 | February 2024
+
+LICENSES & CERTIFICATIONS
 ───────────────────────────────────────────────────────────────
-Mechanical Design Intern | Example Engineering Ltd.
-June 2023 - August 2023
-  - Assisted in CAD modeling of industrial components
-  - Performed FEA analysis for structural optimization
-  - Created technical documentation and drawings
+Solidworks Weldments Professional (CSWPA-WD)
+Dassault Systèmes | July 2024
+Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-FDSF19ASCX
 
-CERTIFICATIONS
+Solidworks Sheet Metal Professional (CSWPA-SM)
+Dassault Systèmes | June 2024
+Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-RAFH5TKCCV
+
+Solidworks CAD Design Professional (CSWP)
+Dassault Systèmes | June 2024
+Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-XRLJHD7BAM
+
+Solidworks CAD Design Associate (CSWA)
+Dassault Systèmes | April 2024
+Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-GT9ZTD3EUK
+
+Python Project for AI and Application Development
+Credly by Pearson | April 2024
+Credential: credly.com/badges/6ea01fb6-f78d-424f-a040-
+            62e72b3dcb8b/public_url
+
+Developing AI Applications with Python and Flask by IBM
+Coursera | April 2024
+Credential: coursera.org/account/accomplishments/certificate/
+            Z5T6FJDAQR
+
+SKILLS
 ───────────────────────────────────────────────────────────────
-- Certified SolidWorks Associate (CSWA)
-- React Developer Certificate - Meta
+Engineering:   SolidWorks, AutoCAD, Blender, KeyShot
+               Competitor analysis, Business research
+               Data Analysis
+
+Programming:   Python, C, Dart, JavaScript, TypeScript
+               Next.js, React, Flutter, Computer Vision
+
+LANGUAGES
+───────────────────────────────────────────────────────────────
+Bangla - Native
+English - Professional
 
 ═══════════════════════════════════════════════════════════════
 `;
-

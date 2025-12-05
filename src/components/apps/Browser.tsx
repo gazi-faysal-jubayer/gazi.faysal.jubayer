@@ -40,7 +40,7 @@ const QUICK_LINKS = [
 export default function Browser() {
   const { isDarkMode } = useOSStore();
   const [tabs, setTabs] = useState<Tab[]>([
-    { id: "1", title: "New Tab", url: "edge://newtab" },
+    { id: "1", title: "New Tab", url: "gnet://newtab" },
   ]);
   const [activeTabId, setActiveTabId] = useState("1");
   const [urlInput, setUrlInput] = useState("");
@@ -61,8 +61,9 @@ export default function Browser() {
   const handleUrlSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (urlInput) {
-      const url = urlInput.startsWith("http") ? urlInput : `https://${urlInput}`;
-      navigate(url);
+      // Open Google search in new browser tab
+      window.open(`https://www.google.com/search?q=${encodeURIComponent(urlInput)}`, '_blank', 'noopener,noreferrer');
+      setUrlInput("");
     }
   };
 
@@ -70,7 +71,7 @@ export default function Browser() {
     const newTab: Tab = {
       id: Date.now().toString(),
       title: "New Tab",
-      url: "edge://newtab",
+      url: "gnet://newtab",
     };
     setTabs((prev) => [...prev, newTab]);
     setActiveTabId(newTab.id);
@@ -93,7 +94,7 @@ export default function Browser() {
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
-  const isNewTab = activeTab?.url === "edge://newtab";
+  const isNewTab = activeTab?.url === "gnet://newtab";
 
   return (
     <div className={cn("flex flex-col h-full", isDarkMode ? "bg-[#202020]" : "bg-white")}>
@@ -180,7 +181,7 @@ export default function Browser() {
             <RotateCw size={16} />
           </button>
           <button
-            onClick={() => navigate("edge://newtab")}
+            onClick={() => navigate("gnet://newtab")}
             className={cn(
               "p-1.5 rounded transition-colors",
               isDarkMode ? "hover:bg-white/10 text-white/60" : "hover:bg-black/5 text-black/60"
@@ -261,14 +262,23 @@ export default function Browser() {
         {isNewTab ? (
           // New tab page
           <div className="flex flex-col items-center justify-center h-full p-8">
-            <h1
-              className={cn(
-                "text-3xl font-light mb-8",
-                isDarkMode ? "text-white" : "text-black"
-              )}
-            >
-              Good {new Date().getHours() < 12 ? "morning" : new Date().getHours() < 18 ? "afternoon" : "evening"}
-            </h1>
+            <div className="mb-8 text-center">
+              <h1
+                className={cn(
+                  "text-4xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent"
+                )}
+              >
+                G-Net Explorer
+              </h1>
+              <p
+                className={cn(
+                  "text-lg font-light",
+                  isDarkMode ? "text-white/70" : "text-black/70"
+                )}
+              >
+                Good {new Date().getHours() < 12 ? "morning" : new Date().getHours() < 18 ? "afternoon" : "evening"}
+              </p>
+            </div>
 
             {/* Search box */}
             <form onSubmit={handleUrlSubmit} className="w-full max-w-xl mb-12">
@@ -283,7 +293,7 @@ export default function Browser() {
                   type="text"
                   value={urlInput}
                   onChange={(e) => setUrlInput(e.target.value)}
-                  placeholder="Search the web"
+                  placeholder="Search with Google"
                   className={cn(
                     "flex-1 bg-transparent outline-none",
                     isDarkMode

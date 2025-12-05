@@ -16,21 +16,21 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "GaziOS | Gazi Faysal Jubayer - Portfolio",
-  description: "A Windows 11 themed portfolio website for Gazi Faysal Jubayer - Mechanical Engineer & Full-Stack Developer",
-  keywords: ["portfolio", "mechanical engineer", "developer", "Next.js", "React", "Windows 11"],
+  description: "A Windows 11 themed portfolio website for Gazi Faysal Jubayer - CAD Designer, Programmer, and Mechanical Engineering Student at KUET",
+  keywords: ["portfolio", "CAD designer", "programmer", "mechanical engineer", "SolidWorks", "Next.js", "React", "Windows 11", "KUET", "NASA Space Apps"],
   authors: [{ name: "Gazi Faysal Jubayer" }],
   creator: "Gazi Faysal Jubayer",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "GaziOS | Portfolio",
-    description: "Interactive Windows 11 themed portfolio",
+    title: "GaziOS | Gazi Faysal Jubayer",
+    description: "CAD Designer | Programmer | 2x NASA Space Apps Winner",
     siteName: "GaziOS",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GaziOS | Portfolio",
-    description: "Interactive Windows 11 themed portfolio",
+    title: "GaziOS | Gazi Faysal Jubayer",
+    description: "CAD Designer | Programmer | 2x NASA Space Apps Winner",
   },
 };
 

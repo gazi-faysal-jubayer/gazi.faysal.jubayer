@@ -31,6 +31,9 @@ interface OSState {
   // Boot state
   hasBooted: boolean;
 
+  // Desktop icon positions
+  iconPositions: Record<string, { x: number; y: number }>;
+
   // Actions
   openWindow: (appId: string, title: string, icon: string) => void;
   closeWindow: (id: string) => void;
@@ -52,6 +55,7 @@ interface OSState {
   closeSearch: () => void;
 
   setHasBooted: (value: boolean) => void;
+  updateIconPosition: (appId: string, position: { x: number; y: number }) => void;
 }
 
 const generateWindowId = () => `window-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -69,6 +73,7 @@ export const useOSStore = create<OSState>()(
       isNotificationCenterOpen: false,
       isSearchOpen: false,
       hasBooted: false,
+      iconPositions: {},
 
       // Window actions
       openWindow: (appId, title, icon) => {
@@ -242,6 +247,15 @@ export const useOSStore = create<OSState>()(
       setHasBooted: (value) => {
         set({ hasBooted: value });
       },
+
+      updateIconPosition: (appId, position) => {
+        set((state) => ({
+          iconPositions: {
+            ...state.iconPositions,
+            [appId]: position,
+          },
+        }));
+      },
     }),
     {
       name: "gazi-os-storage",
@@ -249,6 +263,7 @@ export const useOSStore = create<OSState>()(
         isDarkMode: state.isDarkMode,
         currentWallpaper: state.currentWallpaper,
         hasBooted: state.hasBooted,
+        iconPositions: state.iconPositions,
       }),
     }
   )

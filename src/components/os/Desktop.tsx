@@ -10,6 +10,7 @@ import WindowFrame from "./WindowFrame";
 import DesktopIcon from "./DesktopIcon";
 
 // App components
+import dynamic from "next/dynamic";
 import FileExplorer from "@/components/apps/FileExplorer";
 import VSCodeLite from "@/components/apps/VSCodeLite";
 import CADViewer from "@/components/apps/CADViewer";
@@ -17,6 +18,14 @@ import Notepad from "@/components/apps/Notepad";
 import Terminal from "@/components/apps/Terminal";
 import Browser from "@/components/apps/Browser";
 import Settings from "@/components/apps/Settings";
+import EngCalculator from "@/components/apps/EngCalculator";
+import MediaPlayer from "@/components/apps/MediaPlayer";
+import QuranApp from "@/components/apps/QuranApp";
+
+// PDF Viewer needs to be loaded dynamically to avoid SSR issues
+const PDFViewer = dynamic(() => import("@/components/apps/PDFViewer"), {
+  ssr: false,
+});
 
 const APP_COMPONENTS: Record<string, React.ComponentType> = {
   "file-explorer": FileExplorer,
@@ -26,6 +35,10 @@ const APP_COMPONENTS: Record<string, React.ComponentType> = {
   terminal: Terminal,
   browser: Browser,
   settings: Settings,
+  "pdf-viewer": PDFViewer,
+  "eng-calc": EngCalculator,
+  "media-player": MediaPlayer,
+  "quran-app": QuranApp,
 };
 
 export default function Desktop() {
@@ -50,7 +63,7 @@ export default function Desktop() {
   return (
     <div
       className={cn(
-        "relative w-full h-full overflow-hidden",
+        "relative w-full h-full overflow-hidden z-0",
         isDarkMode ? "dark" : ""
       )}
       style={{
@@ -59,17 +72,15 @@ export default function Desktop() {
       }}
       onClick={handleDesktopClick}
     >
-      {/* Desktop icons grid */}
-      <div className="absolute inset-0 p-4 pb-16">
-        <div className="grid grid-cols-1 gap-1 w-fit">
-          {desktopApps.map((app) => (
-            <DesktopIcon key={app.id} app={app} />
-          ))}
-        </div>
+      {/* Desktop icons - now draggable */}
+      <div className="absolute inset-0 p-4 pb-16 z-10">
+        {desktopApps.map((app, index) => (
+          <DesktopIcon key={app.id} app={app} index={index} />
+        ))}
       </div>
 
       {/* Windows container */}
-      <div className="absolute inset-0 pointer-events-none pb-12">
+      <div className="absolute inset-0 pb-12 z-30 pointer-events-none">
         <div className="relative w-full h-full pointer-events-auto">
           <AnimatePresence>
             {windows.map((win) => {

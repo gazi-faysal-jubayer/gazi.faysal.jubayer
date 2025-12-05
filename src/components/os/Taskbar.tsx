@@ -88,7 +88,7 @@ export default function Taskbar() {
     { id: "file-explorer", icon: "folder", name: "File Explorer" },
     { id: "vscode", icon: "code", name: "VS Code" },
     { id: "terminal", icon: "terminal", name: "Terminal" },
-    { id: "browser", icon: "globe", name: "Edge" },
+    { id: "browser", icon: "globe", name: "G-Net Explorer" },
   ];
 
   return (
@@ -97,24 +97,29 @@ export default function Taskbar() {
       animate={{ y: 0 }}
       transition={{ delay: 0.3, type: "spring", stiffness: 300 }}
       className={cn(
-        "fixed bottom-0 left-0 right-0 h-12 z-50",
-        isDarkMode ? "glass-dark glass-border-dark" : "glass glass-border",
-        "flex items-center justify-center px-2"
+        "fixed bottom-0 left-0 right-0 h-12 z-[100]",
+        "flex items-center px-4"
       )}
+      style={{
+        backdropFilter: "blur(40px) saturate(150%)",
+        WebkitBackdropFilter: "blur(40px) saturate(150%)",
+        backgroundColor: isDarkMode ? "rgba(32, 32, 32, 0.85)" : "rgba(243, 243, 243, 0.85)",
+        borderTop: `1px solid ${isDarkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)"}`,
+      }}
       onClick={(e) => e.stopPropagation()}
     >
-      {/* Center section - Start, Search, and Apps */}
-      <div className="flex items-center gap-1">
+      {/* Center section - Start, Search, and Apps - Absolutely positioned */}
+      <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-1.5">
         {/* Start button */}
-        <button
-          onClick={handleStartClick}
-          className={cn(
-            "taskbar-icon",
-            isStartMenuOpen && "active",
-            isDarkMode ? "hover:bg-white/10" : "hover:bg-black/5"
-          )}
-          aria-label="Start menu"
-        >
+          <button
+            onClick={handleStartClick}
+            className={cn(
+              "taskbar-icon",
+              isStartMenuOpen && "active",
+              isDarkMode ? "hover:bg-white/20" : "hover:bg-white/50"
+            )}
+            aria-label="Start menu"
+          >
           <WindowsLogo
             className={cn(
               "w-5 h-5",
@@ -124,14 +129,14 @@ export default function Taskbar() {
         </button>
 
         {/* Search button */}
-        <button
-          onClick={handleSearchClick}
-          className={cn(
-            "taskbar-icon",
-            isDarkMode ? "hover:bg-white/10" : "hover:bg-black/5"
-          )}
-          aria-label="Search"
-        >
+          <button
+            onClick={handleSearchClick}
+            className={cn(
+              "taskbar-icon",
+              isDarkMode ? "hover:bg-white/20" : "hover:bg-white/50"
+            )}
+            aria-label="Search"
+          >
           <Search
             size={18}
             className={isDarkMode ? "text-white/80" : "text-black/70"}
@@ -166,7 +171,7 @@ export default function Taskbar() {
               className={cn(
                 "taskbar-icon relative",
                 isActive && "active",
-                isDarkMode ? "hover:bg-white/10" : "hover:bg-black/5"
+                isDarkMode ? "hover:bg-white/20" : "hover:bg-white/50"
               )}
               aria-label={app.name}
             >
@@ -228,7 +233,7 @@ export default function Taskbar() {
       </div>
 
       {/* Right section - System tray */}
-      <div className="absolute right-0">
+      <div className="ml-auto">
         <SystemTray />
       </div>
     </motion.div>

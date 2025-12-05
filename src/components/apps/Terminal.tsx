@@ -58,7 +58,7 @@ const COMMANDS: Record<string, () => string[]> = {
       `┌─ ${edu.degree}`,
       `│  ${edu.institution}`,
       `│  ${edu.year}`,
-      `└─ GPA: ${edu.gpa}`,
+      `└─ Location: ${edu.location}`,
       "",
     ]).flat(),
   ],
