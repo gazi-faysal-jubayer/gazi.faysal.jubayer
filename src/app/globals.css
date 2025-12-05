@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f3f3f3;
+  --foreground: #1a1a1a;
+  --accent: #0078D4;
+  --taskbar-height: 48px;
+}
+
+.dark {
+  --background: #202020;
+  --foreground: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), "Segoe UI", sans-serif;
+}
+
+/* Glassmorphism utilities */
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-dark {
+    background: rgba(32, 32, 32, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-border {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .glass-border-dark {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .mica {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(243, 243, 243, 0.85) 100%
+    );
+    backdrop-filter: blur(60px) saturate(150%);
+  }
+
+  .mica-dark {
+    background: linear-gradient(
+      180deg,
+      rgba(40, 40, 40, 0.95) 0%,
+      rgba(32, 32, 32, 0.9) 100%
+    );
+    backdrop-filter: blur(60px) saturate(150%);
+  }
+}
+
+/* Window styles */
+.window-shadow {
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.window-shadow-dark {
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Taskbar hover effects */
+.taskbar-icon {
+  @apply relative flex items-center justify-center w-10 h-10 rounded-win transition-all duration-150;
+}
+
+.taskbar-icon:hover {
+  @apply bg-white/10;
+}
+
+.taskbar-icon.active {
+  @apply bg-white/20;
+}
+
+.taskbar-icon.active::after {
+  content: "";
+  @apply absolute bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-accent rounded-full;
+}
+
+/* Desktop icon styles */
+.desktop-icon {
+  @apply flex flex-col items-center justify-center gap-1 p-2 rounded-win cursor-pointer transition-all duration-150;
+}
+
+.desktop-icon:hover {
+  @apply bg-white/10;
+}
+
+.desktop-icon:active {
+  @apply bg-white/20;
+}
+
+.desktop-icon.selected {
+  @apply bg-accent/30;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(128, 128, 128, 0.6);
+}
+
+/* Start menu animations */
+.start-menu-enter {
+  animation: start-menu-in 0.2s ease-out forwards;
+}
+
+.start-menu-exit {
+  animation: start-menu-out 0.15s ease-in forwards;
+}
+
+@keyframes start-menu-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes start-menu-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+}
+
+/* Boot screen styles */
+.boot-loader {
+  width: 200px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.boot-loader-bar {
+  height: 100%;
+  background: var(--accent);
+  animation: boot-load 3s ease-in-out forwards;
+}
+
+@keyframes boot-load {
+  0% {
+    width: 0%;
+  }
+  20% {
+    width: 15%;
+  }
+  40% {
+    width: 35%;
+  }
+  60% {
+    width: 60%;
+  }
+  80% {
+    width: 85%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Window button styles */
+.window-btn {
+  @apply w-11 h-8 flex items-center justify-center transition-colors duration-100;
+}
+
+.window-btn:hover {
+  @apply bg-black/5;
+}
+
+.dark .window-btn:hover {
+  @apply bg-white/10;
+}
+
+.window-btn.close:hover {
+  @apply bg-red-500 text-white;
+}
+
+/* Terminal cursor blink */
+.terminal-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Notification slide */
+.notification-panel {
+  animation: notification-slide 0.3s ease-out forwards;
+}
+
+@keyframes notification-slide {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
