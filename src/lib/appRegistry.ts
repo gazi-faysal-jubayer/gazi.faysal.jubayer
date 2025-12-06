@@ -126,6 +126,15 @@ export const APPS: AppDefinition[] = [
     showInStartMenu: false,
     category: "system",
   },
+  {
+    id: "resume-file",
+    name: "Resume",
+    icon: "file-text",
+    description: "View my resume",
+    showOnDesktop: true,
+    showInStartMenu: false,
+    category: "productivity",
+  },
 ];
 
 export const getApp = (id: string): AppDefinition | undefined => {

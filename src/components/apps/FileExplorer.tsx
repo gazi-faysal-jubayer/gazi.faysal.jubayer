@@ -206,7 +206,11 @@ export default function FileExplorer() {
             openWindow("notepad", `Notepad - ${name}`, "file-text");
             break;
           case "pdf":
-            // Open in PDF Viewer
+            // Open in PDF Viewer with path
+            if (node.pdfPath) {
+              sessionStorage.setItem("pdf-viewer-path", node.pdfPath);
+              sessionStorage.setItem("pdf-viewer-filename", name);
+            }
             openWindow("pdf-viewer", `DocuRead - ${name}`, "file-text");
             break;
           default:

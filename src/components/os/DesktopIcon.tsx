@@ -62,6 +62,11 @@ export default function DesktopIcon({ app, defaultPosition }: DesktopIconProps) 
           openWindow("file-explorer", "File Explorer - CAD Projects", "folder");
         } else if (app.id === "code-projects-folder") {
           openWindow("file-explorer", "File Explorer - Code Projects", "folder");
+        } else if (app.id === "resume-file") {
+          // Open Resume PDF directly in PDF viewer
+          sessionStorage.setItem("pdf-viewer-path", "/resume.pdf");
+          sessionStorage.setItem("pdf-viewer-filename", "Resume.pdf");
+          openWindow("pdf-viewer", "DocuRead - Resume", "file-text");
         } else {
           openWindow(app.id, app.name, app.icon);
         }

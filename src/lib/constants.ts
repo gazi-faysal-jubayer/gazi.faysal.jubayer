@@ -649,6 +649,7 @@ SOFTWARE USED:
                     name: "Resume.pdf",
                     type: "file",
                     fileType: "pdf",
+                    pdfPath: "/resume.pdf", 
                   },
                   "Publication.pdf": {
                     name: "Publication.pdf",

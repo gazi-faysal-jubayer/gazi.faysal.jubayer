@@ -10,7 +10,6 @@ import WindowFrame from "./WindowFrame";
 import DesktopIcon from "./DesktopIcon";
 
 // App components
-import dynamic from "next/dynamic";
 import FileExplorer from "@/components/apps/FileExplorer";
 import VSCodeLite from "@/components/apps/VSCodeLite";
 import CADViewer from "@/components/apps/CADViewer";
@@ -21,11 +20,7 @@ import Settings from "@/components/apps/Settings";
 import EngCalculator from "@/components/apps/EngCalculator";
 import MediaPlayer from "@/components/apps/MediaPlayer";
 import QuranApp from "@/components/apps/QuranApp";
-
-// PDF Viewer needs to be loaded dynamically to avoid SSR issues
-const PDFViewer = dynamic(() => import("@/components/apps/PDFViewer"), {
-  ssr: false,
-});
+import PDFViewer from "@/components/apps/PDFViewer";
 
 const APP_COMPONENTS: Record<string, React.ComponentType> = {
   "file-explorer": FileExplorer,
