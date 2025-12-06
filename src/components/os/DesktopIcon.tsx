@@ -33,6 +33,10 @@ const ICON_MAP: Record<string, LucideIcon> = {
   book: BookOpen,
 };
 
+// Grid constants for icon snapping
+const ICON_WIDTH = 90;
+const ICON_HEIGHT = 100;
+
 interface DesktopIconProps {
   app: AppDefinition;
   index: number;
@@ -43,7 +47,14 @@ export default function DesktopIcon({ app, defaultPosition }: DesktopIconProps) 
   const [isSelected, setIsSelected] = useState(false);
   const [dragDistance, setDragDistance] = useState(0);
   const nodeRef = useRef<HTMLDivElement>(null);
-  const { openWindow, isDarkMode, iconPositions, updateIconPosition } = useOSStore();
+  const { 
+    openWindow, 
+    isDarkMode, 
+    iconPositions, 
+    updateIconPosition,
+    isPositionOccupied,
+    findNearestAvailablePosition 
+  } = useOSStore();
 
   const Icon = ICON_MAP[app.icon] || Folder;
 
@@ -100,11 +111,24 @@ export default function DesktopIcon({ app, defaultPosition }: DesktopIconProps) 
 
   const handleDragStop = useCallback(
     (_e: DraggableEvent, data: DraggableData) => {
-      updateIconPosition(app.id, { x: data.x, y: data.y });
+      // Snap to grid
+      const snappedX = Math.round(data.x / ICON_WIDTH) * ICON_WIDTH;
+      const snappedY = Math.round(data.y / ICON_HEIGHT) * ICON_HEIGHT;
+      
+      let finalPosition = { x: snappedX, y: snappedY };
+      
+      // Check for collision with other icons
+      if (isPositionOccupied(snappedX, snappedY, app.id)) {
+        // Find nearest available position
+        finalPosition = findNearestAvailablePosition(snappedX, snappedY, app.id);
+      }
+      
+      updateIconPosition(app.id, finalPosition);
+      
       // Reset drag distance after a short delay to allow click events to check it
       setTimeout(() => setDragDistance(0), 150);
     },
-    [app.id, updateIconPosition]
+    [app.id, updateIconPosition, isPositionOccupied, findNearestAvailablePosition]
   );
 
   const isDragging = dragDistance > 5;
@@ -113,7 +137,7 @@ export default function DesktopIcon({ app, defaultPosition }: DesktopIconProps) 
     <Draggable
       nodeRef={nodeRef}
       position={position}
-      grid={[10, 10]}
+      grid={[1, 1]}
       bounds="parent"
       onStart={handleDragStart}
       onDrag={handleDrag}

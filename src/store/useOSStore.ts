@@ -62,9 +62,14 @@ interface OSState {
 
   setHasBooted: (value: boolean) => void;
   updateIconPosition: (appId: string, position: { x: number; y: number }) => void;
+  resetIconPositions: () => void;
   addUploadedFile: (path: string, file: File) => void;
   removeUploadedFile: (path: string) => void;
   setFileExplorerInitialPath: (path: string[] | null) => void;
+  
+  // Icon collision detection helpers
+  isPositionOccupied: (x: number, y: number, excludeId?: string) => boolean;
+  findNearestAvailablePosition: (x: number, y: number, excludeId: string) => { x: number; y: number };
 }
 
 const generateWindowId = () => `window-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -268,6 +273,10 @@ export const useOSStore = create<OSState>()(
         }));
       },
 
+      resetIconPositions: () => {
+        set({ iconPositions: {} });
+      },
+
       addUploadedFile: (path, file) => {
         set((state) => ({
           uploadedFiles: {
@@ -287,6 +296,70 @@ export const useOSStore = create<OSState>()(
 
       setFileExplorerInitialPath: (path) => {
         set({ fileExplorerInitialPath: path });
+      },
+
+      // Icon collision detection helpers
+      isPositionOccupied: (x, y, excludeId) => {
+        const { iconPositions } = get();
+        const ICON_WIDTH = 90;
+        const ICON_HEIGHT = 100;
+        const MIN_DISTANCE = 45; // Half of icon width for overlap check
+
+        return Object.entries(iconPositions).some(([id, pos]) => {
+          if (excludeId && id === excludeId) return false;
+          
+          // Calculate distance between centers
+          const centerX1 = x + ICON_WIDTH / 2;
+          const centerY1 = y + ICON_HEIGHT / 2;
+          const centerX2 = pos.x + ICON_WIDTH / 2;
+          const centerY2 = pos.y + ICON_HEIGHT / 2;
+          
+          const distance = Math.sqrt(
+            Math.pow(centerX2 - centerX1, 2) + 
+            Math.pow(centerY2 - centerY1, 2)
+          );
+          
+          return distance < MIN_DISTANCE;
+        });
+      },
+
+      findNearestAvailablePosition: (targetX, targetY, excludeId) => {
+        const ICON_WIDTH = 90;
+        const ICON_HEIGHT = 100;
+        const MAX_SEARCH_RADIUS = 10; // Search up to 10 grid cells away
+
+        // Snap target to grid first
+        const gridX = Math.round(targetX / ICON_WIDTH) * ICON_WIDTH;
+        const gridY = Math.round(targetY / ICON_HEIGHT) * ICON_HEIGHT;
+
+        // Check if target position is free
+        if (!get().isPositionOccupied(gridX, gridY, excludeId)) {
+          return { x: gridX, y: gridY };
+        }
+
+        // Spiral outward to find nearest free spot
+        for (let radius = 1; radius <= MAX_SEARCH_RADIUS; radius++) {
+          // Check positions in a square spiral
+          for (let dx = -radius; dx <= radius; dx++) {
+            for (let dy = -radius; dy <= radius; dy++) {
+              // Only check edge of current radius (not interior)
+              if (Math.abs(dx) === radius || Math.abs(dy) === radius) {
+                const testX = gridX + dx * ICON_WIDTH;
+                const testY = gridY + dy * ICON_HEIGHT;
+
+                // Keep within reasonable bounds (not negative)
+                if (testX >= 0 && testY >= 0) {
+                  if (!get().isPositionOccupied(testX, testY, excludeId)) {
+                    return { x: testX, y: testY };
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        // If no free position found, return original target (fallback)
+        return { x: gridX, y: gridY };
       },
     }),
     {
