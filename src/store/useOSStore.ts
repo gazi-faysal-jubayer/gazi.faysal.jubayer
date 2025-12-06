@@ -34,6 +34,12 @@ interface OSState {
   // Desktop icon positions
   iconPositions: Record<string, { x: number; y: number }>;
 
+  // Uploaded files from drag-drop
+  uploadedFiles: Record<string, File>;
+
+  // File Explorer initial path (for folder shortcuts)
+  fileExplorerInitialPath: string[] | null;
+
   // Actions
   openWindow: (appId: string, title: string, icon: string) => void;
   closeWindow: (id: string) => void;
@@ -56,6 +62,9 @@ interface OSState {
 
   setHasBooted: (value: boolean) => void;
   updateIconPosition: (appId: string, position: { x: number; y: number }) => void;
+  addUploadedFile: (path: string, file: File) => void;
+  removeUploadedFile: (path: string) => void;
+  setFileExplorerInitialPath: (path: string[] | null) => void;
 }
 
 const generateWindowId = () => `window-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
@@ -74,6 +83,8 @@ export const useOSStore = create<OSState>()(
       isSearchOpen: false,
       hasBooted: false,
       iconPositions: {},
+      uploadedFiles: {},
+      fileExplorerInitialPath: null,
 
       // Window actions
       openWindow: (appId, title, icon) => {
@@ -255,6 +266,27 @@ export const useOSStore = create<OSState>()(
             [appId]: position,
           },
         }));
+      },
+
+      addUploadedFile: (path, file) => {
+        set((state) => ({
+          uploadedFiles: {
+            ...state.uploadedFiles,
+            [path]: file,
+          },
+        }));
+      },
+
+      removeUploadedFile: (path) => {
+        set((state) => {
+          const newFiles = { ...state.uploadedFiles };
+          delete newFiles[path];
+          return { uploadedFiles: newFiles };
+        });
+      },
+
+      setFileExplorerInitialPath: (path) => {
+        set({ fileExplorerInitialPath: path });
       },
     }),
     {

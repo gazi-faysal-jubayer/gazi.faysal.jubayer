@@ -330,6 +330,317 @@ export const FILE_SYSTEM = {
             name: "Gazi",
             type: "folder",
             children: {
+              Desktop: {
+                name: "Desktop",
+                type: "folder",
+                children: {
+                  "CAD Projects": {
+                    name: "CAD Projects",
+                    type: "folder",
+                    children: {
+                      "Gearbox Assembly": {
+                        name: "Gearbox Assembly",
+                        type: "folder",
+                        children: {
+                          "gearbox.glb": {
+                            name: "gearbox.glb",
+                            type: "file",
+                            fileType: "glb",
+                            modelPath: "/models/gearbox.glb",
+                          },
+                          "details.txt": {
+                            name: "details.txt",
+                            type: "file",
+                            fileType: "txt",
+                            content: `GEARBOX ASSEMBLY
+═══════════════════════════════════════
+
+PROJECT: Multi-Stage Helical Gear Reducer
+DESIGNER: Gazi Faysal Jubayer
+DATE: 2024
+
+DESCRIPTION:
+A 3-stage helical gear reducer designed for industrial applications.
+Features compact design with high torque transmission efficiency.
+
+SPECIFICATIONS:
+• Input Speed: 1450 RPM
+• Output Speed: 58 RPM  
+• Gear Ratio: 25:1
+• Input Power: 15 kW
+• Efficiency: 96%
+
+MATERIALS:
+• Gears: 20MnCr5 Case Hardened Steel
+• Shafts: EN24 Alloy Steel
+• Housing: Cast Iron FG260
+
+DESIGN FEATURES:
+• Helical gears for smooth operation
+• Splash lubrication system
+• Double lip oil seals
+• SKF bearings throughout
+
+SOFTWARE USED:
+• SolidWorks 2024
+• ANSYS for FEA
+• KeyShot for rendering`,
+                          },
+                          "drawing.pdf": {
+                            name: "drawing.pdf",
+                            type: "file",
+                            fileType: "pdf",
+                            pdfPath: "/pdfs/gearbox-drawing.pdf",
+                          },
+                        },
+                      },
+                      "Heat Exchanger": {
+                        name: "Heat Exchanger",
+                        type: "folder",
+                        children: {
+                          "heat-exchanger.glb": {
+                            name: "heat-exchanger.glb",
+                            type: "file",
+                            fileType: "glb",
+                            modelPath: "/models/heat-exchanger.glb",
+                          },
+                          "details.txt": {
+                            name: "details.txt",
+                            type: "file",
+                            fileType: "txt",
+                            content: `SHELL AND TUBE HEAT EXCHANGER
+═══════════════════════════════════════
+
+PROJECT: Industrial Heat Exchanger
+DESIGNER: Gazi Faysal Jubayer
+DATE: 2024
+
+DESCRIPTION:
+Counter-flow shell and tube heat exchanger for chemical process cooling.
+Designed for high pressure and corrosive fluid applications.
+
+SPECIFICATIONS:
+• Heat Duty: 500 kW
+• Shell Side Fluid: Cooling Water
+• Tube Side Fluid: Process Oil
+• Design Pressure: 10 bar
+• Operating Temperature: 150°C max
+
+DIMENSIONS:
+• Shell Diameter: 600 mm
+• Tube Length: 3000 mm
+• Number of Tubes: 120
+• Tube OD: 19.05 mm
+
+MATERIALS:
+• Shell: SA516 Gr.70 Carbon Steel
+• Tubes: SS316L Stainless Steel
+• Tube Sheet: SA516 Gr.70 with SS cladding
+
+SOFTWARE USED:
+• AutoCAD for drafting
+• HTRI for thermal design
+• SolidWorks for 3D modeling`,
+                          },
+                          "drawing.pdf": {
+                            name: "drawing.pdf",
+                            type: "file",
+                            fileType: "pdf",
+                            pdfPath: "/pdfs/heat-exchanger-drawing.pdf",
+                          },
+                        },
+                      },
+                      "Mounting Bracket": {
+                        name: "Mounting Bracket",
+                        type: "folder",
+                        children: {
+                          "bracket.glb": {
+                            name: "bracket.glb",
+                            type: "file",
+                            fileType: "glb",
+                            modelPath: "/models/bracket.glb",
+                          },
+                          "details.txt": {
+                            name: "details.txt",
+                            type: "file",
+                            fileType: "txt",
+                            content: `STRUCTURAL MOUNTING BRACKET
+═══════════════════════════════════════
+
+PROJECT: Heavy-Duty Equipment Bracket
+DESIGNER: Gazi Faysal Jubayer
+DATE: 2024
+
+DESCRIPTION:
+Structural support bracket for industrial equipment mounting.
+FEA optimized for weight reduction while maintaining strength.
+
+SPECIFICATIONS:
+• Load Capacity: 5000 kg
+• Safety Factor: 3.0
+• Weight: 12.5 kg (optimized from 18 kg)
+• Mounting Points: 6x M16 bolts
+
+DIMENSIONS:
+• Height: 250 mm
+• Width: 300 mm
+• Depth: 150 mm
+• Wall Thickness: 12 mm
+
+ANALYSIS RESULTS:
+• Max Stress: 145 MPa
+• Yield Stress: 355 MPa
+• Max Deflection: 0.8 mm
+• Natural Frequency: 125 Hz
+
+MATERIALS:
+• Main Body: S355JR Structural Steel
+• Finish: Hot-dip galvanized
+
+SOFTWARE USED:
+• SolidWorks for design
+• ANSYS Workbench for FEA
+• Topology optimization`,
+                          },
+                          "drawing.pdf": {
+                            name: "drawing.pdf",
+                            type: "file",
+                            fileType: "pdf",
+                            pdfPath: "/pdfs/bracket-drawing.pdf",
+                          },
+                        },
+                      },
+                      "Hydraulic Cylinder": {
+                        name: "Hydraulic Cylinder",
+                        type: "folder",
+                        children: {
+                          "cylinder.glb": {
+                            name: "cylinder.glb",
+                            type: "file",
+                            fileType: "glb",
+                            modelPath: "/models/cylinder.glb",
+                          },
+                          "details.txt": {
+                            name: "details.txt",
+                            type: "file",
+                            fileType: "txt",
+                            content: `DOUBLE-ACTING HYDRAULIC CYLINDER
+═══════════════════════════════════════
+
+PROJECT: Industrial Hydraulic Actuator
+DESIGNER: Gazi Faysal Jubayer
+DATE: 2024
+
+DESCRIPTION:
+Double-acting hydraulic cylinder for press machine application.
+Designed for high force and precision positioning.
+
+SPECIFICATIONS:
+• Bore Diameter: 100 mm
+• Rod Diameter: 56 mm
+• Stroke: 500 mm
+• Operating Pressure: 210 bar
+• Push Force: 165 kN
+• Pull Force: 125 kN
+
+SEALING:
+• Piston Seals: NBR U-cups
+• Rod Seals: Polyurethane
+• Wiper: Double lip
+
+MATERIALS:
+• Cylinder Tube: ST52.3 Honed Tube
+• Piston Rod: CK45 Hard Chrome Plated
+• End Caps: C45 Steel
+• Piston: Aluminum Bronze
+
+MOUNTING:
+• Head End: Clevis mount
+• Cap End: Flange mount
+
+SOFTWARE USED:
+• SolidWorks for design
+• HydroSym for circuit design`,
+                          },
+                          "drawing.pdf": {
+                            name: "drawing.pdf",
+                            type: "file",
+                            fileType: "pdf",
+                            pdfPath: "/pdfs/cylinder-drawing.pdf",
+                          },
+                        },
+                      },
+                      "Conveyor Roller": {
+                        name: "Conveyor Roller",
+                        type: "folder",
+                        children: {
+                          "roller.glb": {
+                            name: "roller.glb",
+                            type: "file",
+                            fileType: "glb",
+                            modelPath: "/models/roller.glb",
+                          },
+                          "details.txt": {
+                            name: "details.txt",
+                            type: "file",
+                            fileType: "txt",
+                            content: `INDUSTRIAL CONVEYOR ROLLER
+═══════════════════════════════════════
+
+PROJECT: Heavy-Duty Conveyor Idler Roller
+DESIGNER: Gazi Faysal Jubayer
+DATE: 2024
+
+DESCRIPTION:
+Sealed bearing conveyor roller for bulk material handling.
+Designed for harsh mining and quarry environments.
+
+SPECIFICATIONS:
+• Roller Diameter: 159 mm
+• Face Length: 600 mm
+• Shaft Diameter: 20 mm
+• Speed Rating: 600 RPM
+• Load Capacity: 2500 N
+
+BEARINGS:
+• Type: 6204-2RS Deep Groove Ball
+• Lubrication: Lifetime grease
+• Sealing: Triple labyrinth seal
+
+MATERIALS:
+• Shell: ERW Steel Tube
+• End Discs: Pressed Steel
+• Shaft: EN8 Steel
+• Coating: Rubber lagging (optional)
+
+APPLICATIONS:
+• Mining conveyors
+• Quarry operations
+• Bulk material handling
+• Cement plants
+
+SOFTWARE USED:
+• SolidWorks for design
+• AutoCAD for layouts`,
+                          },
+                          "drawing.pdf": {
+                            name: "drawing.pdf",
+                            type: "file",
+                            fileType: "pdf",
+                            pdfPath: "/pdfs/roller-drawing.pdf",
+                          },
+                        },
+                      },
+                    },
+                  },
+                  "Code Projects": {
+                    name: "Code Projects",
+                    type: "folder",
+                    isGitHub: true,
+                    children: {},
+                  },
+                },
+              },
               Documents: {
                 name: "Documents",
                 type: "folder",

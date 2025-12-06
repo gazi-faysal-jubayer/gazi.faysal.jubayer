@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useMemo, useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useOSStore } from "@/store/useOSStore";
 import { getDesktopApps } from "@/lib/appRegistry";
@@ -41,6 +41,12 @@ const APP_COMPONENTS: Record<string, React.ComponentType> = {
   "quran-app": QuranApp,
 };
 
+// Grid layout constants
+const ICON_WIDTH = 90;
+const ICON_HEIGHT = 100;
+const PADDING = 16;
+const TASKBAR_HEIGHT = 56;
+
 export default function Desktop() {
   const {
     windows,
@@ -49,10 +55,46 @@ export default function Desktop() {
     closeStartMenu,
     closeNotificationCenter,
     closeSearch,
+    addUploadedFile,
   } = useOSStore();
+
+  const [containerHeight, setContainerHeight] = useState(0);
+  const [isDragOver, setIsDragOver] = useState(false);
 
   const wallpaper = WALLPAPERS.find((w) => w.id === currentWallpaper) || WALLPAPERS[0];
   const desktopApps = getDesktopApps();
+
+  // Update container height on mount and resize
+  useEffect(() => {
+    const updateHeight = () => {
+      setContainerHeight(window.innerHeight - TASKBAR_HEIGHT - PADDING * 2);
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
+
+  // Calculate grid positions that wrap to new columns
+  const calculateDefaultPosition = useCallback(
+    (index: number) => {
+      if (containerHeight === 0) return { x: PADDING, y: PADDING };
+      
+      const iconsPerColumn = Math.max(1, Math.floor(containerHeight / ICON_HEIGHT));
+      const column = Math.floor(index / iconsPerColumn);
+      const row = index % iconsPerColumn;
+
+      return {
+        x: column * ICON_WIDTH + PADDING,
+        y: row * ICON_HEIGHT + PADDING,
+      };
+    },
+    [containerHeight]
+  );
+
+  // Memoize default positions for all icons
+  const defaultPositions = useMemo(() => {
+    return desktopApps.map((_, index) => calculateDefaultPosition(index));
+  }, [desktopApps, calculateDefaultPosition]);
 
   const handleDesktopClick = useCallback(() => {
     closeStartMenu();
@@ -60,22 +102,72 @@ export default function Desktop() {
     closeSearch();
   }, [closeStartMenu, closeNotificationCenter, closeSearch]);
 
+  // Drag and drop handlers for file upload
+  const handleDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(true);
+  }, []);
+
+  const handleDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsDragOver(false);
+  }, []);
+
+  const handleDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setIsDragOver(false);
+
+      const files = Array.from(e.dataTransfer.files);
+      if (files.length > 0 && addUploadedFile) {
+        files.forEach((file) => {
+          // Store files in the desktop uploads folder
+          addUploadedFile(`Desktop/${file.name}`, file);
+        });
+      }
+    },
+    [addUploadedFile]
+  );
+
   return (
     <div
       className={cn(
         "relative w-full h-full overflow-hidden z-0",
-        isDarkMode ? "dark" : ""
+        isDarkMode ? "dark" : "",
+        isDragOver && "ring-4 ring-inset ring-accent/50"
       )}
       style={{
         background: wallpaper.type === "gradient" ? wallpaper.value : undefined,
         backgroundColor: wallpaper.type === "solid" ? wallpaper.value : undefined,
       }}
       onClick={handleDesktopClick}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop}
     >
-      {/* Desktop icons - now draggable */}
+      {/* Drop overlay */}
+      {isDragOver && (
+        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm pointer-events-none">
+          <div className="bg-white/90 dark:bg-gray-800/90 rounded-win px-8 py-4 shadow-lg">
+            <p className="text-lg font-medium text-gray-800 dark:text-white">
+              Drop files here to upload
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Desktop icons - now with grid layout */}
       <div className="absolute inset-0 p-4 pb-16 z-10">
         {desktopApps.map((app, index) => (
-          <DesktopIcon key={app.id} app={app} index={index} />
+          <DesktopIcon
+            key={app.id}
+            app={app}
+            index={index}
+            defaultPosition={defaultPositions[index] || { x: PADDING, y: index * ICON_HEIGHT + PADDING }}
+          />
         ))}
       </div>
 
@@ -99,4 +191,3 @@ export default function Desktop() {
     </div>
   );
 }
-

@@ -53,7 +53,7 @@ export default function Home() {
       {/* Desktop environment */}
       <div className="h-full pb-12">
         <Desktop />
-      </div>
+        </div>
 
       {/* Taskbar */}
       <Taskbar />
@@ -61,6 +61,6 @@ export default function Home() {
       {/* Overlays */}
       <StartMenu />
       <NotificationCenter />
-    </main>
+      </main>
   );
 }

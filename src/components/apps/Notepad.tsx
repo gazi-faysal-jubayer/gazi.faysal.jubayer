@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import {
   File,
   Edit,
@@ -20,20 +20,38 @@ export default function Notepad() {
   const { isDarkMode } = useOSStore();
   const [zoom, setZoom] = useState(100);
   const [wordWrap, setWordWrap] = useState(true);
+  const [content, setContent] = useState(RESUME_CONTENT);
+  const [filename, setFilename] = useState("Resume.txt");
   const contentRef = useRef<HTMLPreElement>(null);
 
+  // Check for content passed via sessionStorage (from FileExplorer)
+  useEffect(() => {
+    const storedContent = sessionStorage.getItem("notepad-content");
+    const storedFilename = sessionStorage.getItem("notepad-filename");
+    
+    if (storedContent) {
+      setContent(storedContent);
+      sessionStorage.removeItem("notepad-content");
+    }
+    
+    if (storedFilename) {
+      setFilename(storedFilename);
+      sessionStorage.removeItem("notepad-filename");
+    }
+  }, []);
+
   const handleDownload = () => {
-    const blob = new Blob([RESUME_CONTENT], { type: "text/plain" });
+    const blob = new Blob([content], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "Gazi_Faysal_Jubayer_Resume.txt";
+    a.download = filename.endsWith(".txt") ? filename : `${filename}.txt`;
     a.click();
     URL.revokeObjectURL(url);
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(RESUME_CONTENT);
+    navigator.clipboard.writeText(content);
   };
 
   const handleZoomIn = () => {
@@ -178,7 +196,7 @@ export default function Notepad() {
             fontSize: `${zoom / 100}em`,
           }}
         >
-          {RESUME_CONTENT}
+          {content}
         </pre>
       </div>
 
@@ -189,7 +207,7 @@ export default function Notepad() {
           isDarkMode ? "border-white/10 text-white/50" : "border-black/10 text-black/50"
         )}
       >
-        <span>Resume.txt</span>
+        <span>{filename}</span>
         <div className="flex items-center gap-4">
           <span>UTF-8</span>
           <span>Ln 1, Col 1</span>
@@ -199,4 +217,3 @@ export default function Notepad() {
     </div>
   );
 }
-

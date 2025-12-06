@@ -108,6 +108,24 @@ export const APPS: AppDefinition[] = [
     showInStartMenu: true,
     category: "system",
   },
+  {
+    id: "cad-projects-folder",
+    name: "CAD Projects",
+    icon: "folder",
+    description: "Browse CAD project files",
+    showOnDesktop: true,
+    showInStartMenu: false,
+    category: "system",
+  },
+  {
+    id: "code-projects-folder",
+    name: "Code Projects",
+    icon: "folder",
+    description: "Browse GitHub repositories",
+    showOnDesktop: true,
+    showInStartMenu: false,
+    category: "system",
+  },
 ];
 
 export const getApp = (id: string): AppDefinition | undefined => {
