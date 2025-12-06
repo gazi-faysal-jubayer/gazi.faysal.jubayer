@@ -96,10 +96,13 @@ export default function Desktop() {
     return desktopApps.map((_, index) => calculateDefaultPosition(index));
   }, [desktopApps, calculateDefaultPosition]);
 
-  const handleDesktopClick = useCallback(() => {
-    closeStartMenu();
-    closeNotificationCenter();
-    closeSearch();
+  const handleDesktopClick = useCallback((e: React.MouseEvent) => {
+    // Only close menus if clicking the desktop itself, not icons or other elements
+    if (e.target === e.currentTarget) {
+      closeStartMenu();
+      closeNotificationCenter();
+      closeSearch();
+    }
   }, [closeStartMenu, closeNotificationCenter, closeSearch]);
 
   // Drag and drop handlers for file upload
@@ -173,20 +176,18 @@ export default function Desktop() {
 
       {/* Windows container */}
       <div className="absolute inset-0 pb-12 z-30 pointer-events-none">
-        <div className="relative w-full h-full pointer-events-auto">
-          <AnimatePresence>
-            {windows.map((win) => {
-              const AppComponent = APP_COMPONENTS[win.appId];
-              if (!AppComponent) return null;
+        <AnimatePresence>
+          {windows.map((win) => {
+            const AppComponent = APP_COMPONENTS[win.appId];
+            if (!AppComponent) return null;
 
-              return (
-                <WindowFrame key={win.id} window={win}>
-                  <AppComponent />
-                </WindowFrame>
-              );
-            })}
-          </AnimatePresence>
-        </div>
+            return (
+              <WindowFrame key={win.id} window={win}>
+                <AppComponent />
+              </WindowFrame>
+            );
+          })}
+        </AnimatePresence>
       </div>
     </div>
   );

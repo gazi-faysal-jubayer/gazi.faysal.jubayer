@@ -97,7 +97,7 @@ export default function WindowFrame({ window: win, children }: WindowFrameProps)
         exit={{ scale: 0.95, opacity: 0 }}
         transition={{ duration: 0.15, ease: "easeOut" }}
         className={cn(
-          "absolute inset-0 flex flex-col overflow-hidden rounded-none",
+          "absolute inset-0 flex flex-col overflow-hidden rounded-none pointer-events-auto",
           isDarkMode ? "glass-dark glass-border-dark window-shadow-dark" : "glass glass-border window-shadow",
           isActive ? "ring-1 ring-accent/20" : ""
         )}
@@ -180,6 +180,7 @@ export default function WindowFrame({ window: win, children }: WindowFrameProps)
       minHeight={200}
       bounds="window"
       dragHandleClassName="window-titlebar"
+      className="pointer-events-auto"
       enableResizing={{
         top: true,
         right: true,
