@@ -1,0 +1,205 @@
+import type { Metadata } from "next";
+import {
+  EXPERIENCE,
+  ACHIEVEMENTS,
+  CERTIFICATIONS,
+  PUBLICATIONS,
+  type ExperienceEntry,
+} from "@/lib/constants";
+import {
+  companyDuration,
+  formatDuration,
+  formatPeriod,
+  nowMonthYear,
+} from "@/lib/utils";
+import { PageShell } from "@/components/layout/PageShell";
+import { Reveal } from "@/components/motion/Reveal";
+import { TextReveal } from "@/components/motion/TextReveal";
+
+function CompanyBlock({
+  entry,
+  index,
+}: {
+  entry: ExperienceEntry;
+  index: number;
+}) {
+  const hasMultipleRoles = entry.roles.length > 1;
+  const total = companyDuration(entry.roles);
+
+  return (
+    <Reveal delay={Math.min(index * 0.06, 0.25)} y={20}>
+      <div className="border-b border-line py-6 sm:py-8">
+        <div className="flex items-start gap-4 sm:gap-5">
+          <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center border border-line text-accent sm:h-12 sm:w-12">
+            <span className="font-mono text-[10px] font-bold uppercase sm:text-xs">
+              {entry.company
+                .split(" ")
+                .slice(0, 2)
+                .map((w) => w[0])
+                .join("")}
+            </span>
+          </div>
+
+          <div className="flex-1">
+            <h3 className="font-display text-base font-bold uppercase tracking-tight text-bone sm:text-lg md:text-xl">
+              {entry.company}
+            </h3>
+            <p className="mt-0.5 font-mono text-[10px] text-dim sm:text-[11px]">
+              {total}
+            </p>
+
+            <div
+              className={
+                hasMultipleRoles
+                  ? "mt-4 border-l border-line pl-4 sm:mt-5 sm:pl-5"
+                  : "mt-3 sm:mt-4"
+              }
+            >
+              {entry.roles.map((role, ri) => {
+                const period = formatPeriod(role.start, role.end);
+                const roleDuration = formatDuration(
+                  role.start,
+                  role.end ?? nowMonthYear()
+                );
+                return (
+                  <div
+                    key={`${role.title}-${period}`}
+                    className={ri > 0 ? "mt-5 sm:mt-6" : ""}
+                  >
+                    {hasMultipleRoles && (
+                      <span
+                        aria-hidden
+                        className="relative -ml-[calc(1rem+5px)] mr-3 inline-block h-2 w-2 border border-accent bg-void sm:-ml-[calc(1.25rem+5px)]"
+                      />
+                    )}
+                    <p className="inline font-display text-sm font-bold uppercase tracking-tight text-bone sm:text-base">
+                      {role.title}
+                    </p>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent sm:text-[11px] sm:tracking-[0.2em]">
+                      {period} · {roleDuration}
+                    </p>
+                    {role.description && (
+                      <p className="mt-2 max-w-lg text-xs leading-relaxed text-dim sm:text-sm">
+                        {role.description}
+                      </p>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    </Reveal>
+  );
+}
+
+export const metadata: Metadata = {
+  title: "Log — Gazi Faysal Jubayer",
+  description: "Experience, achievements, certifications, and publications.",
+};
+
+export default function ExperiencePage() {
+  return (
+    <PageShell pageNumber="04" pageLabel="LOG">
+      <TextReveal className="font-display text-[clamp(2rem,7vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-bone">
+        Mission log
+      </TextReveal>
+
+      <div className="mt-10 grid gap-14 sm:mt-16 lg:grid-cols-12 lg:gap-20">
+        <div className="lg:col-span-7">
+          <Reveal>
+            <h2 className="tech-label mb-6 sm:mb-8">
+              <span className="text-accent">&gt;</span> Experience
+            </h2>
+          </Reveal>
+
+          <div>
+            {EXPERIENCE.map((entry, i) => (
+              <CompanyBlock key={entry.company} entry={entry} index={i} />
+            ))}
+          </div>
+        </div>
+
+        <div className="lg:col-span-5 lg:col-start-8">
+          <Reveal>
+            <h2 className="tech-label mb-8 sm:mb-10">
+              <span className="text-accent">&gt;</span> Achievements
+            </h2>
+          </Reveal>
+          <ul className="space-y-6 sm:space-y-8">
+            {ACHIEVEMENTS.map((item, i) => (
+              <Reveal key={item.title} delay={Math.min(i * 0.05, 0.2)}>
+                <li className="border-b border-line pb-6 sm:pb-8">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent sm:text-[11px] sm:tracking-[0.2em]">
+                    {item.date}
+                  </p>
+                  <h3 className="mt-1.5 font-display text-base font-bold uppercase tracking-tight text-bone sm:mt-2 sm:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="mt-0.5 font-mono text-[10px] text-dim sm:mt-1 sm:text-xs">
+                    {item.event}
+                  </p>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+
+          <Reveal className="mt-12 sm:mt-16">
+            <h2 className="tech-label mb-6 sm:mb-8">
+              <span className="text-accent">&gt;</span> Certifications
+            </h2>
+          </Reveal>
+          <ul className="space-y-3 sm:space-y-4">
+            {CERTIFICATIONS.map((cert, i) => (
+              <Reveal key={cert.name} delay={Math.min(i * 0.04, 0.2)}>
+                <li>
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                  >
+                    <span className="link-draw text-xs text-bone group-hover:text-accent sm:text-sm">
+                      {cert.name}
+                    </span>
+                    <span className="whitespace-nowrap font-mono text-[10px] text-dim sm:text-[11px]">
+                      {cert.date}
+                    </span>
+                  </a>
+                </li>
+              </Reveal>
+            ))}
+          </ul>
+
+          {PUBLICATIONS.length > 0 && (
+            <>
+              <Reveal className="mt-12 sm:mt-16">
+                <h2 className="tech-label mb-6 sm:mb-8">
+                  <span className="text-accent">&gt;</span> Publication
+                </h2>
+              </Reveal>
+              {PUBLICATIONS.map((pub) => (
+                <Reveal key={pub.title}>
+                  <a
+                    href={pub.doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block border border-line p-4 transition-colors hover:border-accent sm:p-5"
+                  >
+                    <p className="text-xs leading-relaxed text-bone transition-colors group-hover:text-accent sm:text-sm">
+                      {pub.title}
+                    </p>
+                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:mt-3 sm:text-[11px] sm:tracking-[0.2em]">
+                      {pub.date} — DOI ↗
+                    </p>
+                  </a>
+                </Reveal>
+              ))}
+            </>
+          )}
+        </div>
+      </div>
+    </PageShell>
+  );
+}

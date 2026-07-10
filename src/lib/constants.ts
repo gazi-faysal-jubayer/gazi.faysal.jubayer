@@ -1,12 +1,14 @@
 export const PROFILE = {
   name: "Gazi Faysal Jubayer",
+  firstName: "Gazi",
   tagline: "CAD designer | Programmer",
+  headline: "Engineering precision meets digital craft.",
   bio: "As a dedicated and passionate professional in the fields of mechanical design, programming and software development, I bring a unique blend of engineering and IT expertise to the table. I thrive on solving complex problems and driving innovation.",
   email: "gazi.faysal.jubayer@gmail.com",
   phone: "+8801315669261",
   location: "Khulna, Bangladesh",
   github: "https://github.com/gazi-faysal-jubayer",
-  linkedin: "https://www.linkedin.com/in/gazi",
+  linkedin: "https://www.linkedin.com/in/gazi-faysal-jubayer/",
   website: "https://gazi.faysal.jubayer",
 } as const;
 
@@ -53,65 +55,201 @@ export const EDUCATION = [
   },
 ] as const;
 
-export const EXPERIENCE = [
+export type ExperienceRole = {
+  title: string;
+  /** 0 = Jan … 11 = Dec */
+  start: { month: number; year: number };
+  /** null = Present */
+  end: { month: number; year: number } | null;
+  description?: string;
+};
+
+export type ExperienceEntry = {
+  company: string;
+  roles: ExperienceRole[];
+};
+
+export const EXPERIENCE: ExperienceEntry[] = [
   {
-    title: "Assistant IT and Resources Officer",
-    company: "CADers",
-    period: "March 2024 - Present",
-    description: "CADers is a club of KUET which works with CAD (Computer Aided Design).",
+    company: "Fab Lab KUET",
+    roles: [
+      {
+        title: "Student Operator",
+        start: { month: 6, year: 2026 },
+        end: null,
+      },
+    ],
   },
   {
-    title: "Chief Information Officer (CIO)",
-    company: "উদ্ধার - Uddhar",
-    period: "August 2024 - Present",
-    description:
-      "During the Flood of 2024 in Feni, Bangladesh, I with some of my friends created this charity website and organization, uddharbd.org, to help people during the time of disaster. From then, we work continuously. Now, our team has about 30 members along with volunteers. We will publish our app version soon.",
+    company: "3D Bytes",
+    roles: [
+      {
+        title: "Founder",
+        start: { month: 0, year: 2026 },
+        end: null,
+        description:
+          "IT services and 3D design / printing studio based in Khulna, Bangladesh.",
+      },
+    ],
   },
   {
-    title: "Co-Founder and Tech Lead",
-    company: "VSB - Virtual Solution Book",
-    period: "January 2024 - Present",
-    description:
-      "vsbbd.com is a platform where we provide solutions the problems of the students of HSC and admission students.",
+    company: "KILO FLIGHT",
+    roles: [
+      {
+        title: "Vice Captain",
+        start: { month: 6, year: 2026 },
+        end: null,
+        description: "Promoted to Vice Captain of Team Kilo Flight.",
+      },
+      {
+        title: "Senior Executive at The Mechanical Powertrain Sub-Team",
+        start: { month: 9, year: 2025 },
+        end: { month: 6, year: 2026 },
+        description:
+          "Promoted to Senior Executive at the Mechanical Powertrain Sub-Team of Team Kilo Flight.",
+      },
+      {
+        title: "Trainee Member at the Mechanical Powertrain Sub-Team",
+        start: { month: 2, year: 2024 },
+        end: { month: 9, year: 2025 },
+      },
+    ],
   },
   {
-    title: "Campus Ambassador",
-    company: "SEAN Publication",
-    period: "October 2024 - Present",
-    description: "",
+    company: "LOOP",
+    roles: [
+      {
+        title: "Assistant Project Manager",
+        start: { month: 9, year: 2025 },
+        end: null,
+      },
+    ],
   },
   {
-    title: "Junior Marketing Executive",
-    company: "BANGLADESH 3DExperience & Solidworks User Group netwoRk",
-    period: "October 2024 - Present",
-    description: "",
-  },
-  {
-    title: "Assistant Partnership Manager",
-    company: "Autodesk User Group Network Bangladesh",
-    period: "November 2024 - Present",
-    description: "",
-  },
-  {
-    title: "Trainee Member at Autonomous Sub-Team",
     company: "Team Durbar",
-    period: "July 2024 - Present",
-    description: "",
+    roles: [
+      {
+        title: "Autonomous Lead",
+        start: { month: 2, year: 2026 },
+        end: null,
+        description: "Promoted to Autonomous Lead at Team Durbar.",
+      },
+      {
+        title: "Senior Executive at Autonomous Sub-Team",
+        start: { month: 8, year: 2025 },
+        end: { month: 2, year: 2026 },
+        description:
+          "Promoted to Senior Executive of the Autonomous Sub-Team at Team Durbar.",
+      },
+      {
+        title: "Trainee Member at Autonomous Sub-Team",
+        start: { month: 6, year: 2024 },
+        end: { month: 8, year: 2025 },
+      },
+    ],
   },
   {
-    title: "Local Ambassador",
-    company: "মেঘ Magazine",
-    period: "February 2022 - 2023",
-    description: "",
+    company: "CADers",
+    roles: [
+      {
+        title: "CPA (Chief Policy Analyst)",
+        start: { month: 0, year: 2025 },
+        end: null,
+      },
+      {
+        title: "Assistant IT and Resources Officer",
+        start: { month: 2, year: 2024 },
+        end: { month: 0, year: 2025 },
+        description:
+          "CADers is a club of KUET which works with CAD (Computer Aided Design).",
+      },
+    ],
   },
-] as const;
+  {
+    company: "KUET Aerial Vehicles Engineering Network",
+    roles: [
+      {
+        title: "Executive Member",
+        start: { month: 11, year: 2024 },
+        end: null,
+      },
+    ],
+  },
+  {
+    company: "Autodesk User Group Network Bangladesh",
+    roles: [
+      {
+        title: "Assistant Partnership Manager",
+        start: { month: 10, year: 2024 },
+        end: null,
+      },
+    ],
+  },
+  {
+    company: "উদ্ধার - Uddhar",
+    roles: [
+      {
+        title: "Chief Information Officer",
+        start: { month: 7, year: 2024 },
+        end: null,
+        description:
+          "Co-founded uddharbd.org during the 2024 Feni flood to coordinate disaster relief. The team now includes ~30 members and volunteers.",
+      },
+    ],
+  },
+  {
+    company: "SEAN Publication",
+    roles: [
+      {
+        title: "Campus Ambassador",
+        start: { month: 9, year: 2024 },
+        end: null,
+      },
+    ],
+  },
+  {
+    company: "BANGLADESH 3DExperience & Solidworks User Group Network",
+    roles: [
+      {
+        title: "Junior Marketing Executive",
+        start: { month: 9, year: 2024 },
+        end: null,
+        description:
+          "Junior Marketing Executive of the Campus Committee of Bangladesh 3DExperience & Solidworks User Group Network.",
+      },
+    ],
+  },
+  {
+    company: "VSB - Virtual Solution Book",
+    roles: [
+      {
+        title: "Co-Founder and Tech Lead",
+        start: { month: 0, year: 2024 },
+        end: null,
+        description:
+          "vsbbd.com — a digital platform providing solutions for HSC and admission students.",
+      },
+    ],
+  },
+  {
+    company: "Team BengalSub",
+    roles: [
+      {
+        title: "Website Team Lead and Mechanical Designer",
+        start: { month: 4, year: 2025 },
+        end: { month: 0, year: 2026 },
+        description: "RoboSub 2025 — website lead and mechanical design.",
+      },
+    ],
+  },
+];
 
 export const PUBLICATIONS = [
   {
     title:
       "Analyzing the impact of opportunistic maintenance optimization on manufacturing industries in Bangladesh: An empirical study",
     date: "August 2024",
-    status: "Available online: 9",
+    status: "Available online",
     doi: "https://doi.org/10.1016/j.tbench.2024.100172",
   },
 ] as const;
@@ -122,26 +260,27 @@ export const ACHIEVEMENTS = [
     event: "NASA International Space Apps Challenge 2023",
     date: "November 2023",
     description:
-      "I participated in the NASA Space App Challenge 2023, an international hackathon addressing global challenges through collaboration. Our team was recognized as 1st Runner-Up and Global Nominee, earning me the title of Galactic Problem Solver for innovative contributions to the space industry and real-world problem-solving.",
+      "Recognized as 1st Runner-Up and Global Nominee, earning the title of Galactic Problem Solver for innovative contributions to the space industry.",
   },
   {
     title: "Regional 2nd Runner-Up and Global Nominee",
     event: "NASA International Space Apps Challenge 2024",
-    date: "October 2023",
+    date: "October 2024",
     description:
-      "I participated in the NASA Space App Challenge 2024, a global hackathon focused on solving real-world challenges through innovation and teamwork. Our project earned 2nd Runner-Up and Global Nominee honors, along with the title of Galactic Problem Solver, recognizing my contributions to addressing critical issues in the space industry.",
+      "Earned 2nd Runner-Up and Global Nominee honors, along with the title of Galactic Problem Solver.",
   },
   {
-    title: "2 Time Galactic Problem Solver Titel",
+    title: "2× Galactic Problem Solver",
     event: "NASA International Space Apps",
-    date: "November 2023 - October 2023",
-    description: "First Time in the NASA Space App Challenge 2023. Second Time in the NASA Space App Challenge 2024.",
+    date: "2023 – 2024",
+    description:
+      "Awarded Galactic Problem Solver in both the 2023 and 2024 NASA Space Apps Challenges.",
   },
   {
-    title: "1st Runner-Up in National CAD contest",
+    title: "1st Runner-Up in National CAD Contest",
     event: "Calibration 1.0",
     date: "February 2024",
-    description: "",
+    description: "National CAD contest recognition for mechanical design excellence.",
   },
 ] as const;
 
@@ -186,821 +325,198 @@ export const CERTIFICATIONS = [
   },
 ] as const;
 
-export const PROJECTS = [
+export type ProjectType = "code" | "charity" | "mechanical" | "cad";
+
+export type Project = {
+  slug: string;
+  type: ProjectType;
+  title: string;
+  summary: string;
+  description: string;
+  year: string;
+  tech: string[];
+  highlights?: string[];
+  link?: string;
+  featured?: boolean;
+};
+
+export const PROJECTS: Project[] = [
   {
-    id: "proj_1",
-    type: "code",
-    title: "GaziOS Portfolio",
-    description: "This website - a Windows 11 themed portfolio built with Next.js",
-    tech: ["Next.js", "TypeScript", "Three.js", "Tailwind CSS", "Framer Motion"],
-    link: "/",
-  },
-  {
-    id: "proj_2",
+    slug: "uddhar",
     type: "charity",
-    title: "উদ্ধার - Uddhar",
-    description: "Charity website and organization helping people during disasters",
+    title: "উদ্ধার — Uddhar",
+    summary: "Disaster-relief charity platform born from the 2024 Feni floods.",
+    description:
+      "A charity website and organization helping people during disasters. Started during the Flood of 2024 in Feni, Bangladesh, Uddhar now operates with a team of about 30 members and volunteers, with a mobile app version on the way.",
+    year: "2024",
     tech: ["Next.js", "React", "Database"],
+    highlights: [
+      "Live relief coordination platform at uddharbd.org",
+      "Grew to ~30 members and volunteers",
+      "Mobile app version in development",
+    ],
     link: "https://uddharbd.org",
+    featured: true,
   },
   {
-    id: "proj_3",
+    slug: "vsb",
     type: "code",
-    title: "VSB - Virtual Solution Book",
-    description: "Platform providing solutions for HSC and admission students",
+    title: "VSB — Virtual Solution Book",
+    summary: "Educational platform for HSC and admission students.",
+    description:
+      "vsbbd.com is a platform providing solutions for the problems of HSC and admission students across Bangladesh — built as Co-Founder and Tech Lead.",
+    year: "2024",
     tech: ["Web Development", "Educational Platform"],
+    highlights: [
+      "Co-founded and led technical development",
+      "Solutions for HSC and university admission students",
+    ],
     link: "https://vsbbd.com",
+    featured: true,
   },
   {
-    id: "proj_4",
+    slug: "nasa-space-apps-2023",
     type: "mechanical",
     title: "NASA Space Apps Challenge 2023",
-    description: "Galactic Problem Solver - Regional 1st Runner-Up and Global Nominee",
+    summary: "Regional 1st Runner-Up and Global Nominee — Galactic Problem Solver.",
+    description:
+      "Participated in the NASA International Space Apps Challenge 2023, an international hackathon addressing global challenges through collaboration. Our team was recognized as 1st Runner-Up and Global Nominee.",
+    year: "2023",
     tech: ["Innovation", "Problem Solving", "Collaboration"],
+    highlights: [
+      "Regional 1st Runner-Up",
+      "Global Nominee",
+      "Galactic Problem Solver title",
+    ],
+    featured: true,
   },
   {
-    id: "proj_5",
+    slug: "nasa-space-apps-2024",
     type: "mechanical",
     title: "NASA Space Apps Challenge 2024",
-    description: "Galactic Problem Solver - Regional 2nd Runner-Up and Global Nominee",
+    summary: "Regional 2nd Runner-Up and Global Nominee — Galactic Problem Solver.",
+    description:
+      "Participated in the NASA International Space Apps Challenge 2024, focused on solving real-world challenges through innovation and teamwork. Earned 2nd Runner-Up and Global Nominee honors.",
+    year: "2024",
     tech: ["Innovation", "Problem Solving", "Teamwork"],
-  },
-] as const;
-
-export const WALLPAPERS = [
-  {
-    id: "default",
-    name: "Windows Default",
-    type: "gradient",
-    value: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    highlights: [
+      "Regional 2nd Runner-Up",
+      "Global Nominee",
+      "Second Galactic Problem Solver title",
+    ],
+    featured: true,
   },
   {
-    id: "mechanical",
-    name: "Mechanical Blueprint",
-    type: "gradient",
-    value: "linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)",
+    slug: "portfolio",
+    type: "code",
+    title: "Personal Portfolio",
+    summary: "Futuristic multi-page portfolio with curtain page transitions.",
+    description:
+      "A motion-rich personal portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion — a dark, technical interface with doors-style page transitions between sections.",
+    year: "2025",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    highlights: [
+      "Doors curtain page transitions",
+      "Project case-study routes",
+      "Scroll-driven motion system",
+    ],
+    link: "/",
+    featured: false,
   },
   {
-    id: "circuit",
-    name: "Circuit Board",
-    type: "gradient",
-    value: "linear-gradient(135deg, #0c0c0c 0%, #1a472a 50%, #2d5a27 100%)",
+    slug: "gearbox-assembly",
+    type: "cad",
+    title: "Gearbox Assembly",
+    summary: "Multi-stage helical gear reducer for industrial applications.",
+    description:
+      "A 3-stage helical gear reducer designed for industrial applications. Features compact design with high torque transmission efficiency, splash lubrication, and SKF bearings throughout.",
+    year: "2024",
+    tech: ["SolidWorks", "ANSYS", "KeyShot"],
+    highlights: [
+      "Gear ratio 25:1 · Input 1450 RPM → Output 58 RPM",
+      "15 kW input power at 96% efficiency",
+      "20MnCr5 gears, EN24 shafts, FG260 housing",
+    ],
+    featured: true,
   },
   {
-    id: "ocean",
-    name: "Deep Ocean",
-    type: "gradient",
-    value: "linear-gradient(135deg, #141e30 0%, #243b55 100%)",
+    slug: "heat-exchanger",
+    type: "cad",
+    title: "Heat Exchanger",
+    summary: "Counter-flow shell and tube exchanger for process cooling.",
+    description:
+      "Counter-flow shell and tube heat exchanger for chemical process cooling. Designed for high pressure and corrosive fluid applications with 500 kW heat duty.",
+    year: "2024",
+    tech: ["AutoCAD", "HTRI", "SolidWorks"],
+    highlights: [
+      "500 kW heat duty · 10 bar design pressure",
+      "120 tubes · 600 mm shell diameter",
+      "SA516 Gr.70 shell with SS316L tubes",
+    ],
+    featured: true,
   },
   {
-    id: "sunset",
-    name: "Sunset",
-    type: "gradient",
-    value: "linear-gradient(135deg, #ff6b6b 0%, #feca57 50%, #48dbfb 100%)",
+    slug: "mounting-bracket",
+    type: "cad",
+    title: "Mounting Bracket",
+    summary: "FEA-optimized structural bracket for heavy equipment.",
+    description:
+      "Structural support bracket for industrial equipment mounting. FEA optimized for weight reduction while maintaining strength — reduced from 18 kg to 12.5 kg.",
+    year: "2024",
+    tech: ["SolidWorks", "ANSYS Workbench"],
+    highlights: [
+      "5000 kg load capacity · Safety factor 3.0",
+      "Weight optimized 18 kg → 12.5 kg",
+      "Max stress 145 MPa vs 355 MPa yield",
+    ],
+    featured: false,
   },
   {
-    id: "dark",
-    name: "Pure Dark",
-    type: "solid",
-    value: "#0a0a0a",
-  },
-] as const;
-
-export const NOTIFICATIONS = [
-  {
-    id: "1",
-    title: "New commit pushed",
-    message: "Gazi just pushed to GaziOS Portfolio",
-    time: "2 hours ago",
-    icon: "git",
-  },
-  {
-    id: "2",
-    title: "Certificate earned",
-    message: "SolidWorks Professional (CSWP) certified",
-    time: "5 hours ago",
-    icon: "award",
+    slug: "hydraulic-cylinder",
+    type: "cad",
+    title: "Hydraulic Cylinder",
+    summary: "Double-acting actuator for press machine applications.",
+    description:
+      "Double-acting hydraulic cylinder for press machine application. Designed for high force and precision positioning at 210 bar operating pressure.",
+    year: "2024",
+    tech: ["SolidWorks", "HydroSym"],
+    highlights: [
+      "100 mm bore · 500 mm stroke · 210 bar",
+      "Push force 165 kN · Pull force 125 kN",
+      "Hard chrome rod with NBR and polyurethane seals",
+    ],
+    featured: false,
   },
   {
-    id: "3",
-    title: "Achievement unlocked",
-    message: "NASA Space Apps 2x winner",
-    time: "1 day ago",
-    icon: "trophy",
+    slug: "conveyor-roller",
+    type: "cad",
+    title: "Conveyor Roller",
+    summary: "Sealed idler roller for mining and quarry conveyors.",
+    description:
+      "Sealed bearing conveyor roller for bulk material handling. Designed for harsh mining and quarry environments with triple labyrinth sealing.",
+    year: "2024",
+    tech: ["SolidWorks", "AutoCAD"],
+    highlights: [
+      "159 mm diameter · 600 mm face length",
+      "2500 N load capacity · 600 RPM rating",
+      "Lifetime-greased 6204-2RS bearings",
+    ],
+    featured: false,
   },
-] as const;
+];
 
-export const FILE_SYSTEM = {
-  "C:": {
-    name: "Local Disk (C:)",
-    type: "drive",
-    children: {
-      Projects: {
-        name: "Projects",
-        type: "folder",
-        children: {
-          Code: {
-            name: "Code",
-            type: "folder",
-            children: {
-              "gazios-portfolio": {
-                name: "gazios-portfolio",
-                type: "project",
-                projectId: "proj_1",
-              },
-              "uddhar-website": {
-                name: "uddhar-website",
-                type: "project",
-                projectId: "proj_2",
-              },
-              "vsb-platform": {
-                name: "vsb-platform",
-                type: "project",
-                projectId: "proj_3",
-              },
-            },
-          },
-        },
-      },
-      Users: {
-        name: "Users",
-        type: "folder",
-        children: {
-          Gazi: {
-            name: "Gazi",
-            type: "folder",
-            children: {
-              Desktop: {
-                name: "Desktop",
-                type: "folder",
-                children: {
-                  "CAD Projects": {
-                    name: "CAD Projects",
-                    type: "folder",
-                    children: {
-                      "Gearbox Assembly": {
-                        name: "Gearbox Assembly",
-                        type: "folder",
-                        children: {
-                          "gearbox.glb": {
-                            name: "gearbox.glb",
-                            type: "file",
-                            fileType: "glb",
-                            modelPath: "/models/gearbox.glb",
-                          },
-                          "details.txt": {
-                            name: "details.txt",
-                            type: "file",
-                            fileType: "txt",
-                            content: `GEARBOX ASSEMBLY
-═══════════════════════════════════════
-
-PROJECT: Multi-Stage Helical Gear Reducer
-DESIGNER: Gazi Faysal Jubayer
-DATE: 2024
-
-DESCRIPTION:
-A 3-stage helical gear reducer designed for industrial applications.
-Features compact design with high torque transmission efficiency.
-
-SPECIFICATIONS:
-• Input Speed: 1450 RPM
-• Output Speed: 58 RPM  
-• Gear Ratio: 25:1
-• Input Power: 15 kW
-• Efficiency: 96%
-
-MATERIALS:
-• Gears: 20MnCr5 Case Hardened Steel
-• Shafts: EN24 Alloy Steel
-• Housing: Cast Iron FG260
-
-DESIGN FEATURES:
-• Helical gears for smooth operation
-• Splash lubrication system
-• Double lip oil seals
-• SKF bearings throughout
-
-SOFTWARE USED:
-• SolidWorks 2024
-• ANSYS for FEA
-• KeyShot for rendering`,
-                          },
-                          "drawing.pdf": {
-                            name: "drawing.pdf",
-                            type: "file",
-                            fileType: "pdf",
-                            pdfPath: "/pdfs/gearbox-drawing.pdf",
-                          },
-                        },
-                      },
-                      "Heat Exchanger": {
-                        name: "Heat Exchanger",
-                        type: "folder",
-                        children: {
-                          "heat-exchanger.glb": {
-                            name: "heat-exchanger.glb",
-                            type: "file",
-                            fileType: "glb",
-                            modelPath: "/models/heat-exchanger.glb",
-                          },
-                          "details.txt": {
-                            name: "details.txt",
-                            type: "file",
-                            fileType: "txt",
-                            content: `SHELL AND TUBE HEAT EXCHANGER
-═══════════════════════════════════════
-
-PROJECT: Industrial Heat Exchanger
-DESIGNER: Gazi Faysal Jubayer
-DATE: 2024
-
-DESCRIPTION:
-Counter-flow shell and tube heat exchanger for chemical process cooling.
-Designed for high pressure and corrosive fluid applications.
-
-SPECIFICATIONS:
-• Heat Duty: 500 kW
-• Shell Side Fluid: Cooling Water
-• Tube Side Fluid: Process Oil
-• Design Pressure: 10 bar
-• Operating Temperature: 150°C max
-
-DIMENSIONS:
-• Shell Diameter: 600 mm
-• Tube Length: 3000 mm
-• Number of Tubes: 120
-• Tube OD: 19.05 mm
-
-MATERIALS:
-• Shell: SA516 Gr.70 Carbon Steel
-• Tubes: SS316L Stainless Steel
-• Tube Sheet: SA516 Gr.70 with SS cladding
-
-SOFTWARE USED:
-• AutoCAD for drafting
-• HTRI for thermal design
-• SolidWorks for 3D modeling`,
-                          },
-                          "drawing.pdf": {
-                            name: "drawing.pdf",
-                            type: "file",
-                            fileType: "pdf",
-                            pdfPath: "/pdfs/heat-exchanger-drawing.pdf",
-                          },
-                        },
-                      },
-                      "Mounting Bracket": {
-                        name: "Mounting Bracket",
-                        type: "folder",
-                        children: {
-                          "bracket.glb": {
-                            name: "bracket.glb",
-                            type: "file",
-                            fileType: "glb",
-                            modelPath: "/models/bracket.glb",
-                          },
-                          "details.txt": {
-                            name: "details.txt",
-                            type: "file",
-                            fileType: "txt",
-                            content: `STRUCTURAL MOUNTING BRACKET
-═══════════════════════════════════════
-
-PROJECT: Heavy-Duty Equipment Bracket
-DESIGNER: Gazi Faysal Jubayer
-DATE: 2024
-
-DESCRIPTION:
-Structural support bracket for industrial equipment mounting.
-FEA optimized for weight reduction while maintaining strength.
-
-SPECIFICATIONS:
-• Load Capacity: 5000 kg
-• Safety Factor: 3.0
-• Weight: 12.5 kg (optimized from 18 kg)
-• Mounting Points: 6x M16 bolts
-
-DIMENSIONS:
-• Height: 250 mm
-• Width: 300 mm
-• Depth: 150 mm
-• Wall Thickness: 12 mm
-
-ANALYSIS RESULTS:
-• Max Stress: 145 MPa
-• Yield Stress: 355 MPa
-• Max Deflection: 0.8 mm
-• Natural Frequency: 125 Hz
-
-MATERIALS:
-• Main Body: S355JR Structural Steel
-• Finish: Hot-dip galvanized
-
-SOFTWARE USED:
-• SolidWorks for design
-• ANSYS Workbench for FEA
-• Topology optimization`,
-                          },
-                          "drawing.pdf": {
-                            name: "drawing.pdf",
-                            type: "file",
-                            fileType: "pdf",
-                            pdfPath: "/pdfs/bracket-drawing.pdf",
-                          },
-                        },
-                      },
-                      "Hydraulic Cylinder": {
-                        name: "Hydraulic Cylinder",
-                        type: "folder",
-                        children: {
-                          "cylinder.glb": {
-                            name: "cylinder.glb",
-                            type: "file",
-                            fileType: "glb",
-                            modelPath: "/models/cylinder.glb",
-                          },
-                          "details.txt": {
-                            name: "details.txt",
-                            type: "file",
-                            fileType: "txt",
-                            content: `DOUBLE-ACTING HYDRAULIC CYLINDER
-═══════════════════════════════════════
-
-PROJECT: Industrial Hydraulic Actuator
-DESIGNER: Gazi Faysal Jubayer
-DATE: 2024
-
-DESCRIPTION:
-Double-acting hydraulic cylinder for press machine application.
-Designed for high force and precision positioning.
-
-SPECIFICATIONS:
-• Bore Diameter: 100 mm
-• Rod Diameter: 56 mm
-• Stroke: 500 mm
-• Operating Pressure: 210 bar
-• Push Force: 165 kN
-• Pull Force: 125 kN
-
-SEALING:
-• Piston Seals: NBR U-cups
-• Rod Seals: Polyurethane
-• Wiper: Double lip
-
-MATERIALS:
-• Cylinder Tube: ST52.3 Honed Tube
-• Piston Rod: CK45 Hard Chrome Plated
-• End Caps: C45 Steel
-• Piston: Aluminum Bronze
-
-MOUNTING:
-• Head End: Clevis mount
-• Cap End: Flange mount
-
-SOFTWARE USED:
-• SolidWorks for design
-• HydroSym for circuit design`,
-                          },
-                          "drawing.pdf": {
-                            name: "drawing.pdf",
-                            type: "file",
-                            fileType: "pdf",
-                            pdfPath: "/pdfs/cylinder-drawing.pdf",
-                          },
-                        },
-                      },
-                      "Conveyor Roller": {
-                        name: "Conveyor Roller",
-                        type: "folder",
-                        children: {
-                          "roller.glb": {
-                            name: "roller.glb",
-                            type: "file",
-                            fileType: "glb",
-                            modelPath: "/models/roller.glb",
-                          },
-                          "details.txt": {
-                            name: "details.txt",
-                            type: "file",
-                            fileType: "txt",
-                            content: `INDUSTRIAL CONVEYOR ROLLER
-═══════════════════════════════════════
-
-PROJECT: Heavy-Duty Conveyor Idler Roller
-DESIGNER: Gazi Faysal Jubayer
-DATE: 2024
-
-DESCRIPTION:
-Sealed bearing conveyor roller for bulk material handling.
-Designed for harsh mining and quarry environments.
-
-SPECIFICATIONS:
-• Roller Diameter: 159 mm
-• Face Length: 600 mm
-• Shaft Diameter: 20 mm
-• Speed Rating: 600 RPM
-• Load Capacity: 2500 N
-
-BEARINGS:
-• Type: 6204-2RS Deep Groove Ball
-• Lubrication: Lifetime grease
-• Sealing: Triple labyrinth seal
-
-MATERIALS:
-• Shell: ERW Steel Tube
-• End Discs: Pressed Steel
-• Shaft: EN8 Steel
-• Coating: Rubber lagging (optional)
-
-APPLICATIONS:
-• Mining conveyors
-• Quarry operations
-• Bulk material handling
-• Cement plants
-
-SOFTWARE USED:
-• SolidWorks for design
-• AutoCAD for layouts`,
-                          },
-                          "drawing.pdf": {
-                            name: "drawing.pdf",
-                            type: "file",
-                            fileType: "pdf",
-                            pdfPath: "/pdfs/roller-drawing.pdf",
-                          },
-                        },
-                      },
-                    },
-                  },
-                  "Code Projects": {
-                    name: "Code Projects",
-                    type: "folder",
-                    isGitHub: true,
-                    children: {},
-                  },
-                },
-              },
-              Documents: {
-                name: "Documents",
-                type: "folder",
-                children: {
-                  "Resume.pdf": {
-                    name: "Resume.pdf",
-                    type: "file",
-                    fileType: "pdf",
-                    pdfPath: "/resume.pdf", 
-                  },
-                  "Publication.pdf": {
-                    name: "Publication.pdf",
-                    type: "file",
-                    fileType: "pdf",
-                  },
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  "D:": {
-    name: "Data (D:)",
-    type: "drive",
-    children: {
-      Projects: {
-        name: "Projects",
-        type: "folder",
-        children: {
-          CAD: {
-            name: "CAD",
-            type: "folder",
-            children: {
-              "solidworks-projects": {
-                name: "solidworks-projects",
-                type: "folder",
-              },
-              "autocad-designs": {
-                name: "autocad-designs",
-                type: "folder",
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-  "E:": {
-    name: "Storage (E:)",
-    type: "drive",
-    children: {
-      Documents: {
-        name: "Documents",
-        type: "folder",
-        children: {
-          Certificates: {
-            name: "Certificates",
-            type: "folder",
-            children: {
-              "CSWPA-WD.pdf": {
-                name: "CSWPA-WD.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-              "CSWPA-SM.pdf": {
-                name: "CSWPA-SM.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-              "CSWP.pdf": {
-                name: "CSWP.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-              "CSWA.pdf": {
-                name: "CSWA.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-              "Python-AI-Cert.pdf": {
-                name: "Python-AI-Cert.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-              "IBM-Flask-Cert.pdf": {
-                name: "IBM-Flask-Cert.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-            },
-          },
-          Achievements: {
-            name: "Achievements",
-            type: "folder",
-            children: {
-              "NASA-2023.pdf": {
-                name: "NASA-2023.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-              "NASA-2024.pdf": {
-                name: "NASA-2024.pdf",
-                type: "file",
-                fileType: "pdf",
-              },
-            },
-          },
-        },
-      },
-    },
-  },
-} as const;
-
-export const CODE_SNIPPETS = {
-  "gazios-portfolio": {
-    language: "typescript",
-    filename: "useOSStore.ts",
-    code: `import { create } from 'zustand';
-
-interface Window {
-  id: string;
-  title: string;
-  isMinimized: boolean;
-  isMaximized: boolean;
-  zIndex: number;
+export function getProjectBySlug(slug: string): Project | undefined {
+  return PROJECTS.find((p) => p.slug === slug);
 }
 
-interface OSState {
-  windows: Window[];
-  activeWindowId: string | null;
-  openWindow: (id: string) => void;
-  closeWindow: (id: string) => void;
+export function getFeaturedProjects(): Project[] {
+  return PROJECTS.filter((p) => p.featured);
 }
 
-export const useOSStore = create<OSState>((set) => ({
-  windows: [],
-  activeWindowId: null,
-  openWindow: (id) => set((state) => ({
-    windows: [...state.windows, { 
-      id, 
-      title: id,
-      isMinimized: false,
-      isMaximized: false,
-      zIndex: state.windows.length + 1
-    }],
-    activeWindowId: id
-  })),
-  closeWindow: (id) => set((state) => ({
-    windows: state.windows.filter(w => w.id !== id)
-  })),
-}));`,
-  },
-  "uddhar-website": {
-    language: "javascript",
-    filename: "charity.js",
-    code: `// Uddhar - Charity Platform
-// Helping people during disasters
-
-const donationManager = {
-  campaigns: [],
-  volunteers: [],
-  
-  async createCampaign(name, goal, location) {
-    const campaign = {
-      id: Date.now(),
-      name,
-      goal,
-      raised: 0,
-      location,
-      status: 'active'
-    };
-    this.campaigns.push(campaign);
-    return campaign;
-  },
-  
-  async processDonation(campaignId, amount) {
-    const campaign = this.campaigns.find(c => c.id === campaignId);
-    if (campaign) {
-      campaign.raised += amount;
-      return { success: true, message: 'Donation processed' };
-    }
-    return { success: false, message: 'Campaign not found' };
-  }
-};`,
-  },
-  "vsb-platform": {
-    language: "python",
-    filename: "solutions.py",
-    code: `# VSB - Virtual Solution Book
-# Educational platform for HSC students
-
-class SolutionProvider:
-    def __init__(self):
-        self.subjects = ['Physics', 'Chemistry', 'Math', 'Biology']
-        self.solutions = {}
-    
-    def add_solution(self, subject, chapter, problem, solution):
-        key = f"{subject}_{chapter}_{problem}"
-        self.solutions[key] = {
-            'subject': subject,
-            'chapter': chapter,
-            'problem': problem,
-            'solution': solution,
-            'views': 0
-        }
-    
-    def get_solution(self, subject, chapter, problem):
-        key = f"{subject}_{chapter}_{problem}"
-        if key in self.solutions:
-            self.solutions[key]['views'] += 1
-            return self.solutions[key]
-        return None
-    
-    def search_solutions(self, query):
-        results = []
-        for solution in self.solutions.values():
-            if query.lower() in solution['problem'].lower():
-                results.append(solution)
-        return results`,
-  },
-} as const;
-
-export const RESUME_CONTENT = `
-═══════════════════════════════════════════════════════════════
-                    GAZI FAYSAL JUBAYER
-                CAD designer | Programmer
-═══════════════════════════════════════════════════════════════
-
-CONTACT
-───────────────────────────────────────────────────────────────
-Location: Khulna, Bangladesh
-Phone: +8801315669261
-Email: gazi.faysal.jubayer@gmail.com
-LinkedIn: linkedin.com/in/gazi
-GitHub: github.com/gazi-faysal-jubayer
-
-PROFESSIONAL SUMMARY
-───────────────────────────────────────────────────────────────
-As a dedicated and passionate professional in the fields of 
-mechanical design, programming and software development, I bring
-a unique blend of engineering and IT expertise to the table. 
-I thrive on solving complex problems and driving innovation.
-
-WORK EXPERIENCE
-───────────────────────────────────────────────────────────────
-Assistant IT and Resources Officer
-CADers | March 2024 - Present
-• CADers is a club of KUET which works with CAD (Computer 
-  Aided Design).
-
-Chief Information Officer (CIO)
-উদ্ধার - Uddhar | August 2024 - Present
-• Created charity website uddharbd.org during Flood 2024
-• Team has about 30 members along with volunteers
-• App version coming soon
-
-Co-Founder and Tech Lead
-VSB - Virtual Solution Book | January 2024 - Present
-• vsbbd.com provides solutions for HSC and admission students
-
-Campus Ambassador
-SEAN Publication | October 2024 - Present
-
-Junior Marketing Executive
-BANGLADESH 3DExperience & Solidworks User Group
-October 2024 - Present
-
-Assistant Partnership Manager
-Autodesk User Group Network Bangladesh
-November 2024 - Present
-
-Trainee Member at Autonomous Sub-Team
-Team Durbar | July 2024 - Present
-
-Local Ambassador
-মেঘ Magazine | February 2022 - 2023
-
-EDUCATION
-───────────────────────────────────────────────────────────────
-Mechanical Engineering
-Khulna University of Engineering and Technology
-2022 - 2027 | Khulna, Bangladesh
-
-HSC at science department
-Khulna Public College
-2019 - 2021 | Khulna, Bangladesh
-
-PUBLICATION
-───────────────────────────────────────────────────────────────
-Analyzing the impact of opportunistic maintenance 
-optimization on manufacturing industries in Bangladesh: 
-An empirical study
-August 2024 | Available online: 9
-DOI: https://doi.org/10.1016/j.tbench.2024.100172
-
-ACHIEVEMENTS
-───────────────────────────────────────────────────────────────
-Regional 1st Runner-Up and Global Nominee
-NASA International Space Apps Challenge 2023
-November 2023
-• Earned title of Galactic Problem Solver
-• Innovative contributions to space industry
-
-Regional 2nd Runner-Up and Global Nominee
-NASA International Space Apps Challenge 2024
-October 2023
-• 2nd time Galactic Problem Solver
-• Addressing critical issues in space industry
-
-2 Time Galactic Problem Solver Title
-NASA International Space Apps
-• First Time: Challenge 2023
-• Second Time: Challenge 2024
-
-1st Runner-Up in National CAD contest
-Calibration 1.0 | February 2024
-
-LICENSES & CERTIFICATIONS
-───────────────────────────────────────────────────────────────
-Solidworks Weldments Professional (CSWPA-WD)
-Dassault Systèmes | July 2024
-Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-FDSF19ASCX
-
-Solidworks Sheet Metal Professional (CSWPA-SM)
-Dassault Systèmes | June 2024
-Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-RAFH5TKCCV
-
-Solidworks CAD Design Professional (CSWP)
-Dassault Systèmes | June 2024
-Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-XRLJHD7BAM
-
-Solidworks CAD Design Associate (CSWA)
-Dassault Systèmes | April 2024
-Credential: cv.virtualtester.com/qr/?b=SLDWRKS&i=C-GT9ZTD3EUK
-
-Python Project for AI and Application Development
-Credly by Pearson | April 2024
-Credential: credly.com/badges/6ea01fb6-f78d-424f-a040-
-            62e72b3dcb8b/public_url
-
-Developing AI Applications with Python and Flask by IBM
-Coursera | April 2024
-Credential: coursera.org/account/accomplishments/certificate/
-            Z5T6FJDAQR
-
-SKILLS
-───────────────────────────────────────────────────────────────
-Engineering:   SolidWorks, AutoCAD, Blender, KeyShot
-               Competitor analysis, Business research
-               Data Analysis
-
-Programming:   Python, C, Dart, JavaScript, TypeScript
-               Next.js, React, Flutter, Computer Vision
-
-LANGUAGES
-───────────────────────────────────────────────────────────────
-Bangla - Native
-English - Professional
-
-═══════════════════════════════════════════════════════════════
-`;
+export const PAGES = [
+  { href: "/", label: "INDEX" },
+  { href: "/work", label: "WORK" },
+  { href: "/about", label: "ABOUT" },
+  { href: "/experience", label: "LOG" },
+  { href: "/contact", label: "CONTACT" },
+] as const;

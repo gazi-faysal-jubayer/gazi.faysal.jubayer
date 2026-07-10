@@ -1,48 +1,62 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { TransitionProvider } from "@/components/transition/TransitionProvider";
+import { TopBar } from "@/components/layout/TopBar";
+import { BottomNav } from "@/components/layout/BottomNav";
+import { PageColorProvider } from "@/components/layout/PageColorProvider";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const sans = Space_Grotesk({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-sans",
+  display: "swap",
 });
 
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-mono",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "GaziOS | Gazi Faysal Jubayer - Portfolio",
-  description: "A Windows 11 themed portfolio website for Gazi Faysal Jubayer - CAD Designer, Programmer, and Mechanical Engineering Student at KUET",
-  keywords: ["portfolio", "CAD designer", "programmer", "mechanical engineer", "SolidWorks", "Next.js", "React", "Windows 11", "KUET", "NASA Space Apps"],
+  title: "Gazi Faysal Jubayer — CAD Designer & Programmer",
+  description:
+    "Portfolio of Gazi Faysal Jubayer — mechanical design, CAD, and software development. KUET Mechanical Engineering · 2× NASA Space Apps Galactic Problem Solver.",
+  keywords: [
+    "portfolio",
+    "CAD designer",
+    "programmer",
+    "mechanical engineer",
+    "SolidWorks",
+    "Next.js",
+    "React",
+    "KUET",
+    "NASA Space Apps",
+  ],
   authors: [{ name: "Gazi Faysal Jubayer" }],
   creator: "Gazi Faysal Jubayer",
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "GaziOS | Gazi Faysal Jubayer",
-    description: "CAD Designer | Programmer | 2x NASA Space Apps Winner",
-    siteName: "GaziOS",
+    title: "Gazi Faysal Jubayer — CAD Designer & Programmer",
+    description:
+      "Engineering precision meets digital craft. CAD · Code · 2× NASA Space Apps winner.",
+    siteName: "Gazi Faysal Jubayer",
   },
   twitter: {
     card: "summary_large_image",
-    title: "GaziOS | Gazi Faysal Jubayer",
-    description: "CAD Designer | Programmer | 2x NASA Space Apps Winner",
+    title: "Gazi Faysal Jubayer — CAD Designer & Programmer",
+    description:
+      "Engineering precision meets digital craft. CAD · Code · 2× NASA Space Apps winner.",
   },
 };
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f3f3f3" },
-    { media: "(prefers-color-scheme: dark)", color: "#202020" },
-  ],
+  themeColor: "#050505",
 };
 
 export default function RootLayout({
@@ -51,12 +65,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        suppressHydrationWarning
-      >
-        {children}
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+      <body className="grain min-h-screen bg-void font-sans text-bone antialiased">
+        <TransitionProvider>
+          <PageColorProvider />
+          <TopBar />
+          {children}
+          <BottomNav />
+        </TransitionProvider>
       </body>
     </html>
   );

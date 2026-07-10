@@ -1,66 +1,72 @@
-"use client";
+import { PROFILE, SKILLS } from "@/lib/constants";
+import { Reveal } from "@/components/motion/Reveal";
+import { MagneticButton } from "@/components/motion/MagneticButton";
 
-import { useEffect, useState } from "react";
-import { useOSStore } from "@/store/useOSStore";
-import BootScreen from "@/components/os/BootScreen";
-import Desktop from "@/components/os/Desktop";
-import Taskbar from "@/components/os/Taskbar";
-import StartMenu from "@/components/os/StartMenu";
-import NotificationCenter from "@/components/os/NotificationCenter";
-import { cn } from "@/lib/utils";
+const MARQUEE_ITEMS = [...SKILLS.engineering, ...SKILLS.programming];
 
-export default function Home() {
-  const { hasBooted, setHasBooted, isDarkMode } = useOSStore();
-  const [showBoot, setShowBoot] = useState(false);
-  const [isClient, setIsClient] = useState(false);
-
-  // Handle hydration
-  useEffect(() => {
-    setIsClient(true);
-    // Show boot screen on first visit
-    if (!hasBooted) {
-      setShowBoot(true);
-    }
-  }, [hasBooted]);
-
-  const handleBootComplete = () => {
-    setShowBoot(false);
-    setHasBooted(true);
-  };
-
-  // Show nothing during SSR to prevent hydration mismatch
-  if (!isClient) {
-    return (
-      <div className="h-screen w-screen bg-black flex items-center justify-center">
-        <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  // Show boot screen
-  if (showBoot) {
-    return <BootScreen onBootComplete={handleBootComplete} />;
-  }
-
-  // Main desktop
+export default function IndexPage() {
   return (
-    <main
-      className={cn(
-        "h-screen w-screen overflow-hidden",
-        isDarkMode ? "dark" : ""
-      )}
-    >
-      {/* Desktop environment */}
-      <div className="h-full pb-12">
-        <Desktop />
+    <main className="bg-grid relative flex min-h-[100svh] flex-col overflow-x-clip pb-16 pt-16 sm:pb-24 sm:pt-24 md:pt-28">
+      <div className="mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-4 sm:px-6 md:px-10 lg:px-16">
+        <Reveal y={16}>
+          <p className="tech-label">
+            <span className="text-accent">&gt;</span> PAGE 01 — INDEX
+          </p>
+        </Reveal>
+
+        <Reveal delay={0.1} y={40}>
+          <h1 className="mt-6 font-display text-[clamp(2.4rem,11vw,10rem)] font-bold uppercase leading-[0.88] tracking-tight text-accent sm:mt-8">
+            Gazi
+            <br />
+            Faysal
+            <br />
+            Jubayer
+          </h1>
+        </Reveal>
+
+        <Reveal delay={0.25} y={20}>
+          <div className="mt-6 flex flex-col gap-2 font-mono text-xs text-dim sm:mt-8 sm:text-sm md:flex-row md:items-center md:gap-6">
+            <p className="uppercase tracking-[0.2em] sm:tracking-[0.25em]">
+              CAD Designer <span className="text-accent">/</span> Programmer
+            </p>
+            <span className="hidden h-px w-16 bg-line md:block" />
+            <p className="uppercase tracking-[0.2em] sm:tracking-[0.25em]">
+              2× NASA Space Apps Winner
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.35} y={16} className="mt-8 flex flex-wrap gap-3 sm:mt-12 sm:gap-4">
+          <MagneticButton href="/work" transitionLabel="WORK">
+            View work
+          </MagneticButton>
+          <MagneticButton
+            href="/contact"
+            transitionLabel="CONTACT"
+            variant="ghost"
+          >
+            Contact
+          </MagneticButton>
+        </Reveal>
+      </div>
+
+      <div className="mt-8 overflow-hidden border-y border-line py-3 sm:mt-12 sm:py-4">
+        <div className="flex w-max animate-marquee gap-8 sm:gap-10">
+          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((skill, i) => (
+            <span
+              key={`${skill}-${i}`}
+              className="flex items-center gap-8 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.25em] text-dim sm:gap-10 sm:text-xs sm:tracking-[0.3em]"
+            >
+              {skill}
+              <span className="text-accent">+</span>
+            </span>
+          ))}
         </div>
+      </div>
 
-      {/* Taskbar */}
-      <Taskbar />
-
-      {/* Overlays */}
-      <StartMenu />
-      <NotificationCenter />
-      </main>
+      <p className="mx-auto mt-4 w-full max-w-content px-4 font-mono text-[10px] tracking-[0.15em] text-dim sm:mt-6 sm:px-6 sm:text-xs sm:tracking-[0.2em] md:px-10 lg:px-16">
+        {PROFILE.location.toUpperCase()} — MECHANICAL ENGINEERING, KUET
+      </p>
+    </main>
   );
 }
