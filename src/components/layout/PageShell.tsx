@@ -16,7 +16,7 @@ export function PageShell({
   return (
     <main
       className={cn(
-        "bg-grid relative min-h-[100svh] overflow-x-clip px-4 pb-20 pt-20 sm:px-6 md:px-10 md:pb-28 md:pt-28 lg:px-16",
+        "bg-grid relative min-h-[100svh] overflow-x-clip px-4 pb-24 pt-20 sm:px-6 sm:pb-28 md:px-10 md:pb-32 md:pt-28 lg:px-16",
         className
       )}
     >

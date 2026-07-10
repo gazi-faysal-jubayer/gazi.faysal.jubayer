@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { PROFILE } from "@/lib/constants";
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
-import { TextReveal } from "@/components/motion/TextReveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
+import HeroShutterText from "@/components/ui/hero-shutter-text";
 
 export const metadata: Metadata = {
   title: "Contact — Gazi Faysal Jubayer",
@@ -17,9 +17,11 @@ export default function ContactPage() {
       pageLabel="CONTACT"
       className="flex flex-col justify-center"
     >
-      <TextReveal className="font-display text-[clamp(2rem,8vw,6.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-accent">
-        Open channel
-      </TextReveal>
+      <HeroShutterText
+        text="Open channel"
+        as="h2"
+        className="text-[clamp(2rem,8vw,6.5rem)] text-accent"
+      />
 
       <Reveal delay={0.1}>
         <p className="mt-6 max-w-lg text-sm text-dim sm:mt-8 sm:text-lg">

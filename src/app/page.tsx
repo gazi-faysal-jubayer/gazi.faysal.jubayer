@@ -1,12 +1,13 @@
 import { PROFILE, SKILLS } from "@/lib/constants";
 import { Reveal } from "@/components/motion/Reveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
+import HeroShutterText from "@/components/ui/hero-shutter-text";
 
 const MARQUEE_ITEMS = [...SKILLS.engineering, ...SKILLS.programming];
 
 export default function IndexPage() {
   return (
-    <main className="bg-grid relative flex min-h-[100svh] flex-col overflow-x-clip pb-16 pt-16 sm:pb-24 sm:pt-24 md:pt-28">
+    <main className="bg-grid relative flex min-h-[100svh] flex-col overflow-x-clip pb-24 pt-16 sm:pb-28 sm:pt-24 md:pt-28">
       <div className="mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-4 sm:px-6 md:px-10 lg:px-16">
         <Reveal y={16}>
           <p className="tech-label">
@@ -14,15 +15,11 @@ export default function IndexPage() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.1} y={40}>
-          <h1 className="mt-6 font-display text-[clamp(2.4rem,11vw,10rem)] font-bold uppercase leading-[0.88] tracking-tight text-accent sm:mt-8">
-            Gazi
-            <br />
-            Faysal
-            <br />
-            Jubayer
-          </h1>
-        </Reveal>
+        <HeroShutterText
+          text={"Gazi\nFaysal\nJubayer"}
+          className="mt-6 text-[clamp(2.4rem,11vw,10rem)] text-accent sm:mt-8"
+          delay={0.1}
+        />
 
         <Reveal delay={0.25} y={20}>
           <div className="mt-6 flex flex-col gap-2 font-mono text-xs text-dim sm:mt-8 sm:text-sm md:flex-row md:items-center md:gap-6">

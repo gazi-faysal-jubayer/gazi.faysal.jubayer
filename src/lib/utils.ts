@@ -7,10 +7,10 @@ export function cn(...inputs: ClassValue[]) {
 
 export function typeLabel(type: string): string {
   const map: Record<string, string> = {
-    code: "Software",
-    charity: "Impact",
-    mechanical: "Challenge",
     cad: "CAD",
+    simulation: "Simulation",
+    "hands-on": "Hands-on",
+    programming: "Programming",
   };
   return map[type] ?? type;
 }

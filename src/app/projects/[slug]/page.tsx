@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { PROJECTS, getProjectBySlug, PROFILE } from "@/lib/constants";
 import { typeLabel } from "@/lib/utils";
 import { Reveal } from "@/components/motion/Reveal";
-import { TextReveal } from "@/components/motion/TextReveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { TransitionLink } from "@/components/transition/TransitionLink";
+import HeroShutterText from "@/components/ui/hero-shutter-text";
 
 type PageProps = {
   params: { slug: string };
@@ -39,7 +39,7 @@ export default function ProjectPage({ params }: PageProps) {
       : PROJECTS.filter((p) => p.slug !== project.slug).slice(0, 3);
 
   return (
-    <main className="bg-grid relative min-h-[100svh] overflow-x-clip px-4 pb-20 pt-16 sm:px-6 sm:pb-28 sm:pt-24 md:px-10 md:pt-28 lg:px-16">
+    <main className="bg-grid relative min-h-[100svh] overflow-x-clip px-4 pb-24 pt-16 sm:px-6 sm:pb-28 sm:pt-24 md:px-10 md:pt-28 lg:px-16">
       <div className="content-width mx-auto w-full">
         <Reveal y={12}>
           <TransitionLink
@@ -59,13 +59,11 @@ export default function ProjectPage({ params }: PageProps) {
           </p>
         </Reveal>
 
-        <TextReveal
-          as="h1"
+        <HeroShutterText
+          text={project.title}
           delay={0.12}
-          className="mt-4 font-display text-[clamp(2rem,8vw,6.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-accent sm:mt-6"
-        >
-          {project.title}
-        </TextReveal>
+          className="mt-4 text-[clamp(2rem,8vw,6.5rem)] text-accent sm:mt-6"
+        />
 
         <Reveal delay={0.2}>
           <p className="mt-4 max-w-2xl text-sm text-dim sm:mt-6 sm:text-lg md:text-xl">
@@ -82,10 +80,12 @@ export default function ProjectPage({ params }: PageProps) {
                 style={{
                   background:
                     project.type === "cad"
-                      ? "linear-gradient(145deg, #B23246 0%, #1a0a0e 55%, #050505 100%)"
-                      : project.type === "charity"
-                        ? "linear-gradient(145deg, #FF5D73 0%, #40141c 45%, #050505 100%)"
-                        : "linear-gradient(145deg, #2a2a2a 0%, #B23246 60%, #050505 100%)",
+                      ? "linear-gradient(145deg, #FACC15 0%, #1a1605 55%, #050505 100%)"
+                      : project.type === "simulation"
+                        ? "linear-gradient(145deg, #60A5FA 0%, #0a1525 45%, #050505 100%)"
+                        : project.type === "hands-on"
+                          ? "linear-gradient(145deg, #34D399 0%, #0a1a14 45%, #050505 100%)"
+                          : "linear-gradient(145deg, #A78BFA 0%, #140f25 45%, #050505 100%)",
                 }}
               />
             </Reveal>

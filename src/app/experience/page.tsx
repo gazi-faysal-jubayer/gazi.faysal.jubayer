@@ -14,7 +14,7 @@ import {
 } from "@/lib/utils";
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
-import { TextReveal } from "@/components/motion/TextReveal";
+import HeroShutterText from "@/components/ui/hero-shutter-text";
 
 function CompanyBlock({
   entry,
@@ -101,10 +101,12 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <PageShell pageNumber="04" pageLabel="LOG">
-      <TextReveal className="font-display text-[clamp(2rem,7vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-bone">
-        Mission log
-      </TextReveal>
+    <PageShell pageNumber="03" pageLabel="LOG">
+      <HeroShutterText
+        text="Mission log"
+        as="h2"
+        className="text-[clamp(2rem,7vw,5.5rem)] text-bone"
+      />
 
       <div className="mt-10 grid gap-14 sm:mt-16 lg:grid-cols-12 lg:gap-20">
         <div className="lg:col-span-7">

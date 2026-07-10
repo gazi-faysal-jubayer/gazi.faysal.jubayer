@@ -16,11 +16,12 @@ export const SKILLS = {
   engineering: [
     "SolidWorks",
     "AutoCAD",
-    "Blender",
-    "KeyShot",
-    "Competitor analysis",
-    "Business research",
-    "Data Analysis",
+    "Ansys",
+    "Abaqus",
+    "COMSOL",
+    "3D Printing",
+    "nTop",
+    "Hands-on fabrication",
   ],
   programming: [
     "Python",
@@ -32,6 +33,7 @@ export const SKILLS = {
     "React",
     "Flutter",
     "Computer Vision",
+    "Data Analysis",
   ],
 } as const;
 
@@ -325,7 +327,17 @@ export const CERTIFICATIONS = [
   },
 ] as const;
 
-export type ProjectType = "code" | "charity" | "mechanical" | "cad";
+export type ProjectType = "cad" | "simulation" | "hands-on" | "programming";
+
+export const WORK_CATEGORIES: {
+  id: ProjectType;
+  label: string;
+}[] = [
+  { id: "cad", label: "CAD" },
+  { id: "simulation", label: "Simulation" },
+  { id: "hands-on", label: "Hands-on project" },
+  { id: "programming", label: "Programming" },
+];
 
 export type Project = {
   slug: string;
@@ -341,88 +353,6 @@ export type Project = {
 };
 
 export const PROJECTS: Project[] = [
-  {
-    slug: "uddhar",
-    type: "charity",
-    title: "উদ্ধার — Uddhar",
-    summary: "Disaster-relief charity platform born from the 2024 Feni floods.",
-    description:
-      "A charity website and organization helping people during disasters. Started during the Flood of 2024 in Feni, Bangladesh, Uddhar now operates with a team of about 30 members and volunteers, with a mobile app version on the way.",
-    year: "2024",
-    tech: ["Next.js", "React", "Database"],
-    highlights: [
-      "Live relief coordination platform at uddharbd.org",
-      "Grew to ~30 members and volunteers",
-      "Mobile app version in development",
-    ],
-    link: "https://uddharbd.org",
-    featured: true,
-  },
-  {
-    slug: "vsb",
-    type: "code",
-    title: "VSB — Virtual Solution Book",
-    summary: "Educational platform for HSC and admission students.",
-    description:
-      "vsbbd.com is a platform providing solutions for the problems of HSC and admission students across Bangladesh — built as Co-Founder and Tech Lead.",
-    year: "2024",
-    tech: ["Web Development", "Educational Platform"],
-    highlights: [
-      "Co-founded and led technical development",
-      "Solutions for HSC and university admission students",
-    ],
-    link: "https://vsbbd.com",
-    featured: true,
-  },
-  {
-    slug: "nasa-space-apps-2023",
-    type: "mechanical",
-    title: "NASA Space Apps Challenge 2023",
-    summary: "Regional 1st Runner-Up and Global Nominee — Galactic Problem Solver.",
-    description:
-      "Participated in the NASA International Space Apps Challenge 2023, an international hackathon addressing global challenges through collaboration. Our team was recognized as 1st Runner-Up and Global Nominee.",
-    year: "2023",
-    tech: ["Innovation", "Problem Solving", "Collaboration"],
-    highlights: [
-      "Regional 1st Runner-Up",
-      "Global Nominee",
-      "Galactic Problem Solver title",
-    ],
-    featured: true,
-  },
-  {
-    slug: "nasa-space-apps-2024",
-    type: "mechanical",
-    title: "NASA Space Apps Challenge 2024",
-    summary: "Regional 2nd Runner-Up and Global Nominee — Galactic Problem Solver.",
-    description:
-      "Participated in the NASA International Space Apps Challenge 2024, focused on solving real-world challenges through innovation and teamwork. Earned 2nd Runner-Up and Global Nominee honors.",
-    year: "2024",
-    tech: ["Innovation", "Problem Solving", "Teamwork"],
-    highlights: [
-      "Regional 2nd Runner-Up",
-      "Global Nominee",
-      "Second Galactic Problem Solver title",
-    ],
-    featured: true,
-  },
-  {
-    slug: "portfolio",
-    type: "code",
-    title: "Personal Portfolio",
-    summary: "Futuristic multi-page portfolio with curtain page transitions.",
-    description:
-      "A motion-rich personal portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion — a dark, technical interface with doors-style page transitions between sections.",
-    year: "2025",
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    highlights: [
-      "Doors curtain page transitions",
-      "Project case-study routes",
-      "Scroll-driven motion system",
-    ],
-    link: "/",
-    featured: false,
-  },
   {
     slug: "gearbox-assembly",
     type: "cad",
@@ -456,22 +386,6 @@ export const PROJECTS: Project[] = [
     featured: true,
   },
   {
-    slug: "mounting-bracket",
-    type: "cad",
-    title: "Mounting Bracket",
-    summary: "FEA-optimized structural bracket for heavy equipment.",
-    description:
-      "Structural support bracket for industrial equipment mounting. FEA optimized for weight reduction while maintaining strength — reduced from 18 kg to 12.5 kg.",
-    year: "2024",
-    tech: ["SolidWorks", "ANSYS Workbench"],
-    highlights: [
-      "5000 kg load capacity · Safety factor 3.0",
-      "Weight optimized 18 kg → 12.5 kg",
-      "Max stress 145 MPa vs 355 MPa yield",
-    ],
-    featured: false,
-  },
-  {
     slug: "hydraulic-cylinder",
     type: "cad",
     title: "Hydraulic Cylinder",
@@ -503,6 +417,185 @@ export const PROJECTS: Project[] = [
     ],
     featured: false,
   },
+  {
+    slug: "spoon-rest-whale-spoon",
+    type: "cad",
+    title: "Oyster Spoon Rest & Whale Spoon",
+    summary: "Client-commissioned kitchenware designs modeled in SolidWorks.",
+    description:
+      "An 'Oyster Shell Spoon Rest' and a whale-shaped spoon designed for a client commission — organic surface modeling work done in SolidWorks 2024, prepared for 3D printing.",
+    year: "2026",
+    tech: ["SolidWorks", "Surface Modeling", "3D Printing"],
+    highlights: [
+      "Organic, sculptural surface modeling",
+      "Client-commissioned freelance work",
+      "Print-ready output",
+    ],
+    featured: false,
+  },
+  {
+    slug: "calibration-cad-contests",
+    type: "cad",
+    title: "Calibration CAD Contests",
+    summary: "National CAD contest champion (1.0) and 1st Runner-Up (2.0).",
+    description:
+      "Won my first national CAD contest at CALIBRATION 1.0, then returned with Team Overthinker to take 1st Runner-Up at the CAD contest in CALIBRATION 2.0 — timed modeling challenges against teams from across the country.",
+    year: "2024–2026",
+    tech: ["SolidWorks", "Engineering Drawing", "Speed Modeling"],
+    highlights: [
+      "Champion — CALIBRATION 1.0",
+      "1st Runner-Up — CALIBRATION 2.0 (Team Overthinker)",
+      "National-level competition",
+    ],
+    featured: true,
+  },
+  {
+    slug: "shadow-art-lamp",
+    type: "hands-on",
+    title: "Shadow Art Lamp",
+    summary: "Custom 3D-printed lamp that projects any shadow design.",
+    description:
+      "A custom Shadow Art Lamp built under 3D Bytes — it can project virtually any custom shadow design, from characters and logos to calligraphy, names, or personalized artwork. Designed, printed, and assembled end to end.",
+    year: "2026",
+    tech: ["3D Printing", "3D Design", "Product Design"],
+    highlights: [
+      "Projects fully custom shadow artwork",
+      "Designed and fabricated end to end",
+      "Sold as a made-to-order product via 3D Bytes",
+    ],
+    featured: true,
+  },
+  {
+    slug: "human-body-blur",
+    type: "programming",
+    title: "Human Body Blur",
+    summary: "Computer-vision tool that selectively blurs people in video.",
+    description:
+      "A codebase that anonymizes individuals in video with pixel-accurate precision — selectively blur any person without manual video editing. Built to automate a tedious manual task using image processing.",
+    year: "2025",
+    tech: ["Python", "OpenCV", "Computer Vision"],
+    highlights: [
+      "Pixel-accurate person segmentation and blur",
+      "Fully automated — no manual editing",
+      "Open source on GitHub",
+    ],
+    link: "https://github.com/gazi-faysal-jubayer/human-body-blur",
+    featured: false,
+  },
+  {
+    slug: "3d-bytes-generators",
+    type: "programming",
+    title: "3D Bytes Web Generators",
+    summary: "Interactive 3D model generators for the 3D Bytes website.",
+    description:
+      "A set of interactive 3D generators built for the website of my 3D printing business, 3D Bytes — letting visitors configure and preview printable designs directly in the browser.",
+    year: "2026",
+    tech: ["JavaScript", "Three.js", "Web Development"],
+    highlights: [
+      "Browser-based parametric model generation",
+      "Built for the 3D Bytes storefront",
+      "Bridges CAD and web development",
+    ],
+    featured: false,
+  },
+  {
+    slug: "mounting-bracket",
+    type: "simulation",
+    title: "Mounting Bracket",
+    summary: "FEA-optimized structural bracket for heavy equipment.",
+    description:
+      "Structural support bracket for industrial equipment mounting. FEA optimized for weight reduction while maintaining strength — reduced from 18 kg to 12.5 kg.",
+    year: "2024",
+    tech: ["SolidWorks", "ANSYS Workbench"],
+    highlights: [
+      "5000 kg load capacity · Safety factor 3.0",
+      "Weight optimized 18 kg → 12.5 kg",
+      "Max stress 145 MPa vs 355 MPa yield",
+    ],
+    featured: false,
+  },
+  {
+    slug: "nasa-space-apps-2023",
+    type: "hands-on",
+    title: "NASA Space Apps Challenge 2023",
+    summary: "Regional 1st Runner-Up and Global Nominee — Galactic Problem Solver.",
+    description:
+      "Participated in the NASA International Space Apps Challenge 2023, an international hackathon addressing global challenges through collaboration. Our team was recognized as 1st Runner-Up and Global Nominee.",
+    year: "2023",
+    tech: ["Innovation", "Problem Solving", "Collaboration"],
+    highlights: [
+      "Regional 1st Runner-Up",
+      "Global Nominee",
+      "Galactic Problem Solver title",
+    ],
+    featured: true,
+  },
+  {
+    slug: "nasa-space-apps-2024",
+    type: "hands-on",
+    title: "NASA Space Apps Challenge 2024",
+    summary: "Regional 2nd Runner-Up and Global Nominee — Galactic Problem Solver.",
+    description:
+      "Participated in the NASA International Space Apps Challenge 2024, focused on solving real-world challenges through innovation and teamwork. Earned 2nd Runner-Up and Global Nominee honors.",
+    year: "2024",
+    tech: ["Innovation", "Problem Solving", "Teamwork"],
+    highlights: [
+      "Regional 2nd Runner-Up",
+      "Global Nominee",
+      "Second Galactic Problem Solver title",
+    ],
+    featured: true,
+  },
+  {
+    slug: "uddhar",
+    type: "programming",
+    title: "উদ্ধার — Uddhar",
+    summary: "Disaster-relief charity platform born from the 2024 Feni floods.",
+    description:
+      "A charity website and organization helping people during disasters. Started during the Flood of 2024 in Feni, Bangladesh, Uddhar now operates with a team of about 30 members and volunteers, with a mobile app version on the way.",
+    year: "2024",
+    tech: ["Next.js", "React", "Database"],
+    highlights: [
+      "Live relief coordination platform at uddharbd.org",
+      "Grew to ~30 members and volunteers",
+      "Mobile app version in development",
+    ],
+    link: "https://uddharbd.org",
+    featured: true,
+  },
+  {
+    slug: "vsb",
+    type: "programming",
+    title: "VSB — Virtual Solution Book",
+    summary: "Educational platform for HSC and admission students.",
+    description:
+      "vsbbd.com is a platform providing solutions for the problems of HSC and admission students across Bangladesh — built as Co-Founder and Tech Lead.",
+    year: "2024",
+    tech: ["Web Development", "Educational Platform"],
+    highlights: [
+      "Co-founded and led technical development",
+      "Solutions for HSC and university admission students",
+    ],
+    link: "https://vsbbd.com",
+    featured: true,
+  },
+  {
+    slug: "portfolio",
+    type: "programming",
+    title: "Personal Portfolio",
+    summary: "Futuristic multi-page portfolio with curtain page transitions.",
+    description:
+      "A motion-rich personal portfolio built with Next.js, TypeScript, Tailwind CSS, and Framer Motion — a dark, technical interface with doors-style page transitions between sections.",
+    year: "2025",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    highlights: [
+      "Doors curtain page transitions",
+      "Project case-study routes",
+      "Scroll-driven motion system",
+    ],
+    link: "/",
+    featured: false,
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -515,8 +608,8 @@ export function getFeaturedProjects(): Project[] {
 
 export const PAGES = [
   { href: "/", label: "INDEX" },
-  { href: "/work", label: "WORK" },
   { href: "/about", label: "ABOUT" },
   { href: "/experience", label: "LOG" },
+  { href: "/work", label: "WORK" },
   { href: "/contact", label: "CONTACT" },
 ] as const;

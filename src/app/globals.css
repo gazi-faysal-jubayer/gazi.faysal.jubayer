@@ -67,6 +67,15 @@ body {
   @apply px-6 md:px-10 lg:px-16;
 }
 
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 .content-width {
   @apply mx-auto w-full max-w-content;
 }

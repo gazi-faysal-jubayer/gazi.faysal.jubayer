@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PROFILE, EDUCATION, SKILLS, LANGUAGES } from "@/lib/constants";
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
-import { TextReveal } from "@/components/motion/TextReveal";
+import HeroShutterText from "@/components/ui/hero-shutter-text";
 
 export const metadata: Metadata = {
   title: "About — Gazi Faysal Jubayer",
@@ -12,10 +12,12 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageShell pageNumber="03" pageLabel="ABOUT">
-      <TextReveal className="font-display text-[clamp(2rem,7vw,5.5rem)] font-bold uppercase leading-[0.9] tracking-tight text-bone">
-        Dual craft
-      </TextReveal>
+    <PageShell pageNumber="02" pageLabel="ABOUT">
+      <HeroShutterText
+        text="Dual craft"
+        as="h2"
+        className="text-[clamp(2rem,7vw,5.5rem)] text-bone"
+      />
 
       <div className="mt-10 grid gap-12 sm:mt-16 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">
