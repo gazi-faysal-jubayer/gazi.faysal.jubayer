@@ -3,6 +3,7 @@ import { PROFILE, EDUCATION, SKILLS, LANGUAGES } from "@/lib/constants";
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
+import { GallerySection } from "@/components/home/GallerySection";
 
 export const metadata: Metadata = {
   title: "About — Gazi Faysal Jubayer",
@@ -18,6 +19,8 @@ export default function AboutPage() {
         as="h2"
         className="text-[clamp(2rem,7vw,5.5rem)] text-bone"
       />
+
+      <GallerySection />
 
       <div className="mt-10 grid gap-12 sm:mt-16 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-7">

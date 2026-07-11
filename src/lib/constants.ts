@@ -256,8 +256,17 @@ export const PUBLICATIONS = [
   },
 ] as const;
 
-export const ACHIEVEMENTS = [
+export type Achievement = {
+  id: string;
+  title: string;
+  event: string;
+  date: string;
+  description: string;
+};
+
+export const ACHIEVEMENTS: Achievement[] = [
   {
+    id: "nasa-space-apps-2023",
     title: "Regional 1st Runner-Up and Global Nominee",
     event: "NASA International Space Apps Challenge 2023",
     date: "November 2023",
@@ -265,6 +274,7 @@ export const ACHIEVEMENTS = [
       "Recognized as 1st Runner-Up and Global Nominee, earning the title of Galactic Problem Solver for innovative contributions to the space industry.",
   },
   {
+    id: "nasa-space-apps-2024",
     title: "Regional 2nd Runner-Up and Global Nominee",
     event: "NASA International Space Apps Challenge 2024",
     date: "October 2024",
@@ -272,6 +282,7 @@ export const ACHIEVEMENTS = [
       "Earned 2nd Runner-Up and Global Nominee honors, along with the title of Galactic Problem Solver.",
   },
   {
+    id: "galactic-problem-solver",
     title: "2× Galactic Problem Solver",
     event: "NASA International Space Apps",
     date: "2023 – 2024",
@@ -279,12 +290,14 @@ export const ACHIEVEMENTS = [
       "Awarded Galactic Problem Solver in both the 2023 and 2024 NASA Space Apps Challenges.",
   },
   {
+    id: "calibration-cad",
     title: "1st Runner-Up in National CAD Contest",
     event: "Calibration 1.0",
     date: "February 2024",
-    description: "National CAD contest recognition for mechanical design excellence.",
+    description:
+      "National CAD contest recognition for mechanical design excellence.",
   },
-] as const;
+];
 
 export const CERTIFICATIONS = [
   {

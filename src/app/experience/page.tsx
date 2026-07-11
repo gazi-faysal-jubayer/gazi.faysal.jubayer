@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   EXPERIENCE,
-  ACHIEVEMENTS,
   CERTIFICATIONS,
   PUBLICATIONS,
   type ExperienceEntry,
@@ -15,6 +14,7 @@ import {
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
+import { AchievementSection } from "@/components/experience/AchievementSection";
 
 function CompanyBlock({
   entry,
@@ -129,23 +129,7 @@ export default function ExperiencePage() {
               <span className="text-accent">&gt;</span> Achievements
             </h2>
           </Reveal>
-          <ul className="space-y-6 sm:space-y-8">
-            {ACHIEVEMENTS.map((item, i) => (
-              <Reveal key={item.title} delay={Math.min(i * 0.05, 0.2)}>
-                <li className="border-b border-line pb-6 sm:pb-8">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent sm:text-[11px] sm:tracking-[0.2em]">
-                    {item.date}
-                  </p>
-                  <h3 className="mt-1.5 font-display text-base font-bold uppercase tracking-tight text-bone sm:mt-2 sm:text-lg">
-                    {item.title}
-                  </h3>
-                  <p className="mt-0.5 font-mono text-[10px] text-dim sm:mt-1 sm:text-xs">
-                    {item.event}
-                  </p>
-                </li>
-              </Reveal>
-            ))}
-          </ul>
+          <AchievementSection />
 
           <Reveal className="mt-12 sm:mt-16">
             <h2 className="tech-label mb-6 sm:mb-8">

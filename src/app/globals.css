@@ -76,6 +76,28 @@ body {
   display: none;
 }
 
+@keyframes ticker-y {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-ticker-y {
+  animation-name: ticker-y;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ticker-y {
+    animation: none;
+  }
+}
+
 .content-width {
   @apply mx-auto w-full max-w-content;
 }
