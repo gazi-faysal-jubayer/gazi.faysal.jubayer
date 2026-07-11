@@ -15,6 +15,9 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
 import { AchievementSection } from "@/components/experience/AchievementSection";
+import { ScholarStats } from "@/components/experience/ScholarStats";
+
+export const revalidate = 86400;
 
 function CompanyBlock({
   entry,
@@ -131,6 +134,8 @@ export default function ExperiencePage() {
           </Reveal>
           <AchievementSection />
 
+          <ScholarStats />
+
           {PUBLICATIONS.length > 0 && (
             <div className="mt-12 sm:mt-16">
               <Reveal>
@@ -140,12 +145,7 @@ export default function ExperiencePage() {
               </Reveal>
               {PUBLICATIONS.map((pub) => (
                 <Reveal key={pub.title}>
-                  <a
-                    href={pub.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative block overflow-hidden border border-accent/50 bg-[color-mix(in_srgb,var(--page-accent)_8%,transparent)] p-5 transition-colors hover:border-accent hover:bg-[color-mix(in_srgb,var(--page-accent)_14%,transparent)] sm:p-6"
-                  >
+                  <div className="relative overflow-hidden border border-accent/50 bg-[color-mix(in_srgb,var(--page-accent)_8%,transparent)] p-5 sm:p-6">
                     <span
                       aria-hidden
                       className="absolute left-0 top-0 h-full w-1 bg-accent"
@@ -160,7 +160,7 @@ export default function ExperiencePage() {
                         {pub.articleNumber}
                       </p>
                     </div>
-                    <p className="mt-3 text-sm font-medium leading-relaxed text-bone transition-colors group-hover:text-accent sm:text-base md:text-lg md:leading-relaxed">
+                    <p className="mt-3 text-sm font-medium leading-relaxed text-bone sm:text-base md:text-lg md:leading-relaxed">
                       {pub.title}
                     </p>
                     <p className="mt-3 font-mono text-[10px] leading-relaxed text-dim sm:text-[11px]">
@@ -169,16 +169,30 @@ export default function ExperiencePage() {
                     <p className="mt-2 font-mono text-[10px] leading-relaxed text-dim/80 sm:text-[11px]">
                       {pub.authors.join(" · ")}
                     </p>
-                    <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:text-[11px] sm:tracking-[0.2em]">
-                      <span>{pub.date}</span>
-                      <span className="text-accent">·</span>
-                      <span>Online {pub.publishedOnline}</span>
-                      <span className="text-accent">·</span>
-                      <span className="text-accent transition-colors group-hover:underline">
-                        ScienceDirect ↗
-                      </span>
+                    <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:text-[11px]">
+                      {pub.date} · Online {pub.publishedOnline}
                     </p>
-                  </a>
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <a
+                        href={pub.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 border border-accent bg-accent px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-void transition-opacity hover:opacity-90 sm:text-[11px]"
+                      >
+                        Read on ScienceDirect
+                        <span aria-hidden>↗</span>
+                      </a>
+                      <a
+                        href={pub.doi}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 border border-line px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-bone transition-colors hover:border-accent hover:text-accent sm:text-[11px]"
+                      >
+                        DOI
+                        <span aria-hidden>↗</span>
+                      </a>
+                    </div>
+                  </div>
                 </Reveal>
               ))}
             </div>

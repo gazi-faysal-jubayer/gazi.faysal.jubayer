@@ -10,6 +10,8 @@ export const PROFILE = {
   github: "https://github.com/gazi-faysal-jubayer",
   linkedin: "https://www.linkedin.com/in/gazi-faysal-jubayer/",
   website: "https://gazi.faysal.jubayer",
+  scholarId: "WdZWO3YAAAAJ",
+  scholar: "https://scholar.google.com/citations?user=WdZWO3YAAAAJ&hl=en",
 } as const;
 
 export const SKILLS = {
@@ -279,36 +281,44 @@ export type Achievement = {
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    id: "nasa-space-apps-2023",
-    title: "Regional 1st Runner-Up and Global Nominee",
-    event: "NASA International Space Apps Challenge 2023",
-    date: "November 2023",
+    id: "mars-rover-rally-2025",
+    title: "2nd Place — Mars Autonomous Rover Rally",
+    event: "NASA Texas Space Grant · Team Durbar",
+    date: "December 2025",
     description:
-      "Recognized as 1st Runner-Up and Global Nominee, earning the title of Galactic Problem Solver for innovative contributions to the space industry.",
+      "Placed 2nd in an international autonomous rover navigation challenge using ROS and Space Teams PRO simulation for Mars Kaiser Crater exploration.",
   },
   {
-    id: "nasa-space-apps-2024",
-    title: "Regional 2nd Runner-Up and Global Nominee",
-    event: "NASA International Space Apps Challenge 2024",
-    date: "October 2024",
+    id: "robosub-2025",
+    title: "RoboSub 2025 Competitor",
+    event: "Team BengalSub",
+    date: "2025",
     description:
-      "Earned 2nd Runner-Up and Global Nominee honors, along with the title of Galactic Problem Solver.",
+      "Leading mechanical design and web development for an autonomous underwater vehicle competing at RoboSub 2025.",
   },
   {
-    id: "galactic-problem-solver",
-    title: "2× Galactic Problem Solver",
-    event: "NASA International Space Apps",
+    id: "fs-concept-challenge-2025",
+    title: "3rd Place — International FS Concept Challenge",
+    event: "Formula Bharat",
+    date: "2025",
+    description:
+      "Stood 3rd place in the International FS Concept Challenge 2025 arranged by Formula Bharat.",
+  },
+  {
+    id: "nasa-space-apps-nominee",
+    title: "2× NASA Space Apps Global Nominee",
+    event: "NASA International Space Apps Challenge",
     date: "2023 – 2024",
     description:
-      "Awarded Galactic Problem Solver in both the 2023 and 2024 NASA Space Apps Challenges.",
+      "Two-time Global Nominee at the NASA International Space Apps Challenge, recognized for innovative solutions to real-world space and Earth challenges.",
   },
   {
-    id: "calibration-cad",
-    title: "1st Runner-Up in National CAD Contest",
-    event: "Calibration 1.0",
-    date: "February 2024",
+    id: "national-cad-podium",
+    title: "4× National CAD Contest Podium",
+    event: "National CAD Contests · Multiple Universities",
+    date: "2024 – 2026",
     description:
-      "National CAD contest recognition for mechanical design excellence.",
+      "Four-time national CAD contest podium winner across competitions held at different universities.",
   },
 ];
 

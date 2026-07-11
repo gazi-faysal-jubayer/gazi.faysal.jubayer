@@ -6,6 +6,7 @@ import { ChevronDown, ChevronUp, X } from "lucide-react";
 import type { Achievement } from "@/lib/constants";
 import type { AchievementMedia } from "@/lib/achievement-media";
 import { cn } from "@/lib/utils";
+import PolaroidFlickThrough from "@/components/ui/polaroid-flick-through";
 
 export type AchievementWithMedia = Achievement & {
   media: AchievementMedia[];
@@ -17,31 +18,6 @@ type AchievementDockProps = {
 };
 
 const SPRING = { type: "spring" as const, stiffness: 380, damping: 32 };
-
-function MediaItem({ item }: { item: AchievementMedia }) {
-  if (item.type === "video") {
-    return (
-      <video
-        src={item.src}
-        poster={item.poster}
-        controls
-        playsInline
-        preload="metadata"
-        className="h-full w-full border border-line object-cover"
-      />
-    );
-  }
-
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={item.src}
-      alt=""
-      loading="lazy"
-      className="h-full w-full border border-line object-cover"
-    />
-  );
-}
 
 export function AchievementDock({ achievements }: AchievementDockProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -117,7 +93,7 @@ export function AchievementDock({ achievements }: AchievementDockProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="fixed inset-0 z-40 bg-void/60 backdrop-blur-[2px]"
+                className="fixed inset-0 z-40 bg-void/65 backdrop-blur-[2px]"
                 onClick={() => {
                   setExpanded(false);
                   setActiveId(null);
@@ -132,17 +108,16 @@ export function AchievementDock({ achievements }: AchievementDockProps) {
               exit={{ opacity: 0, y: 24, scale: 0.98 }}
               transition={reduce ? { duration: 0.2 } : SPRING}
               className={cn(
-                "fixed inset-x-3 bottom-[calc(3.5rem+env(safe-area-inset-bottom))] z-50 mx-auto max-w-lg sm:inset-x-6 sm:bottom-[calc(4rem+env(safe-area-inset-bottom))] md:max-w-xl lg:max-w-2xl"
+                "fixed inset-x-2 bottom-[calc(3.5rem+env(safe-area-inset-bottom))] z-50 mx-auto",
+                "max-w-xl sm:inset-x-4 sm:bottom-[calc(4rem+env(safe-area-inset-bottom))] sm:max-w-2xl",
+                "md:max-w-3xl lg:max-w-4xl"
               )}
             >
               <motion.div
                 layout
-                animate={{
-                  height: expanded ? "auto" : "auto",
-                }}
-                className="overflow-hidden rounded-2xl border border-line bg-panel/95 shadow-[0_20px_60px_rgba(0,0,0,0.55)] backdrop-blur-md"
+                className="max-h-[min(82svh,760px)] overflow-y-auto overflow-x-hidden rounded-2xl border border-line bg-panel/95 shadow-[0_20px_60px_rgba(0,0,0,0.55)] backdrop-blur-md scrollbar-none"
               >
-                <div className="flex w-full items-center gap-3 p-3 sm:gap-4 sm:p-4">
+                <div className="sticky top-0 z-10 flex w-full items-center gap-3 border-b border-line bg-panel/95 p-3 backdrop-blur-md sm:gap-4 sm:p-4">
                   <button
                     type="button"
                     onClick={() => setExpanded((v) => !v)}
@@ -218,27 +193,23 @@ export function AchievementDock({ achievements }: AchievementDockProps) {
                       }
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-line px-3 pb-4 pt-3 sm:px-4 sm:pb-5 sm:pt-4">
+                      <div className="px-3 pb-5 pt-4 sm:px-5 sm:pb-6 sm:pt-5 md:px-6">
                         <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
                           {active.date}
                         </p>
-                        <p className="mt-2 text-xs leading-relaxed text-dim sm:text-sm">
+                        <p className="mt-2 max-w-2xl text-xs leading-relaxed text-dim sm:text-sm">
                           {active.description}
                         </p>
 
                         {active.media.length > 0 ? (
-                          <div className="mt-4 flex gap-3 overflow-x-auto pb-1 scrollbar-none sm:mt-5">
-                            {active.media.map((item, mi) => (
-                              <div
-                                key={`${item.src}-${mi}`}
-                                className="h-36 w-56 shrink-0 sm:h-44 sm:w-72"
-                              >
-                                <MediaItem item={item} />
-                              </div>
-                            ))}
+                          <div className="mt-5 sm:mt-6">
+                            <PolaroidFlickThrough
+                              key={active.id}
+                              media={active.media}
+                            />
                           </div>
                         ) : (
-                          <p className="mt-4 border border-dashed border-line px-3 py-6 text-center font-mono text-[10px] uppercase tracking-[0.15em] text-dim">
+                          <p className="mt-5 border border-dashed border-line px-3 py-8 text-center font-mono text-[10px] uppercase tracking-[0.15em] text-dim">
                             Drop images or videos in
                             <br />
                             public/achievements/{active.id}/
