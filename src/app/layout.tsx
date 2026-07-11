@@ -21,14 +21,14 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gazi Faysal Jubayer — CAD Designer & Programmer",
+  title: "Gazi Faysal Jubayer — Mechanical Engineer & Programmer",
   description:
     "Portfolio of Gazi Faysal Jubayer — mechanical design, CAD, and software development. KUET Mechanical Engineering · 2× NASA Space Apps Galactic Problem Solver.",
   keywords: [
     "portfolio",
-    "CAD designer",
-    "programmer",
     "mechanical engineer",
+    "programmer",
+    "CAD",
     "SolidWorks",
     "Next.js",
     "React",
@@ -37,19 +37,27 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Gazi Faysal Jubayer" }],
   creator: "Gazi Faysal Jubayer",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+      { url: "/logo.png", type: "image/png", sizes: "any" },
+    ],
+    apple: [{ url: "/logo.png", type: "image/png" }],
+    shortcut: "/icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Gazi Faysal Jubayer — CAD Designer & Programmer",
+    title: "Gazi Faysal Jubayer — Mechanical Engineer & Programmer",
     description:
-      "Engineering precision meets digital craft. CAD · Code · 2× NASA Space Apps winner.",
+      "Engineering precision meets digital craft. Mechanical · Code · 2× NASA Space Apps winner.",
     siteName: "Gazi Faysal Jubayer",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gazi Faysal Jubayer — CAD Designer & Programmer",
+    title: "Gazi Faysal Jubayer — Mechanical Engineer & Programmer",
     description:
-      "Engineering precision meets digital craft. CAD · Code · 2× NASA Space Apps winner.",
+      "Engineering precision meets digital craft. Mechanical · Code · 2× NASA Space Apps winner.",
   },
 };
 

@@ -131,6 +131,44 @@ export default function ExperiencePage() {
           </Reveal>
           <AchievementSection />
 
+          {PUBLICATIONS.length > 0 && (
+            <div className="mt-12 sm:mt-16">
+              <Reveal>
+                <h2 className="tech-label mb-6 sm:mb-8">
+                  <span className="text-accent">&gt;</span> Publication
+                </h2>
+              </Reveal>
+              {PUBLICATIONS.map((pub) => (
+                <Reveal key={pub.title}>
+                  <a
+                    href={pub.doi}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block overflow-hidden border border-accent/50 bg-[color-mix(in_srgb,var(--page-accent)_8%,transparent)] p-5 transition-colors hover:border-accent hover:bg-[color-mix(in_srgb,var(--page-accent)_14%,transparent)] sm:p-6"
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute left-0 top-0 h-full w-1 bg-accent"
+                    />
+                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+                      Peer-reviewed · {pub.status}
+                    </p>
+                    <p className="mt-3 text-sm font-medium leading-relaxed text-bone transition-colors group-hover:text-accent sm:text-base md:text-lg md:leading-relaxed">
+                      {pub.title}
+                    </p>
+                    <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:text-[11px] sm:tracking-[0.2em]">
+                      <span>{pub.date}</span>
+                      <span className="text-accent">·</span>
+                      <span className="text-accent transition-colors group-hover:underline">
+                        View DOI ↗
+                      </span>
+                    </p>
+                  </a>
+                </Reveal>
+              ))}
+            </div>
+          )}
+
           <Reveal className="mt-12 sm:mt-16">
             <h2 className="tech-label mb-6 sm:mb-8">
               <span className="text-accent">&gt;</span> Certifications
@@ -157,33 +195,6 @@ export default function ExperiencePage() {
               </Reveal>
             ))}
           </ul>
-
-          {PUBLICATIONS.length > 0 && (
-            <>
-              <Reveal className="mt-12 sm:mt-16">
-                <h2 className="tech-label mb-6 sm:mb-8">
-                  <span className="text-accent">&gt;</span> Publication
-                </h2>
-              </Reveal>
-              {PUBLICATIONS.map((pub) => (
-                <Reveal key={pub.title}>
-                  <a
-                    href={pub.doi}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group block border border-line p-4 transition-colors hover:border-accent sm:p-5"
-                  >
-                    <p className="text-xs leading-relaxed text-bone transition-colors group-hover:text-accent sm:text-sm">
-                      {pub.title}
-                    </p>
-                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:mt-3 sm:text-[11px] sm:tracking-[0.2em]">
-                      {pub.date} — DOI ↗
-                    </p>
-                  </a>
-                </Reveal>
-              ))}
-            </>
-          )}
         </div>
       </div>
     </PageShell>

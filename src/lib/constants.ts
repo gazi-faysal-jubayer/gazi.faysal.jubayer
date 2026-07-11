@@ -1,9 +1,9 @@
 export const PROFILE = {
   name: "Gazi Faysal Jubayer",
   firstName: "Gazi",
-  tagline: "CAD designer | Programmer",
+  tagline: "Mechanical Engineer | Programmer",
   headline: "Engineering precision meets digital craft.",
-  bio: "As a dedicated and passionate professional in the fields of mechanical design, programming and software development, I bring a unique blend of engineering and IT expertise to the table. I thrive on solving complex problems and driving innovation.",
+  bio: "As a dedicated and passionate professional in mechanical design, engineering simulation, programming, and software development, I bring a unique blend of engineering and IT expertise to the table. From CAD and FEA/CFD work in tools like Ansys, Abaqus, and COMSOL to building software that ships, I thrive on solving complex problems and driving innovation.",
   email: "gazi.faysal.jubayer@gmail.com",
   phone: "+8801315669261",
   location: "Khulna, Bangladesh",

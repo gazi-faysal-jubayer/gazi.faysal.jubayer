@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { PAGES } from "@/lib/constants";
+import { PAGES, PROFILE } from "@/lib/constants";
 import { TransitionLink } from "@/components/transition/TransitionLink";
 
 function useClock() {
@@ -38,9 +39,16 @@ export function TopBar() {
         <TransitionLink
           href="/"
           label="INDEX"
-          className="shrink-0 font-mono text-[10px] uppercase tracking-[0.15em] text-bone transition-colors hover:text-accent sm:text-xs sm:tracking-[0.2em]"
+          className="shrink-0 transition-opacity hover:opacity-80"
         >
-          GFJ<span className="text-accent">©</span>2026
+          <Image
+            src="/logo.png"
+            alt={PROFILE.name}
+            width={120}
+            height={120}
+            priority
+            className="h-7 w-auto object-contain sm:h-8"
+          />
         </TransitionLink>
 
         <div className="hidden flex-1 items-center gap-3 md:flex">

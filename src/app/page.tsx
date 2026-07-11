@@ -24,7 +24,7 @@ export default function IndexPage() {
         <Reveal delay={0.25} y={20}>
           <div className="mt-6 flex flex-col gap-2 font-mono text-xs text-dim sm:mt-8 sm:text-sm md:flex-row md:items-center md:gap-6">
             <p className="uppercase tracking-[0.2em] sm:tracking-[0.25em]">
-              CAD Designer <span className="text-accent">/</span> Programmer
+              Mechanical Engineer <span className="text-accent">/</span> Programmer
             </p>
             <span className="hidden h-px w-16 bg-line md:block" />
             <p className="uppercase tracking-[0.2em] sm:tracking-[0.25em]">
