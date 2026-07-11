@@ -141,7 +141,7 @@ export default function ExperiencePage() {
               {PUBLICATIONS.map((pub) => (
                 <Reveal key={pub.title}>
                   <a
-                    href={pub.doi}
+                    href={pub.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="group relative block overflow-hidden border border-accent/50 bg-[color-mix(in_srgb,var(--page-accent)_8%,transparent)] p-5 transition-colors hover:border-accent hover:bg-[color-mix(in_srgb,var(--page-accent)_14%,transparent)] sm:p-6"
@@ -150,17 +150,32 @@ export default function ExperiencePage() {
                       aria-hidden
                       className="absolute left-0 top-0 h-full w-1 bg-accent"
                     />
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
-                      Peer-reviewed · {pub.status}
-                    </p>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent">
+                        Peer-reviewed · {pub.status}
+                      </p>
+                      <span className="font-mono text-[10px] text-dim">·</span>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-dim">
+                        Vol. {pub.volume} · Issue {pub.issue} · Art.{" "}
+                        {pub.articleNumber}
+                      </p>
+                    </div>
                     <p className="mt-3 text-sm font-medium leading-relaxed text-bone transition-colors group-hover:text-accent sm:text-base md:text-lg md:leading-relaxed">
                       {pub.title}
+                    </p>
+                    <p className="mt-3 font-mono text-[10px] leading-relaxed text-dim sm:text-[11px]">
+                      {pub.journal}
+                    </p>
+                    <p className="mt-2 font-mono text-[10px] leading-relaxed text-dim/80 sm:text-[11px]">
+                      {pub.authors.join(" · ")}
                     </p>
                     <p className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:text-[11px] sm:tracking-[0.2em]">
                       <span>{pub.date}</span>
                       <span className="text-accent">·</span>
+                      <span>Online {pub.publishedOnline}</span>
+                      <span className="text-accent">·</span>
                       <span className="text-accent transition-colors group-hover:underline">
-                        View DOI ↗
+                        ScienceDirect ↗
                       </span>
                     </p>
                   </a>

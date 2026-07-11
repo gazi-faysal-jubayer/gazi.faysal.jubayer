@@ -250,9 +250,22 @@ export const PUBLICATIONS = [
   {
     title:
       "Analyzing the impact of opportunistic maintenance optimization on manufacturing industries in Bangladesh: An empirical study",
-    date: "August 2024",
-    status: "Available online",
+    journal:
+      "BenchCouncil Transactions on Benchmarks, Standards and Evaluations",
+    volume: "4",
+    issue: "2",
+    articleNumber: "100172",
+    date: "June 2024",
+    publishedOnline: "August 2024",
+    status: "Published",
+    authors: [
+      "Md. Ariful Alam",
+      "Md. Rafiquzzaman",
+      "Md. Hasan Ali",
+      "Gazi Faysal Jubayer",
+    ],
     doi: "https://doi.org/10.1016/j.tbench.2024.100172",
+    url: "https://www.sciencedirect.com/science/article/pii/S2772485924000243",
   },
 ] as const;
 
