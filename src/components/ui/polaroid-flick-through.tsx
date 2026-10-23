@@ -68,10 +68,12 @@ function PolaroidCard({
   return (
     <motion.div
       className={cn(
-        "absolute left-1/2 top-0 w-[min(100%,280px)] -translate-x-1/2 sm:w-[min(100%,320px)] md:w-[340px]",
+        // Front card stays in flow so the stack sizes itself; centring via
+        // translate classes would be overwritten by the drag transform.
+        "top-0 w-full",
         isFront
-          ? "z-20 cursor-grab touch-pan-y active:cursor-grabbing"
-          : "pointer-events-none"
+          ? "relative z-20 cursor-grab touch-pan-y active:cursor-grabbing"
+          : "pointer-events-none absolute inset-x-0"
       )}
       style={{
         zIndex: 20 - depth,
@@ -209,7 +211,8 @@ export default function PolaroidFlickThrough({
 
   return (
     <div className={cn("w-full select-none", className)}>
-      <div className="relative mx-auto h-[270px] w-full max-w-lg touch-pan-y sm:h-[310px] md:h-[340px]">
+      {/* pb leaves room for the stacked cards peeking out below the front one */}
+      <div className="relative mx-auto w-full max-w-[min(100%,400px)] touch-pan-y pb-8 sm:max-w-[440px] lg:max-w-[480px]">
         {[...stack].reverse().map((mediaIndex, reverseIndex) => {
           const depth = stack.length - 1 - reverseIndex;
           return (
