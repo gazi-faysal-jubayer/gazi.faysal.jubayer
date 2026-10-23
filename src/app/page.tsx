@@ -29,10 +29,6 @@ export default function IndexPage() {
             <p className="uppercase tracking-[0.2em] sm:tracking-[0.25em]">
               Mechanical Engineer <span className="text-accent">/</span> Programmer
             </p>
-            <span className="hidden h-px w-16 bg-line md:block" />
-            <p className="uppercase tracking-[0.2em] sm:tracking-[0.25em]">
-              2× NASA Space Apps Winner
-            </p>
           </div>
         </Reveal>
 

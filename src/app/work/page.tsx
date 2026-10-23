@@ -33,9 +33,12 @@ export default function WorkPage() {
           const items = PROJECTS.filter((p) => p.type === category.id).map(
             (p) => ({
               ...p,
-              cover: readAchievementMedia(p.slug, "projects").find(
-                (m) => m.type === "image"
-              )?.src,
+              cover:
+                readAchievementMedia(p.slug, "projects").find(
+                  (m) => m.type === "image"
+                )?.src ??
+                (p.videos?.[0] &&
+                  `https://i.ytimg.com/vi/${p.videos[0].id}/hqdefault.jpg`),
             })
           );
           if (items.length === 0) return null;

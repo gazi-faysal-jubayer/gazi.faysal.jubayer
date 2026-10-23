@@ -17,6 +17,7 @@ import { useFinePointer } from "@/lib/use-media";
 import { Viewport, Wire, type SceneProps } from "./Viewport";
 import { gearShape } from "./gear";
 import { Shredder } from "./Shredder";
+import { TpmsInfill } from "./TpmsInfill";
 
 type ColorProps = { color: string };
 
@@ -136,6 +137,11 @@ const MODELS: Record<ProjectType, (p: ColorProps) => JSX.Element> = {
   programming: NodeGraph,
 };
 
+const BESPOKE: Record<ProjectModelKind, (p: ColorProps) => JSX.Element> = {
+  shredder: Shredder,
+  tpms: TpmsInfill,
+};
+
 function Spinner({ children }: { children: React.ReactNode }) {
   const ref = useRef<Group>(null);
   useFrame((_, dt) => {
@@ -155,7 +161,7 @@ export default function ProjectPart({
   model,
 }: SceneProps & { type: ProjectType; model?: ProjectModelKind }) {
   const fine = useFinePointer();
-  const Model = model === "shredder" ? Shredder : MODELS[type] ?? NodeGraph;
+  const Model = (model && BESPOKE[model]) ?? MODELS[type] ?? NodeGraph;
   return (
     <Viewport active={active} camera={{ position: [0, 0.4, 4.4], fov: 40 }}>
       <Spinner>

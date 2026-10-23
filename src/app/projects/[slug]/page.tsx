@@ -138,6 +138,34 @@ export default function ProjectPage({ params }: PageProps) {
               </Reveal>
             )}
 
+            {project.videos && project.videos.length > 0 && (
+              <Reveal delay={0.12} className="mt-8 sm:mt-12">
+                <h2 className="tech-label">
+                  <span className="text-accent">&gt;</span> Videos
+                </h2>
+                <div className="mt-4 space-y-6 sm:mt-6 sm:space-y-8">
+                  {project.videos.map((video) => (
+                    <figure key={video.id}>
+                      <figcaption className="mb-2 font-mono text-[10px] uppercase tracking-[0.15em] text-dim sm:mb-3 sm:text-[11px]">
+                        {video.title}
+                      </figcaption>
+                      <div className="relative aspect-video w-full overflow-hidden border border-line bg-panel">
+                        <iframe
+                          src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
+                          title={video.title}
+                          loading="lazy"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allowFullScreen
+                          className="absolute inset-0 h-full w-full"
+                        />
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+              </Reveal>
+            )}
+
             {media.length > 0 && (
               <Reveal delay={0.12} className="mt-8 sm:mt-12">
                 <h2 className="tech-label">

@@ -439,15 +439,15 @@ export const CERTIFICATIONS = [
 export type ProjectType = "cad" | "simulation" | "hands-on" | "programming";
 
 /** Bespoke 3D viewport model; otherwise the per-type model is used. */
-export type ProjectModelKind = "shredder";
+export type ProjectModelKind = "shredder" | "tpms";
 
 export const WORK_CATEGORIES: {
   id: ProjectType;
   label: string;
 }[] = [
   { id: "cad", label: "CAD" },
-  { id: "simulation", label: "Simulation" },
   { id: "hands-on", label: "Hands-on project" },
+  { id: "simulation", label: "Simulation" },
   { id: "programming", label: "Programming" },
 ];
 
@@ -465,6 +465,8 @@ export type Project = {
   model?: ProjectModelKind;
   /** Derived at build time from the first image in public/projects/<slug>/ */
   cover?: string;
+  /** YouTube videos embedded on the project page */
+  videos?: { id: string; title: string }[];
 };
 
 export const PROJECTS: Project[] = [
@@ -583,6 +585,30 @@ export const PROJECTS: Project[] = [
       "National-level competition",
     ],
     featured: true,
+  },
+  {
+    slug: "orcaslicer-tpms-infill",
+    type: "hands-on",
+    title: "Custom TPMS Infill for OrcaSlicer",
+    summary:
+      "Equation-driven TPMS-P and TPMS-IWP infill patterns with adaptive density, built into OrcaSlicer with Claude AI.",
+    description:
+      "A custom build of OrcaSlicer with brand-new infill patterns based on triply periodic minimal surfaces (TPMS) — smooth 3D structures defined by equations that spread load evenly in every direction. Working with Claude Opus 5.5, I reverse-engineered OrcaSlicer's infill code and added two fully equation-driven patterns: TPMS-P (Schwarz Primitive) and TPMS-IWP (Schoen I-WP). Part two adds an adaptive density option that varies infill density through the part (Normal Z mode, 10% interior density, exponential gradient). Tested by slicing the same test bar on a Bambu Lab A1 (0.4 mm nozzle, PLA, 0.20 mm Standard profile, 15% sparse infill): TPMS-P with adaptive density came out at 19m 01s and 8.92 g, saving 1m 10s and 0.36 g over the TPMS-IWP baseline. These are slicer estimates — FEA and physical strength tests are next.",
+    year: "2026",
+    tech: ["OrcaSlicer", "C++", "Claude AI", "3D Printing", "Bambu Lab A1"],
+    highlights: [
+      "TPMS-P (Schwarz Primitive) and TPMS-IWP (Schoen I-WP), fully equation-driven",
+      "Adaptive density: Normal Z gradient, 10% interior, exponential falloff",
+      "TPMS-P + adaptive: 19m 01s / 8.92 g vs 20m 11s / 9.28 g IWP baseline (slicer estimate)",
+      "Tested on Bambu Lab A1 · PLA · 0.20 mm layers · 15% sparse infill",
+      "Built with Claude Opus 5.5 — FEA and physical strength tests next",
+    ],
+    videos: [
+      { id: "PJuFq3oD-FM", title: "Part 1 — TPMS-P infill" },
+      { id: "jUkzMcTVLUA", title: "Part 2 — TPMS-IWP + adaptive density" },
+    ],
+    featured: true,
+    model: "tpms",
   },
   {
     slug: "shadow-art-lamp",
