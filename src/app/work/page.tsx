@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function WorkPage() {
   return (
-    <PageShell pageNumber="04" pageLabel="WORK">
+    <PageShell pageNumber="04" pageLabel="WORK" object="work">
       <HeroShutterText
         text="Selected work"
         as="h2"

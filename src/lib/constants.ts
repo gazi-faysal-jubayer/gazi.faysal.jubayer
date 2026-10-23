@@ -3,7 +3,7 @@ export const PROFILE = {
   firstName: "Gazi",
   tagline: "Mechanical Engineer | Programmer",
   headline: "Engineering precision meets digital craft.",
-  bio: "As a dedicated and passionate professional in mechanical design, engineering simulation, programming, and software development, I bring a unique blend of engineering and IT expertise to the table. From CAD and FEA/CFD work in tools like Ansys, Abaqus, and COMSOL to building software that ships, I thrive on solving complex problems and driving innovation.",
+  bio: "Mechanical Engineering student at KUET working across machine learning, full-stack development, and CAD design. 2× NASA Space Apps Global Nominee and Galactic Problem Solver, published researcher in manufacturing optimization, Champion of CAD Conqueror (EELEVEN AutoFest 2026), and 4× national CAD contest podium winner. CSWA, CSWP, CSWPA-SM, and CSWPA-WD certified, with leadership roles across Team Kilo Flight, Team Durbar, and Fab Lab KUET.",
   email: "gazi.faysal.jubayer@gmail.com",
   phone: "+8801315669261",
   location: "Khulna, Bangladesh",
@@ -23,17 +23,26 @@ export const SKILLS = {
     "COMSOL",
     "3D Printing",
     "nTop",
+    "Blender",
+    "KeyShot",
+    "Sheet Metal Design",
     "Hands-on fabrication",
   ],
   programming: [
     "Python",
     "C",
+    "SQL",
     "Dart",
     "JavaScript",
     "TypeScript",
     "Next.js",
     "React",
     "Flutter",
+    "TensorFlow",
+    "Scikit-learn",
+    "Django",
+    "FastAPI",
+    "ROS",
     "Computer Vision",
     "Data Analysis",
   ],
@@ -46,9 +55,9 @@ export const LANGUAGES = [
 
 export const EDUCATION = [
   {
-    degree: "Mechanical Engineering",
+    degree: "B.Tech in Mechanical Engineering",
     institution: "Khulna University of Engineering and Technology",
-    year: "2022 - 2027",
+    year: "Dec 2022 - Jun 2027",
     location: "Khulna, Bangladesh",
   },
   {
@@ -75,6 +84,18 @@ export type ExperienceEntry = {
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
+    company: "ONNEXX",
+    roles: [
+      {
+        title: "Jr. Mechanical Engineer (Part-time)",
+        start: { month: 9, year: 2026 },
+        end: null,
+        description:
+          "Mechanical engineering for the Project ONNEXX sound system (Texas, USA).",
+      },
+    ],
+  },
+  {
     company: "Fab Lab KUET",
     roles: [
       {
@@ -88,11 +109,11 @@ export const EXPERIENCE: ExperienceEntry[] = [
     company: "3D Bytes",
     roles: [
       {
-        title: "Founder",
+        title: "Founder & Technical Lead",
         start: { month: 0, year: 2026 },
         end: null,
         description:
-          "IT services and 3D design / printing studio based in Khulna, Bangladesh.",
+          "Commercial 3D printing service for rapid prototyping and custom fabrication — running Bambu Lab P1S hardware and tuning Bambu Studio / OrcaSlicer profiles (alternating infill, custom raster angles) for strong, engineering-grade parts.",
       },
     ],
   },
@@ -100,15 +121,16 @@ export const EXPERIENCE: ExperienceEntry[] = [
     company: "KILO FLIGHT",
     roles: [
       {
-        title: "Vice Captain",
-        start: { month: 6, year: 2026 },
+        title: "Vice Captain (Technical)",
+        start: { month: 9, year: 2025 },
         end: null,
-        description: "Promoted to Vice Captain of Team Kilo Flight.",
+        description:
+          "Leading technical operations, engineering design, and vehicle fabrication; designing and optimizing powertrain systems in SolidWorks and mentoring sub-teams on CAD best practices.",
       },
       {
         title: "Senior Executive at The Mechanical Powertrain Sub-Team",
         start: { month: 9, year: 2025 },
-        end: { month: 6, year: 2026 },
+        end: { month: 9, year: 2025 },
         description:
           "Promoted to Senior Executive at the Mechanical Powertrain Sub-Team of Team Kilo Flight.",
       },
@@ -134,14 +156,15 @@ export const EXPERIENCE: ExperienceEntry[] = [
     roles: [
       {
         title: "Autonomous Lead",
-        start: { month: 2, year: 2026 },
+        start: { month: 8, year: 2025 },
         end: null,
-        description: "Promoted to Autonomous Lead at Team Durbar.",
+        description:
+          "Directing autonomous navigation for the KUET Mars Rover with ROS, OpenCV, and Python — perception, path planning, and sensor integration. 2nd place at the NASA Texas Space Grant Mars Autonomous Rover Rally (Dec 2025).",
       },
       {
         title: "Senior Executive at Autonomous Sub-Team",
         start: { month: 8, year: 2025 },
-        end: { month: 2, year: 2026 },
+        end: { month: 8, year: 2025 },
         description:
           "Promoted to Senior Executive of the Autonomous Sub-Team at Team Durbar.",
       },
@@ -197,7 +220,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
         start: { month: 7, year: 2024 },
         end: null,
         description:
-          "Co-founded uddharbd.org during the 2024 Feni flood to coordinate disaster relief. The team now includes ~30 members and volunteers.",
+          "Co-founded uddharbd.org during the 2024 Feni flood to coordinate disaster relief. Leading a 30+ member technical team building the Django web platform and Flutter mobile app.",
       },
     ],
   },
@@ -231,7 +254,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
         start: { month: 0, year: 2024 },
         end: null,
         description:
-          "vsbbd.com — a digital platform providing solutions for HSC and admission students.",
+          "vsbbd.com — an EdTech platform serving 1000+ HSC and university admission students, built with Django and Selenium-based content automation.",
       },
     ],
   },
@@ -243,6 +266,40 @@ export const EXPERIENCE: ExperienceEntry[] = [
         start: { month: 4, year: 2025 },
         end: { month: 0, year: 2026 },
         description: "RoboSub 2025 — website lead and mechanical design.",
+      },
+    ],
+  },
+  {
+    company: "Team BengalBoat",
+    roles: [
+      {
+        title: "Website Team Lead",
+        start: { month: 9, year: 2025 },
+        end: null,
+        description:
+          "Building the team's responsive website showcasing its maritime projects.",
+      },
+    ],
+  },
+  {
+    company: "AJS Innovation",
+    roles: [
+      {
+        title: "Founder",
+        start: { month: 5, year: 2023 },
+        end: null,
+        description:
+          "Engineering design and automation company delivering CAD and software solutions — Python automation workflows cut processing time by 60%.",
+      },
+    ],
+  },
+  {
+    company: "Sholo Magazine",
+    roles: [
+      {
+        title: "Local Ambassador",
+        start: { month: 1, year: 2022 },
+        end: { month: 11, year: 2023 },
       },
     ],
   },
@@ -281,6 +338,22 @@ export type Achievement = {
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
+    id: "cad-conqueror-2026",
+    title: "Champion — CAD Conqueror",
+    event: "EELEVEN Bangladesh AutoFest 2026",
+    date: "2026",
+    description:
+      "Secured 1st place in the national Car Concept Design and Fabrication Contest for innovative automotive CAD modeling and manufacturing planning.",
+  },
+  {
+    id: "mie-robolution-cad",
+    title: "Champion — MIE Robolution CAD Contest",
+    event: "MIE Department, CUET · Team Phenol",
+    date: "2026",
+    description:
+      "Won 1st place and a 17,000 BDT prize at the national CAD competition organized by the Mechanical and Industrial Engineering Department, CUET.",
+  },
+  {
     id: "mars-rover-rally-2025",
     title: "2nd Place — Mars Autonomous Rover Rally",
     event: "NASA Texas Space Grant · Team Durbar",
@@ -306,11 +379,11 @@ export const ACHIEVEMENTS: Achievement[] = [
   },
   {
     id: "nasa-space-apps-nominee",
-    title: "2× NASA Space Apps Global Nominee",
+    title: "2× Galactic Problem Solver · Global Nominee",
     event: "NASA International Space Apps Challenge",
     date: "2023 – 2024",
     description:
-      "Two-time Global Nominee at the NASA International Space Apps Challenge, recognized for innovative solutions to real-world space and Earth challenges.",
+      "Two-time Global Nominee and Galactic Problem Solver at the NASA International Space Apps Challenge — Regional 1st Runner-Up in 2023 and Regional 2nd Runner-Up in 2024.",
   },
   {
     id: "national-cad-podium",
@@ -318,7 +391,7 @@ export const ACHIEVEMENTS: Achievement[] = [
     event: "National CAD Contests · Multiple Universities",
     date: "2024 – 2026",
     description:
-      "Four-time national CAD contest podium winner across competitions held at different universities.",
+      "Four-time national CAD contest podium winner across universities — Champion at EELEVEN AutoFest 2026 and CUET MIE Robolution; 1st Runner-Up at Calibration 1.0 (Feb 2024), Calibration 2.0 (May 2026), and Energy Fest 1.0.",
   },
 ];
 
@@ -360,6 +433,12 @@ export const CERTIFICATIONS = [
     date: "April 2024",
     credentialUrl:
       "https://www.coursera.org/account/accomplishments/certificate/Z5T6FJDAQR",
+  },
+  {
+    name: "Python for Data Science, AI & Development",
+    organization: "IBM",
+    date: "",
+    credentialUrl: undefined,
   },
 ] as const;
 
@@ -473,14 +552,14 @@ export const PROJECTS: Project[] = [
     slug: "calibration-cad-contests",
     type: "cad",
     title: "Calibration CAD Contests",
-    summary: "National CAD contest champion (1.0) and 1st Runner-Up (2.0).",
+    summary: "1st Runner-Up at the CALIBRATION 1.0 and 2.0 national CAD contests.",
     description:
-      "Won my first national CAD contest at CALIBRATION 1.0, then returned with Team Overthinker to take 1st Runner-Up at the CAD contest in CALIBRATION 2.0 — timed modeling challenges against teams from across the country.",
+      "Took 1st Runner-Up at the CAD contest in CALIBRATION 1.0 (Feb 2024), then returned with Team Overthinker to place 1st Runner-Up again at CALIBRATION 2.0 (May 2026) — timed modeling challenges against teams from across the country.",
     year: "2024–2026",
     tech: ["SolidWorks", "Engineering Drawing", "Speed Modeling"],
     highlights: [
-      "Champion — CALIBRATION 1.0",
-      "1st Runner-Up — CALIBRATION 2.0 (Team Overthinker)",
+      "1st Runner-Up — CALIBRATION 1.0 (Feb 2024)",
+      "1st Runner-Up — CALIBRATION 2.0 (May 2026, Team Overthinker)",
       "National-level competition",
     ],
     featured: true,
@@ -590,11 +669,11 @@ export const PROJECTS: Project[] = [
     description:
       "A charity website and organization helping people during disasters. Started during the Flood of 2024 in Feni, Bangladesh, Uddhar now operates with a team of about 30 members and volunteers, with a mobile app version on the way.",
     year: "2024",
-    tech: ["Next.js", "React", "Database"],
+    tech: ["Django", "Flutter", "PostgreSQL"],
     highlights: [
-      "Live relief coordination platform at uddharbd.org",
-      "Grew to ~30 members and volunteers",
-      "Mobile app version in development",
+      "Django REST API with PostgreSQL for real-time donation tracking",
+      "Connects donors with flood victims at uddharbd.org",
+      "Flutter mobile app for iOS and Android in development",
     ],
     link: "https://uddharbd.org",
     featured: true,
@@ -607,13 +686,64 @@ export const PROJECTS: Project[] = [
     description:
       "vsbbd.com is a platform providing solutions for the problems of HSC and admission students across Bangladesh — built as Co-Founder and Tech Lead.",
     year: "2024",
-    tech: ["Web Development", "Educational Platform"],
+    tech: ["Django", "Selenium", "Web Scraping"],
     highlights: [
-      "Co-founded and led technical development",
-      "Solutions for HSC and university admission students",
+      "Serves 1000+ HSC and university admission students",
+      "Selenium-based scraping for automated content aggregation",
+      "User auth, content management, and advanced search",
     ],
     link: "https://vsbbd.com",
     featured: true,
+  },
+  {
+    slug: "exobengal",
+    type: "programming",
+    title: "ExoBengal",
+    summary: "AI-powered exoplanet detection platform with ML, web, and chatbot.",
+    description:
+      "An AI exoplanet discovery ecosystem: a PyPI package of ML models trained on NASA Kepler data, an interactive Next.js site with 3D orbital visualizations and galaxy maps, models served from Cerebrium Cloud, and the Cosmo AI chatbot for natural-language astronomy questions.",
+    year: "2024",
+    tech: ["TensorFlow", "Scikit-learn", "Next.js", "FastAPI", "Cerebrium"],
+    highlights: [
+      "90% accuracy (0.90 AUC-ROC) on Kepler Q1–Q17 · 38,746+ exoplanets",
+      "Random Forest, CNN, KNN, and Decision Tree models with auto-retraining",
+      "Earth Similarity Index scoring and probability thresholding",
+      "3D orbital visualizations, galaxy maps, and live dashboards",
+      "Cosmo AI chatbot powered by Gemini 2.5 Flash",
+    ],
+    featured: true,
+  },
+  {
+    slug: "mars-rover-navigation",
+    type: "programming",
+    title: "Mars Autonomous Rover Navigation",
+    summary: "ROS autonomy stack that placed 2nd at the NASA Texas Space Grant rally.",
+    description:
+      "Autonomous navigation algorithms built with Team Durbar for Mars Kaiser Crater terrain exploration in a high-fidelity, physics-based Space Teams PRO simulation — including path planning, obstacle avoidance, and mission strategies for in-situ resource utilization and habitability assessment.",
+    year: "2025",
+    tech: ["ROS", "Python", "Space Teams PRO"],
+    highlights: [
+      "2nd place — NASA Texas Space Grant Mars Autonomous Rover Rally",
+      "Path planning and obstacle avoidance on Kaiser Crater terrain",
+      "Mission strategy for ISRU and habitability assessment",
+    ],
+    featured: true,
+  },
+  {
+    slug: "autonomous-vehicle-navigation",
+    type: "programming",
+    title: "Autonomous Vehicle Navigation System",
+    summary: "Real-time OpenCV detection and path planning for autonomous driving.",
+    description:
+      "A computer-vision navigation system with real-time object detection and tracking in OpenCV, combined with sensor fusion and path planning for obstacle avoidance.",
+    year: "2024",
+    tech: ["Python", "OpenCV", "Computer Vision"],
+    highlights: [
+      "Real-time object detection and tracking",
+      "Sensor fusion for robust perception",
+      "Path planning with obstacle avoidance",
+    ],
+    featured: false,
   },
   {
     slug: "portfolio",

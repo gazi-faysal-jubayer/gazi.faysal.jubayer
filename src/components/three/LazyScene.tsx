@@ -14,6 +14,14 @@ const GearAssembly = dynamic(() => import("./GearAssembly"), { ssr: false });
 const ProjectPart = dynamic(() => import("./ProjectPart"), { ssr: false });
 const OrbitSat = dynamic(() => import("./OrbitSat"), { ssr: false });
 
+const PAGE_SCENES = {
+  about: dynamic(() => import("./Gimbal"), { ssr: false }),
+  work: dynamic(() => import("./ExplodedShaft"), { ssr: false }),
+  experience: dynamic(() => import("./Trophy"), { ssr: false }),
+};
+
+export type PageObjectKind = keyof typeof PAGE_SCENES;
+
 function hasWebGL() {
   try {
     const c = document.createElement("canvas");
@@ -73,6 +81,16 @@ export function ProjectModel({
   return (
     <SceneSlot className={className}>
       {(p) => <ProjectPart {...p} type={type} />}
+    </SceneSlot>
+  );
+}
+
+/** Decorative object beside a page heading; sits under the grid lines (-z-10). */
+export function PageObject({ kind }: { kind: PageObjectKind }) {
+  const Scene = PAGE_SCENES[kind];
+  return (
+    <SceneSlot className="pointer-events-none absolute right-2 top-14 -z-10 h-40 w-40 opacity-45 sm:right-6 sm:top-16 sm:h-64 sm:w-64 sm:opacity-70 md:right-10 lg:right-16 lg:top-20 lg:h-[300px] lg:w-[300px] lg:opacity-100 xl:h-[380px] xl:w-[380px]">
+      {(p) => <Scene {...p} />}
     </SceneSlot>
   );
 }

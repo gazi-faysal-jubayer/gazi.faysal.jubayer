@@ -104,7 +104,7 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   return (
-    <PageShell pageNumber="03" pageLabel="LOG">
+    <PageShell pageNumber="03" pageLabel="LOG" object="experience">
       <HeroShutterText
         text="Mission log"
         as="h2"

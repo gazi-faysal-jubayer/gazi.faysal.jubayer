@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageShell pageNumber="02" pageLabel="ABOUT">
+    <PageShell pageNumber="02" pageLabel="ABOUT" object="about">
       <HeroShutterText
         text="Dual craft"
         as="h2"
