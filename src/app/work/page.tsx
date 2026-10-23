@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PROJECTS, WORK_CATEGORIES } from "@/lib/constants";
+import { readAchievementMedia } from "@/lib/achievement-media";
 import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
@@ -29,7 +30,14 @@ export default function WorkPage() {
 
       <div className="mt-10 space-y-14 sm:mt-16 sm:space-y-20">
         {WORK_CATEGORIES.map((category, ci) => {
-          const items = PROJECTS.filter((p) => p.type === category.id);
+          const items = PROJECTS.filter((p) => p.type === category.id).map(
+            (p) => ({
+              ...p,
+              cover: readAchievementMedia(p.slug, "projects").find(
+                (m) => m.type === "image"
+              )?.src,
+            })
+          );
           if (items.length === 0) return null;
 
           return (

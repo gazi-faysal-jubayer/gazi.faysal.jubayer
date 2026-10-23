@@ -463,6 +463,8 @@ export type Project = {
   link?: string;
   featured?: boolean;
   model?: ProjectModelKind;
+  /** Derived at build time from the first image in public/projects/<slug>/ */
+  cover?: string;
 };
 
 export const PROJECTS: Project[] = [

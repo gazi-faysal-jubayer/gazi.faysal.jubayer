@@ -37,33 +37,60 @@ function CardBody({
 
   if (expanded) {
     return (
-      <div className="flex h-full flex-col justify-between gap-4 p-4 sm:p-5 md:p-6 lg:p-7">
-        <div className="min-w-0">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent sm:tracking-[0.2em]">
-            {String(idx + 1).padStart(2, "0")} — {project.year}
-          </p>
-          <h3 className="mt-2 font-display text-lg font-bold uppercase leading-[1.05] tracking-tight text-bone sm:text-xl md:text-2xl lg:text-3xl">
-            {project.title}
-          </h3>
-          <p className="mt-2 text-xs leading-relaxed text-dim sm:mt-3 sm:text-sm">
-            {project.summary}
-          </p>
-          <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 font-mono text-[9px] uppercase tracking-[0.12em] text-dim sm:gap-x-3 sm:text-[10px] sm:tracking-[0.15em]">
-            {project.tech.slice(0, 3).map((t) => (
-              <span key={t}>[{t}]</span>
-            ))}
-          </p>
-        </div>
+      <div className="relative h-full">
+        {project.cover && (
+          <>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={project.cover}
+              alt=""
+              aria-hidden
+              className="absolute inset-0 h-full w-full object-cover opacity-30 grayscale transition duration-500 group-hover:opacity-45 group-hover:grayscale-0"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-gradient-to-t from-panel via-panel/75 to-panel/40"
+            />
+          </>
+        )}
+        <div className="relative flex h-full flex-col justify-between gap-4 p-4 sm:p-5 md:p-6 lg:p-7">
+          <div className="min-w-0">
+            <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent sm:tracking-[0.2em]">
+              {String(idx + 1).padStart(2, "0")} — {project.year}
+            </p>
+            <h3 className="mt-2 font-display text-lg font-bold uppercase leading-[1.05] tracking-tight text-bone sm:text-xl md:text-2xl lg:text-3xl">
+              {project.title}
+            </h3>
+            <p className="mt-2 text-xs leading-relaxed text-dim sm:mt-3 sm:text-sm">
+              {project.summary}
+            </p>
+            <p className="mt-3 flex flex-wrap gap-x-2 gap-y-1 font-mono text-[9px] uppercase tracking-[0.12em] text-dim sm:gap-x-3 sm:text-[10px] sm:tracking-[0.15em]">
+              {project.tech.slice(0, 3).map((t) => (
+                <span key={t}>[{t}]</span>
+              ))}
+            </p>
+          </div>
 
-        <div className="flex items-end justify-between gap-3">
-          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-accent sm:text-[11px] sm:tracking-[0.2em]">
-            Open file <ArrowRight size={13} className="shrink-0" />
-          </span>
-          <div
-            aria-hidden
-            className="h-12 w-20 shrink-0 border border-line sm:h-14 sm:w-24 md:h-16 md:w-28"
-            style={{ background: gradient }}
-          />
+          <div className="flex items-end justify-between gap-3">
+            <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-accent sm:text-[11px] sm:tracking-[0.2em]">
+              Open file <ArrowRight size={13} className="shrink-0" />
+            </span>
+            {project.cover ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={project.cover}
+                alt=""
+                aria-hidden
+                className="h-12 w-20 shrink-0 border border-line bg-[#f4f1ea] object-cover sm:h-14 sm:w-24 md:h-16 md:w-28"
+              />
+            ) : (
+              <div
+                aria-hidden
+                className="h-12 w-20 shrink-0 border border-line sm:h-14 sm:w-24 md:h-16 md:w-28"
+                style={{ background: gradient }}
+              />
+            )}
+          </div>
         </div>
       </div>
     );

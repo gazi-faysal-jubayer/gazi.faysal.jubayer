@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -8,9 +8,10 @@ import {
   animate,
   type PanInfo,
 } from "framer-motion";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, Play } from "lucide-react";
 import type { AchievementMedia } from "@/lib/achievement-media";
 import { cn } from "@/lib/utils";
+import { MediaLightbox } from "@/components/ui/media-lightbox";
 
 const SWIPE_THRESHOLD = 80;
 
@@ -26,6 +27,7 @@ function PolaroidCard({
   total,
   labelIndex,
   onFlick,
+  onExpand,
 }: {
   item: AchievementMedia;
   depth: number;
@@ -33,6 +35,7 @@ function PolaroidCard({
   total: number;
   labelIndex: number;
   onFlick: (dir: 1 | -1) => void;
+  onExpand: () => void;
 }) {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-14, 14]);
@@ -88,7 +91,24 @@ function PolaroidCard({
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
     >
       <div className="rounded-sm border border-black/10 bg-[#f4f1ea] p-2.5 pb-8 shadow-[0_16px_48px_rgba(0,0,0,0.5)] sm:p-3 sm:pb-10">
-        <div className="relative aspect-[4/3] overflow-hidden bg-[#111]">
+        <div
+          className="relative aspect-[4/3] overflow-hidden bg-[#111]"
+          onDoubleClick={isFront ? onExpand : undefined}
+        >
+          {isFront && (
+            <button
+              type="button"
+              aria-label="Expand media"
+              onPointerDown={(e) => e.stopPropagation()}
+              onClick={(e) => {
+                e.stopPropagation();
+                onExpand();
+              }}
+              className="absolute right-2 top-2 z-10 inline-flex h-8 w-8 items-center justify-center bg-black/60 text-white backdrop-blur-sm transition-colors hover:bg-black/80"
+            >
+              <Maximize2 size={15} />
+            </button>
+          )}
           {item.type === "video" ? (
             isFront ? (
               <video
@@ -145,10 +165,27 @@ export default function PolaroidFlickThrough({
 }: PolaroidFlickThroughProps) {
   const mediaKey = media.map((m) => m.src).join("|");
   const [order, setOrder] = useState<number[]>(() => media.map((_, i) => i));
+  const [zoom, setZoom] = useState<number | null>(null);
 
   useEffect(() => {
     setOrder(media.map((_, i) => i));
   }, [mediaKey, media]);
+
+  const stepZoom = useCallback(
+    (dir: 1 | -1) =>
+      setZoom((z) => (z === null ? z : (z + dir + media.length) % media.length)),
+    [media.length]
+  );
+  // Minimizing brings the viewed item to the front of the stack.
+  const closeZoom = useCallback(() => {
+    if (zoom !== null) {
+      setOrder((prev) => {
+        const k = prev.indexOf(zoom);
+        return k < 0 ? prev : [...prev.slice(k), ...prev.slice(0, k)];
+      });
+    }
+    setZoom(null);
+  }, [zoom]);
 
   if (media.length === 0 || order.length === 0) return null;
 
@@ -184,6 +221,7 @@ export default function PolaroidFlickThrough({
               total={media.length}
               labelIndex={mediaIndex + 1}
               onFlick={cycle}
+              onExpand={() => setZoom(mediaIndex)}
             />
           );
         })}
@@ -214,8 +252,15 @@ export default function PolaroidFlickThrough({
       )}
 
       <p className="mt-2 text-center font-mono text-[9px] uppercase tracking-[0.15em] text-dim/70 sm:text-[10px]">
-        Drag the polaroid or use arrows · Videos play on front
+        Drag the polaroid or use arrows · Tap ⤢ to expand
       </p>
+
+      <MediaLightbox
+        media={media}
+        index={zoom}
+        onClose={closeZoom}
+        onStep={stepZoom}
+      />
     </div>
   );
 }
