@@ -5,6 +5,9 @@ import { TransitionProvider } from "@/components/transition/TransitionProvider";
 import { TopBar } from "@/components/layout/TopBar";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { PageColorProvider } from "@/components/layout/PageColorProvider";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
+import { ScrollProgress } from "@/components/motion/ScrollProgress";
+import { CustomCursor } from "@/components/motion/CustomCursor";
 
 const sans = Space_Grotesk({
   subsets: ["latin"],
@@ -76,10 +79,13 @@ export default function RootLayout({
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <body className="grain min-h-screen bg-void font-sans text-bone antialiased">
         <TransitionProvider>
+          <SmoothScroll />
           <PageColorProvider />
           <TopBar />
+          <ScrollProgress />
           {children}
           <BottomNav />
+          <CustomCursor />
         </TransitionProvider>
       </body>
     </html>

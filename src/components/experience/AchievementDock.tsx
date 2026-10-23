@@ -115,6 +115,7 @@ export function AchievementDock({ achievements }: AchievementDockProps) {
             >
               <motion.div
                 layout
+                data-lenis-prevent
                 className="max-h-[min(82svh,760px)] overflow-y-auto overflow-x-hidden rounded-2xl border border-line bg-panel/95 shadow-[0_20px_60px_rgba(0,0,0,0.55)] backdrop-blur-md scrollbar-none"
               >
                 <div className="sticky top-0 z-10 flex w-full items-center gap-3 border-b border-line bg-panel/95 p-3 backdrop-blur-md sm:gap-4 sm:p-4">

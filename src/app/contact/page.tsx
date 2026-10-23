@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
+import { ContactOrbit } from "@/components/three/LazyScene";
 
 export const metadata: Metadata = {
   title: "Contact — Gazi Faysal Jubayer",
@@ -17,6 +18,7 @@ export default function ContactPage() {
       pageLabel="CONTACT"
       className="flex flex-col justify-center"
     >
+      <ContactOrbit className="pointer-events-none absolute right-[3%] top-1/2 -z-10 hidden h-[440px] w-[440px] -translate-y-1/2 opacity-60 lg:block xl:h-[540px] xl:w-[540px] xl:opacity-100" />
       <HeroShutterText
         text="Open channel"
         as="h2"

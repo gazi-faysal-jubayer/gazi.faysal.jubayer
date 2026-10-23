@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/constants";
 import { useDoorTransition } from "@/components/transition/TransitionProvider";
 import { cn } from "@/lib/utils";
+import { Tilt } from "@/components/motion/Tilt";
 
 const TYPE_GRADIENTS: Record<string, string> = {
   cad: "linear-gradient(145deg, #FACC15 0%, #1a1605 55%, #050505 100%)",
@@ -166,7 +167,9 @@ export default function WorkImpactCards({
                 isOpen && "border-accent/50"
               )}
             >
-              <CardBody project={project} idx={idx} expanded={isOpen} />
+              <Tilt className="h-full" max={5}>
+                <CardBody project={project} idx={idx} expanded={isOpen} />
+              </Tilt>
             </motion.div>
           );
         })}

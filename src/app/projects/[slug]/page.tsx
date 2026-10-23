@@ -6,6 +6,8 @@ import { Reveal } from "@/components/motion/Reveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { TransitionLink } from "@/components/transition/TransitionLink";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
+import { ProjectModel } from "@/components/three/LazyScene";
+import { Tilt } from "@/components/motion/Tilt";
 
 type PageProps = {
   params: { slug: string };
@@ -76,18 +78,30 @@ export default function ProjectPage({ params }: PageProps) {
             <Reveal>
               <div
                 aria-hidden
-                className="mb-8 aspect-[16/10] w-full border border-line sm:mb-12"
-                style={{
-                  background:
-                    project.type === "cad"
-                      ? "linear-gradient(145deg, #FACC15 0%, #1a1605 55%, #050505 100%)"
-                      : project.type === "simulation"
-                        ? "linear-gradient(145deg, #60A5FA 0%, #0a1525 45%, #050505 100%)"
-                        : project.type === "hands-on"
-                          ? "linear-gradient(145deg, #34D399 0%, #0a1a14 45%, #050505 100%)"
-                          : "linear-gradient(145deg, #A78BFA 0%, #140f25 45%, #050505 100%)",
-                }}
-              />
+                className="relative mb-8 aspect-[16/10] w-full overflow-hidden border border-line bg-panel sm:mb-12"
+              >
+                <div
+                  className="absolute inset-0 opacity-30"
+                  style={{
+                    background:
+                      project.type === "cad"
+                        ? "linear-gradient(145deg, #FACC15 0%, #1a1605 55%, #050505 100%)"
+                        : project.type === "simulation"
+                          ? "linear-gradient(145deg, #60A5FA 0%, #0a1525 45%, #050505 100%)"
+                          : project.type === "hands-on"
+                            ? "linear-gradient(145deg, #34D399 0%, #0a1a14 45%, #050505 100%)"
+                            : "linear-gradient(145deg, #A78BFA 0%, #140f25 45%, #050505 100%)",
+                  }}
+                />
+                <div className="bg-grid absolute inset-0" />
+                <ProjectModel type={project.type} className="absolute inset-0" />
+                <p className="tech-label pointer-events-none absolute bottom-3 left-3 text-[9px] sm:bottom-4 sm:left-4 sm:text-[10px]">
+                  <span className="text-accent">+</span> VIEWPORT — [{typeLabel(project.type)}]
+                </p>
+                <p className="tech-label pointer-events-none absolute bottom-4 right-4 hidden text-[10px] [@media(hover:hover)_and_(pointer:fine)]:block">
+                  DRAG TO ORBIT
+                </p>
+              </div>
             </Reveal>
 
             <Reveal delay={0.08}>
@@ -120,7 +134,7 @@ export default function ProjectPage({ params }: PageProps) {
 
           <aside className="lg:col-span-4 lg:col-start-9">
             <Reveal delay={0.1} className="sticky top-24 space-y-8 sm:space-y-10">
-              <div className="border border-line p-4 sm:p-6">
+              <Tilt className="border border-line bg-void p-4 sm:p-6" max={6}>
                 <h2 className="tech-label">Stack</h2>
                 <ul className="mt-4 space-y-1.5 sm:mt-5 sm:space-y-2">
                   {project.tech.map((t) => (
@@ -132,7 +146,7 @@ export default function ProjectPage({ params }: PageProps) {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Tilt>
 
               {project.link && project.link !== "/" && (
                 <MagneticButton href={project.link} external>

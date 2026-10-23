@@ -1,5 +1,6 @@
 import { getScholarStats } from "@/lib/scholar";
 import { Reveal } from "@/components/motion/Reveal";
+import { Tilt } from "@/components/motion/Tilt";
 import { ExternalLink } from "lucide-react";
 
 function formatUpdated(iso: string) {
@@ -44,9 +45,10 @@ export async function ScholarStats() {
       <div className="border border-accent/40 bg-[color-mix(in_srgb,var(--page-accent)_7%,transparent)] p-4 sm:p-5">
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {metrics.map((m) => (
-            <div
+            <Tilt
               key={m.label}
               className="border border-line bg-void/40 px-3 py-3 sm:px-4 sm:py-4"
+              max={10}
             >
               <p className="font-display text-2xl font-bold tabular-nums tracking-tight text-accent sm:text-3xl">
                 {m.value}
@@ -54,7 +56,7 @@ export async function ScholarStats() {
               <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.18em] text-dim sm:text-[10px]">
                 {m.label}
               </p>
-            </div>
+            </Tilt>
           ))}
         </div>
 

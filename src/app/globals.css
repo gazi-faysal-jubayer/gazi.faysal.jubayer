@@ -9,10 +9,6 @@
   --page-accent: #A78BFA;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
@@ -129,11 +125,17 @@ body {
   transform: scaleX(1);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+/* Custom cursor (mouse devices only, toggled by CustomCursor) */
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
 
+html.has-cursor :is(input, textarea, [contenteditable="true"]) {
+  cursor: text !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {

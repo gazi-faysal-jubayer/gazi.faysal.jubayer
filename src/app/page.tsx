@@ -2,12 +2,15 @@ import { PROFILE, SKILLS } from "@/lib/constants";
 import { Reveal } from "@/components/motion/Reveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
+import { HeroGears } from "@/components/three/LazyScene";
 
 const MARQUEE_ITEMS = [...SKILLS.engineering, ...SKILLS.programming];
 
 export default function IndexPage() {
   return (
     <main className="bg-grid relative flex min-h-[100svh] flex-col overflow-x-clip pb-24 pt-16 sm:pb-28 sm:pt-24 md:pt-28">
+      {/* Behind the text (negative z under the grid lines), never blocks clicks */}
+      <HeroGears className="pointer-events-none absolute inset-x-0 bottom-32 top-12 -z-10 opacity-25 md:bottom-24 md:left-auto md:top-16 md:w-[58%] md:opacity-50 lg:w-1/2 lg:opacity-75" />
       <div className="mx-auto flex w-full max-w-content flex-1 flex-col justify-center px-4 sm:px-6 md:px-10 lg:px-16">
         <Reveal y={16}>
           <p className="tech-label">

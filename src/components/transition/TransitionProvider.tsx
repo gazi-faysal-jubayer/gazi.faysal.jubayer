@@ -10,6 +10,7 @@ import {
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { useReducedMotion, useAnimate } from "framer-motion";
+import { useLenis } from "lenis/react";
 import { getPageColor } from "@/lib/page-colors";
 
 type TransitionState = "idle" | "closing" | "closed" | "opening";
@@ -37,6 +38,7 @@ export function TransitionProvider({
   const router = useRouter();
   const pathname = usePathname();
   const reduce = useReducedMotion();
+  const lenis = useLenis();
 
   const [state, setState] = useState<TransitionState>("idle");
   const [label, setLabel] = useState("");
@@ -111,10 +113,11 @@ export function TransitionProvider({
       pathname === targetRef.current
     ) {
       targetRef.current = null;
-      window.scrollTo(0, 0);
+      if (lenis) lenis.scrollTo(0, { immediate: true, force: true });
+      else window.scrollTo(0, 0);
       openDoors();
     }
-  }, [pathname, openDoors]);
+  }, [pathname, openDoors, lenis]);
 
   return (
     <TransitionContext.Provider value={{ navigate }}>

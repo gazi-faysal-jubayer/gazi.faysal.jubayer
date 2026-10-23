@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { VerticalTicker } from "@/components/ui/vertical-ticker";
 import { Reveal } from "@/components/motion/Reveal";
+import { Tilt } from "@/components/motion/Tilt";
 
 const GALLERY_ROOT = path.join(process.cwd(), "public", "gallery");
 const IMAGE_EXTS = new Set([
@@ -91,13 +92,13 @@ export function GallerySection() {
             <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-dim lg:mb-4">
               [{col.label}]
             </p>
-            <div className="h-[400px] lg:h-[480px]">
+            <Tilt className="h-[400px] lg:h-[480px]" max={5}>
               <VerticalTicker
                 images={col.images}
                 reverse={col.reverse}
                 duration={col.duration}
               />
-            </div>
+            </Tilt>
           </div>
         ))}
       </div>

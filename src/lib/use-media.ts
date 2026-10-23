@@ -1,0 +1,25 @@
+"use client";
+
+import { useCallback, useSyncExternalStore } from "react";
+
+export function useMediaQuery(query: string) {
+  const subscribe = useCallback(
+    (cb: () => void) => {
+      const mql = window.matchMedia(query);
+      mql.addEventListener("change", cb);
+      return () => mql.removeEventListener("change", cb);
+    },
+    [query]
+  );
+
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => false
+  );
+}
+
+/** Mouse / trackpad devices — gates hover-only effects (tilt, cursor, orbit drag). */
+export function useFinePointer() {
+  return useMediaQuery("(hover: hover) and (pointer: fine)");
+}
