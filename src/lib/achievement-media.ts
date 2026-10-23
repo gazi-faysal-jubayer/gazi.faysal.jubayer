@@ -1,7 +1,8 @@
 import fs from "fs";
 import path from "path";
 
-const ACHIEVEMENTS_ROOT = path.join(process.cwd(), "public", "achievements");
+const PUBLIC_ROOT = path.join(process.cwd(), "public");
+const ACHIEVEMENTS_ROOT = path.join(PUBLIC_ROOT, "achievements");
 
 const IMAGE_EXTS = new Set([
   ".jpg",
@@ -19,15 +20,19 @@ export type AchievementMedia = {
   poster?: string;
 };
 
-export function readAchievementMedia(slug: string): AchievementMedia[] {
-  const dir = path.join(ACHIEVEMENTS_ROOT, slug);
+/** Media in public/<folder>/<slug>/ — achievements by default, also used for projects. */
+export function readAchievementMedia(
+  slug: string,
+  folder = "achievements"
+): AchievementMedia[] {
+  const dir = path.join(PUBLIC_ROOT, folder, slug);
   try {
     const files = fs.readdirSync(dir).sort();
     const media: AchievementMedia[] = [];
 
     for (const file of files) {
       const ext = path.extname(file).toLowerCase();
-      const src = `/achievements/${slug}/${file}`;
+      const src = `/${folder}/${slug}/${file}`;
 
       if (IMAGE_EXTS.has(ext)) {
         media.push({ type: "image", src });
@@ -41,7 +46,7 @@ export function readAchievementMedia(slug: string): AchievementMedia[] {
           type: "video",
           src,
           poster: poster
-            ? `/achievements/${slug}/${poster}`
+            ? `/${folder}/${slug}/${poster}`
             : undefined,
         });
       }

@@ -438,6 +438,9 @@ export const CERTIFICATIONS = [
 
 export type ProjectType = "cad" | "simulation" | "hands-on" | "programming";
 
+/** Bespoke 3D viewport model; otherwise the per-type model is used. */
+export type ProjectModelKind = "shredder";
+
 export const WORK_CATEGORIES: {
   id: ProjectType;
   label: string;
@@ -459,6 +462,7 @@ export type Project = {
   highlights?: string[];
   link?: string;
   featured?: boolean;
+  model?: ProjectModelKind;
 };
 
 export const PROJECTS: Project[] = [
@@ -541,6 +545,26 @@ export const PROJECTS: Project[] = [
       "Print-ready output",
     ],
     featured: false,
+  },
+  {
+    slug: "mine-shredder-machine",
+    type: "cad",
+    title: "Mine Shredder Machine",
+    summary: "Belt-driven rotary shredder that reduces mining waste for easier disposal.",
+    description:
+      "A fully functional mine shredder machine designed in SOLIDWORKS to shred and process mining waste, reducing its bulk so it is easier to handle and dispose of. Material is fed through an inclined hopper into the cutting chamber, where a rotor drum carrying four bolted-on fixed blades cuts against a comb-style adjustable blade so the cutting gap can be tuned. The rotor shaft runs on two 6008 deep-groove ball bearings and is driven by a motor on the stand's lower shelf through a belt and two matched pulleys; shredded output drops out through the discharge tray. The complete 21-item assembly — stand, mounting frame and pad, chamber, hopper, drive, and ISO 8765 / ISO 4762 fasteners — is documented in A2 assembly and exploded-view drawings (1:20) with a full bill of materials, plus a motion animation.",
+    year: "2024",
+    tech: ["SolidWorks", "Assembly Design", "Engineering Drawings", "Motion Animation"],
+    highlights: [
+      "Rotor drum with 4 fixed blades cutting against an adjustable comb blade",
+      "Belt drive with matched pulleys from a shelf-mounted motor",
+      "Rotor shaft supported on two 6008 deep-groove ball bearings",
+      "21-item BOM with A2 assembly and exploded-view drawings",
+      "Published on GrabCAD — 180+ downloads",
+    ],
+    link: "https://grabcad.com/library/mine-shredder-machine-1",
+    featured: true,
+    model: "shredder",
   },
   {
     slug: "calibration-cad-contests",

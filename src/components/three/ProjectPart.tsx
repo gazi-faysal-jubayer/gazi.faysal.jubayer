@@ -12,10 +12,11 @@ import {
   type BufferGeometry,
   type Group,
 } from "three";
-import type { ProjectType } from "@/lib/constants";
+import type { ProjectModelKind, ProjectType } from "@/lib/constants";
 import { useFinePointer } from "@/lib/use-media";
 import { Viewport, Wire, type SceneProps } from "./Viewport";
 import { gearShape } from "./gear";
+import { Shredder } from "./Shredder";
 
 type ColorProps = { color: string };
 
@@ -151,9 +152,10 @@ export default function ProjectPart({
   active,
   color,
   type,
-}: SceneProps & { type: ProjectType }) {
+  model,
+}: SceneProps & { type: ProjectType; model?: ProjectModelKind }) {
   const fine = useFinePointer();
-  const Model = MODELS[type] ?? NodeGraph;
+  const Model = model === "shredder" ? Shredder : MODELS[type] ?? NodeGraph;
   return (
     <Viewport active={active} camera={{ position: [0, 0.4, 4.4], fov: 40 }}>
       <Spinner>

@@ -20,77 +20,96 @@ function ShutterLine({
   delay?: number;
   className?: string;
 }) {
-  const characters = text.split("");
+  // Letters are grouped per word so long titles wrap between words, not mid-word.
+  const words = text.split(" ");
+  let index = 0;
 
   return (
     <span className={cn("flex flex-wrap", className)}>
-      {characters.map((char, i) => (
-        <span
-          key={`${char}-${i}`}
-          className="relative inline-block overflow-hidden px-[0.02em]"
-        >
-          <motion.span
-            initial={{ opacity: 0, filter: "blur(10px)" }}
-            animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ delay: delay + i * 0.04 + 0.3, duration: 0.8 }}
-            className="inline-block"
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-
-          {/* Top slice */}
-          <motion.span
-            aria-hidden
-            initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: "100%", opacity: [0, 1, 0] }}
-            transition={{
-              duration: 0.7,
-              delay: delay + i * 0.04,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute inset-0 z-10 text-accent"
-            style={{ clipPath: "polygon(0 0, 100% 0, 100% 35%, 0 35%)" }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-
-          {/* Middle slice */}
-          <motion.span
-            aria-hidden
-            initial={{ x: "100%", opacity: 0 }}
-            animate={{ x: "-100%", opacity: [0, 1, 0] }}
-            transition={{
-              duration: 0.7,
-              delay: delay + i * 0.04 + 0.1,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute inset-0 z-10 text-bone"
-            style={{
-              clipPath: "polygon(0 35%, 100% 35%, 100% 65%, 0 65%)",
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
-
-          {/* Bottom slice */}
-          <motion.span
-            aria-hidden
-            initial={{ x: "-100%", opacity: 0 }}
-            animate={{ x: "100%", opacity: [0, 1, 0] }}
-            transition={{
-              duration: 0.7,
-              delay: delay + i * 0.04 + 0.2,
-              ease: "easeInOut",
-            }}
-            className="pointer-events-none absolute inset-0 z-10 text-accent"
-            style={{
-              clipPath: "polygon(0 65%, 100% 65%, 100% 100%, 0 100%)",
-            }}
-          >
-            {char === " " ? "\u00A0" : char}
-          </motion.span>
+      {words.map((word, wi) => (
+        <span key={`${word}-${wi}`} className="inline-flex">
+          {(wi < words.length - 1 ? `${word} ` : word).split("").map((char) => (
+            <ShutterChar key={index} char={char} i={index++} delay={delay} />
+          ))}
         </span>
       ))}
+    </span>
+  );
+}
+
+function ShutterChar({
+  char,
+  i,
+  delay,
+}: {
+  char: string;
+  i: number;
+  delay: number;
+}) {
+  return (
+    <span
+      className="relative inline-block overflow-hidden px-[0.02em]"
+    >
+      <motion.span
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ delay: delay + i * 0.04 + 0.3, duration: 0.8 }}
+        className="inline-block"
+      >
+        {char === " " ? "\u00A0" : char}
+      </motion.span>
+
+      {/* Top slice */}
+      <motion.span
+        aria-hidden
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ x: "100%", opacity: [0, 1, 0] }}
+        transition={{
+          duration: 0.7,
+          delay: delay + i * 0.04,
+          ease: "easeInOut",
+        }}
+        className="pointer-events-none absolute inset-0 z-10 text-accent"
+        style={{ clipPath: "polygon(0 0, 100% 0, 100% 35%, 0 35%)" }}
+      >
+        {char === " " ? "\u00A0" : char}
+      </motion.span>
+
+      {/* Middle slice */}
+      <motion.span
+        aria-hidden
+        initial={{ x: "100%", opacity: 0 }}
+        animate={{ x: "-100%", opacity: [0, 1, 0] }}
+        transition={{
+          duration: 0.7,
+          delay: delay + i * 0.04 + 0.1,
+          ease: "easeInOut",
+        }}
+        className="pointer-events-none absolute inset-0 z-10 text-bone"
+        style={{
+          clipPath: "polygon(0 35%, 100% 35%, 100% 65%, 0 65%)",
+        }}
+      >
+        {char === " " ? "\u00A0" : char}
+      </motion.span>
+
+      {/* Bottom slice */}
+      <motion.span
+        aria-hidden
+        initial={{ x: "-100%", opacity: 0 }}
+        animate={{ x: "100%", opacity: [0, 1, 0] }}
+        transition={{
+          duration: 0.7,
+          delay: delay + i * 0.04 + 0.2,
+          ease: "easeInOut",
+        }}
+        className="pointer-events-none absolute inset-0 z-10 text-accent"
+        style={{
+          clipPath: "polygon(0 65%, 100% 65%, 100% 100%, 0 100%)",
+        }}
+      >
+        {char === " " ? "\u00A0" : char}
+      </motion.span>
     </span>
   );
 }

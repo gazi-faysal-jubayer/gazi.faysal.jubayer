@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useReducedMotion } from "framer-motion";
-import type { ProjectType } from "@/lib/constants";
+import type { ProjectModelKind, ProjectType } from "@/lib/constants";
 import { getPageColor } from "@/lib/page-colors";
 import { useMediaQuery } from "@/lib/use-media";
 import type { SceneProps } from "./Viewport";
@@ -73,14 +73,16 @@ export function HeroGears({ className }: { className?: string }) {
 
 export function ProjectModel({
   type,
+  model,
   className,
 }: {
   type: ProjectType;
+  model?: ProjectModelKind;
   className?: string;
 }) {
   return (
     <SceneSlot className={className}>
-      {(p) => <ProjectPart {...p} type={type} />}
+      {(p) => <ProjectPart {...p} type={type} model={model} />}
     </SceneSlot>
   );
 }

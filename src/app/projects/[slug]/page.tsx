@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { PROJECTS, getProjectBySlug, PROFILE } from "@/lib/constants";
 import { typeLabel } from "@/lib/utils";
+import { readAchievementMedia } from "@/lib/achievement-media";
+import PolaroidFlickThrough from "@/components/ui/polaroid-flick-through";
 import { Reveal } from "@/components/motion/Reveal";
 import { MagneticButton } from "@/components/motion/MagneticButton";
 import { TransitionLink } from "@/components/transition/TransitionLink";
@@ -32,6 +34,7 @@ export default function ProjectPage({ params }: PageProps) {
   if (!project) notFound();
 
   const index = PROJECTS.findIndex((p) => p.slug === project.slug);
+  const media = readAchievementMedia(project.slug, "projects");
   const related = PROJECTS.filter(
     (p) => p.slug !== project.slug && p.type === project.type
   ).slice(0, 3);
@@ -94,7 +97,11 @@ export default function ProjectPage({ params }: PageProps) {
                   }}
                 />
                 <div className="bg-grid absolute inset-0" />
-                <ProjectModel type={project.type} className="absolute inset-0" />
+                <ProjectModel
+                  type={project.type}
+                  model={project.model}
+                  className="absolute inset-0"
+                />
                 <p className="tech-label pointer-events-none absolute bottom-3 left-3 text-[9px] sm:bottom-4 sm:left-4 sm:text-[10px]">
                   <span className="text-accent">+</span> VIEWPORT — [{typeLabel(project.type)}]
                 </p>
@@ -128,6 +135,17 @@ export default function ProjectPage({ params }: PageProps) {
                     </li>
                   ))}
                 </ul>
+              </Reveal>
+            )}
+
+            {media.length > 0 && (
+              <Reveal delay={0.12} className="mt-8 sm:mt-12">
+                <h2 className="tech-label">
+                  <span className="text-accent">&gt;</span> Media
+                </h2>
+                <div className="mt-4 sm:mt-6">
+                  <PolaroidFlickThrough media={media} />
+                </div>
               </Reveal>
             )}
           </div>
