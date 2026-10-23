@@ -1,12 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import type { Project } from "@/lib/constants";
 import { useDoorTransition } from "@/components/transition/TransitionProvider";
 import { cn } from "@/lib/utils";
 import { Tilt } from "@/components/motion/Tilt";
+
+const EASE = [0.22, 1, 0.36, 1] as const;
+const SIZE_TRANSITION = { duration: 0.6, ease: EASE };
+// Cursor must rest this long before a card opens, so sweeping across the row doesn't flip them all.
+const HOVER_INTENT_MS = 140;
+
+/** Re-mounts on open/close so the new layout fades in instead of snapping. */
+function FadeSwap({ open, children }: { open: boolean; children: React.ReactNode }) {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      key={open ? "open" : "closed"}
+      className="h-full"
+      initial={reduce ? false : { opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, delay: open ? 0.15 : 0, ease: EASE }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 const TYPE_GRADIENTS: Record<string, string> = {
   cad: "linear-gradient(145deg, #FACC15 0%, #1a1605 55%, #050505 100%)",
@@ -116,6 +137,28 @@ export default function WorkImpactCards({
   const [openCard, setOpenCard] = useState(0);
   const { navigate } = useDoorTransition();
   const reduce = useReducedMotion();
+  const hoverTimer = useRef<ReturnType<typeof setTimeout>>();
+  const pendingCard = useRef<number | null>(null);
+  const lastPointer = useRef({ x: -1, y: -1 });
+
+  const cancelHover = () => {
+    clearTimeout(hoverTimer.current);
+    pendingCard.current = null;
+  };
+  // Driven by real pointer movement only: cards resizing under a still cursor
+  // must not chain-open their neighbours.
+  const hoverOpen = (idx: number, e: React.PointerEvent) => {
+    const moved = e.clientX !== lastPointer.current.x || e.clientY !== lastPointer.current.y;
+    lastPointer.current = { x: e.clientX, y: e.clientY };
+    if (!moved || idx === openCard || pendingCard.current === idx) return;
+    cancelHover();
+    pendingCard.current = idx;
+    hoverTimer.current = setTimeout(() => {
+      pendingCard.current = null;
+      setOpenCard(idx);
+    }, HOVER_INTENT_MS);
+  };
+  useEffect(() => cancelHover, []);
 
   return (
     <>
@@ -148,7 +191,7 @@ export default function WorkImpactCards({
                   : { height: isOpen ? "auto" : 64 }
               }
               initial={false}
-              transition={{ type: "spring", stiffness: 280, damping: 32 }}
+              transition={SIZE_TRANSITION}
               className={cn(
                 "cursor-pointer overflow-hidden border border-line bg-panel transition-colors",
                 "hover:border-accent focus-visible:border-accent focus-visible:outline-none",
@@ -156,7 +199,9 @@ export default function WorkImpactCards({
                 !isOpen && "h-16"
               )}
             >
-              <CardBody project={project} idx={idx} expanded={isOpen} />
+              <FadeSwap open={isOpen}>
+                <CardBody project={project} idx={idx} expanded={isOpen} />
+              </FadeSwap>
             </motion.div>
           );
         })}
@@ -171,8 +216,12 @@ export default function WorkImpactCards({
               key={project.slug}
               role="link"
               tabIndex={0}
-              onMouseEnter={() => setOpenCard(idx)}
-              onFocus={() => setOpenCard(idx)}
+              onPointerMove={(e) => hoverOpen(idx, e)}
+              onPointerLeave={cancelHover}
+              onFocus={() => {
+                cancelHover();
+                setOpenCard(idx);
+              }}
               onClick={() => openProject(navigate, project)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
@@ -180,14 +229,15 @@ export default function WorkImpactCards({
                   openProject(navigate, project);
                 }
               }}
-              animate={reduce ? undefined : { flexGrow: isOpen ? 4.2 : 1 }}
-              transition={{ type: "spring", stiffness: 220, damping: 28 }}
-              style={{
-                flexBasis: isOpen ? 280 : 72,
+              initial={false}
+              animate={{
                 flexGrow: isOpen ? 4.2 : 1,
-                flexShrink: 0,
-                minWidth: isOpen ? 280 : 72,
+                // px strings: bare numbers for these two never animate
+                flexBasis: isOpen ? "280px" : "72px",
+                minWidth: isOpen ? "280px" : "72px",
               }}
+              transition={reduce ? { duration: 0 } : SIZE_TRANSITION}
+              style={{ flexShrink: 0 }}
               className={cn(
                 "group relative h-full cursor-pointer overflow-hidden border border-line bg-panel transition-colors",
                 "hover:border-accent focus-visible:border-accent focus-visible:outline-none",
@@ -195,7 +245,9 @@ export default function WorkImpactCards({
               )}
             >
               <Tilt className="h-full" max={5}>
-                <CardBody project={project} idx={idx} expanded={isOpen} />
+                <FadeSwap open={isOpen}>
+                  <CardBody project={project} idx={idx} expanded={isOpen} />
+                </FadeSwap>
               </Tilt>
             </motion.div>
           );
