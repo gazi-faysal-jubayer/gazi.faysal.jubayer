@@ -145,9 +145,15 @@ export const EXPERIENCE: ExperienceEntry[] = [
     company: "LOOP",
     roles: [
       {
+        title: "Project Manager",
+        start: { month: 8, year: 2026 },
+        end: null,
+        description: "Promoted to Project Manager at LOOP (Sep 16, 2026).",
+      },
+      {
         title: "Assistant Project Manager",
         start: { month: 9, year: 2025 },
-        end: null,
+        end: { month: 8, year: 2026 },
       },
     ],
   },
@@ -278,18 +284,6 @@ export const EXPERIENCE: ExperienceEntry[] = [
         end: null,
         description:
           "Building the team's responsive website showcasing its maritime projects.",
-      },
-    ],
-  },
-  {
-    company: "AJS Innovation",
-    roles: [
-      {
-        title: "Founder",
-        start: { month: 5, year: 2023 },
-        end: null,
-        description:
-          "Engineering design and automation company delivering CAD and software solutions — Python automation workflows cut processing time by 60%.",
       },
     ],
   },
