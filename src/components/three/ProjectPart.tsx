@@ -18,6 +18,7 @@ import { Viewport, Wire, type SceneProps } from "./Viewport";
 import { gearShape } from "./gear";
 import { Shredder } from "./Shredder";
 import { TpmsInfill } from "./TpmsInfill";
+import { Lamp } from "./Lamp";
 
 type ColorProps = { color: string };
 
@@ -140,6 +141,7 @@ const MODELS: Record<ProjectType, (p: ColorProps) => JSX.Element> = {
 const BESPOKE: Record<ProjectModelKind, (p: ColorProps) => JSX.Element> = {
   shredder: Shredder,
   tpms: TpmsInfill,
+  lamp: Lamp,
 };
 
 function Spinner({ children }: { children: React.ReactNode }) {

@@ -439,7 +439,7 @@ export const CERTIFICATIONS = [
 export type ProjectType = "cad" | "simulation" | "hands-on" | "programming";
 
 /** Bespoke 3D viewport model; otherwise the per-type model is used. */
-export type ProjectModelKind = "shredder" | "tpms";
+export type ProjectModelKind = "shredder" | "tpms" | "lamp";
 
 export const WORK_CATEGORIES: {
   id: ProjectType;
@@ -609,6 +609,24 @@ export const PROJECTS: Project[] = [
     ],
     featured: true,
     model: "tpms",
+  },
+  {
+    slug: "ac-lamp",
+    type: "hands-on",
+    title: "3D-Printed AC Lamp",
+    summary: "Mains-powered table lamp, 3D printed and wired by hand as a gift.",
+    description:
+      "A mains-powered (AC) table lamp made with 3D printing and basic electronics — a rounded, frosted diffuser shade on a pastel-blue base that gives off a soft, even glow. I designed, printed, wired, and assembled it as a gift for my senior rollmate, and it marked my return to hands-on fabrication after a break.",
+    year: "2026",
+    tech: ["3D Printing", "3D Design", "Electronics", "Product Design"],
+    highlights: [
+      "Designed and 3D printed shade and base",
+      "Wired with basic mains (AC) electronics",
+      "Frosted diffuser for a soft, even glow",
+      "Handmade as a gift for a senior rollmate",
+    ],
+    featured: false,
+    model: "lamp",
   },
   {
     slug: "shadow-art-lamp",
