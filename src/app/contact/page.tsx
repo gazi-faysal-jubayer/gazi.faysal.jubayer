@@ -48,12 +48,8 @@ export default function ContactPage() {
         <MagneticButton href={PROFILE.linkedin} variant="ghost" external>
           LinkedIn
         </MagneticButton>
-        <MagneticButton
-          href={`https://wa.me/${PROFILE.phone.replace(/\D/g, "")}`}
-          variant="ghost"
-          external
-        >
-          {PROFILE.phone}
+        <MagneticButton href={PROFILE.business} variant="ghost" external>
+          3D Bytes
         </MagneticButton>
       </Reveal>
 

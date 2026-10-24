@@ -45,7 +45,18 @@ function CompanyBlock({
 
           <div className="flex-1">
             <h3 className="font-display text-base font-bold uppercase tracking-tight text-bone sm:text-lg md:text-xl">
-              {entry.company}
+              {entry.link ? (
+                <a
+                  href={entry.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-draw transition-colors hover:text-accent"
+                >
+                  {entry.company} ↗
+                </a>
+              ) : (
+                entry.company
+              )}
             </h3>
             <p className="mt-0.5 font-mono text-[10px] text-dim sm:text-[11px]">
               {total}

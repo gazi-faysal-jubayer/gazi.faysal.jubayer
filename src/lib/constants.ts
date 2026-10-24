@@ -5,7 +5,7 @@ export const PROFILE = {
   headline: "Engineering precision meets digital craft.",
   bio: "Mechanical Engineering student at KUET working across machine learning, full-stack development, and CAD design. 2× NASA Space Apps Global Nominee and Galactic Problem Solver, published researcher in manufacturing optimization, Champion of CAD Conqueror (EELEVEN AutoFest 2026), and 4× national CAD contest podium winner. CSWA, CSWP, CSWPA-SM, and CSWPA-WD certified, with leadership roles across Team Kilo Flight, Team Durbar, and Fab Lab KUET.",
   email: "gazi.faysal.jubayer@gmail.com",
-  phone: "+8801315669261",
+  business: "https://www.facebook.com/3dbytesbd",
   location: "Khulna, Bangladesh",
   github: "https://github.com/gazi-faysal-jubayer",
   linkedin: "https://www.linkedin.com/in/gazi-faysal-jubayer/",
@@ -79,6 +79,7 @@ export type ExperienceRole = {
 
 export type ExperienceEntry = {
   company: string;
+  link?: string;
   roles: ExperienceRole[];
 };
 
@@ -107,6 +108,7 @@ export const EXPERIENCE: ExperienceEntry[] = [
   },
   {
     company: "3D Bytes",
+    link: "https://www.facebook.com/3dbytesbd",
     roles: [
       {
         title: "Founder & Technical Lead",
@@ -642,6 +644,7 @@ export const PROJECTS: Project[] = [
       "Designed and fabricated end to end",
       "Sold as a made-to-order product via 3D Bytes",
     ],
+    link: "https://www.facebook.com/3dbytesbd",
     featured: true,
   },
   {
