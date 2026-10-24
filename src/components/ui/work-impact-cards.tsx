@@ -12,6 +12,8 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 const SIZE_TRANSITION = { duration: 0.6, ease: EASE };
 // Cursor must rest this long before a card opens, so sweeping across the row doesn't flip them all.
 const HOVER_INTENT_MS = 140;
+// Long sections wrap into several desktop rows so collapsed cards stay readable.
+const ROW_SIZE = 7;
 
 /** Re-mounts on open/close so the new layout fades in instead of snapping. */
 function FadeSwap({ open, children }: { open: boolean; children: React.ReactNode }) {
@@ -207,51 +209,56 @@ export default function WorkImpactCards({
         })}
       </div>
 
-      {/* Desktop: horizontal expanding cards */}
-      <div className="hidden h-[380px] gap-2 overflow-x-auto lg:flex xl:h-[420px]">
-        {projects.map((project, idx) => {
-          const isOpen = openCard === idx;
-          return (
-            <motion.div
-              key={project.slug}
-              role="link"
-              tabIndex={0}
-              onPointerMove={(e) => hoverOpen(idx, e)}
-              onPointerLeave={cancelHover}
-              onFocus={() => {
-                cancelHover();
-                setOpenCard(idx);
-              }}
-              onClick={() => openProject(navigate, project)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  openProject(navigate, project);
-                }
-              }}
-              initial={false}
-              animate={{
-                flexGrow: isOpen ? 4.2 : 1,
-                // px strings: bare numbers for these two never animate
-                flexBasis: isOpen ? "280px" : "72px",
-                minWidth: isOpen ? "280px" : "72px",
-              }}
-              transition={reduce ? { duration: 0 } : SIZE_TRANSITION}
-              style={{ flexShrink: 0 }}
-              className={cn(
-                "group relative h-full cursor-pointer overflow-hidden border border-line bg-panel transition-colors",
-                "hover:border-accent focus-visible:border-accent focus-visible:outline-none",
-                isOpen && "border-accent/50"
-              )}
-            >
-              <Tilt className="h-full" max={5}>
-                <FadeSwap open={isOpen}>
-                  <CardBody project={project} idx={idx} expanded={isOpen} />
-                </FadeSwap>
-              </Tilt>
-            </motion.div>
-          );
-        })}
+      {/* Desktop: horizontal expanding cards, ROW_SIZE per row */}
+      <div className="hidden space-y-2 lg:block">
+        {Array.from({ length: Math.ceil(projects.length / ROW_SIZE) }, (_, row) => (
+          <div key={row} className="flex h-[380px] gap-2 overflow-x-auto xl:h-[420px]">
+            {projects.slice(row * ROW_SIZE, (row + 1) * ROW_SIZE).map((project, i) => {
+              const idx = row * ROW_SIZE + i;
+              const isOpen = openCard === idx;
+              return (
+                <motion.div
+                  key={project.slug}
+                  role="link"
+                  tabIndex={0}
+                  onPointerMove={(e) => hoverOpen(idx, e)}
+                  onPointerLeave={cancelHover}
+                  onFocus={() => {
+                    cancelHover();
+                    setOpenCard(idx);
+                  }}
+                  onClick={() => openProject(navigate, project)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openProject(navigate, project);
+                    }
+                  }}
+                  initial={false}
+                  animate={{
+                    flexGrow: isOpen ? 4.2 : 1,
+                    // px strings: bare numbers for these two never animate
+                    flexBasis: isOpen ? "280px" : "72px",
+                    minWidth: isOpen ? "280px" : "72px",
+                  }}
+                  transition={reduce ? { duration: 0 } : SIZE_TRANSITION}
+                  style={{ flexShrink: 0 }}
+                  className={cn(
+                    "group relative h-full cursor-pointer overflow-hidden border border-line bg-panel transition-colors",
+                    "hover:border-accent focus-visible:border-accent focus-visible:outline-none",
+                    isOpen && "border-accent/50"
+                  )}
+                >
+                  <Tilt className="h-full" max={5}>
+                    <FadeSwap open={isOpen}>
+                      <CardBody project={project} idx={idx} expanded={isOpen} />
+                    </FadeSwap>
+                  </Tilt>
+                </motion.div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </>
   );

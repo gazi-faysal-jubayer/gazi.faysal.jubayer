@@ -38,7 +38,11 @@ export default function WorkPage() {
                   (m) => m.type === "image"
                 )?.src ??
                 (p.videos?.[0] &&
-                  `https://i.ytimg.com/vi/${p.videos[0].id}/hqdefault.jpg`),
+                  `https://i.ytimg.com/vi/${p.videos[0].id}/hqdefault.jpg`) ??
+                // GitHub's auto-generated repo card as a last resort
+                (p.repo?.startsWith("https://github.com/")
+                  ? `https://opengraph.githubassets.com/1/${p.repo.slice(19)}`
+                  : undefined),
             })
           );
           if (items.length === 0) return null;

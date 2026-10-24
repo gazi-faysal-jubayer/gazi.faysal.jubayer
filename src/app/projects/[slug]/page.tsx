@@ -194,10 +194,19 @@ export default function ProjectPage({ params }: PageProps) {
                 </ul>
               </Tilt>
 
-              {project.link && project.link !== "/" && (
-                <MagneticButton href={project.link} external>
-                  Visit project -&gt;
-                </MagneticButton>
+              {((project.link && project.link !== "/") || project.repo) && (
+                <div className="flex flex-wrap gap-3">
+                  {project.link && project.link !== "/" && (
+                    <MagneticButton href={project.link} external>
+                      Visit project -&gt;
+                    </MagneticButton>
+                  )}
+                  {project.repo && (
+                    <MagneticButton href={project.repo} variant="ghost" external>
+                      Source code -&gt;
+                    </MagneticButton>
+                  )}
+                </div>
               )}
             </Reveal>
           </aside>
