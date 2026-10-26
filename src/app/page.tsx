@@ -92,6 +92,9 @@ export default function IndexPage() {
             >
               Contact
             </MagneticButton>
+            <MagneticButton href="/resume" transitionLabel="CV" variant="ghost">
+              View CV
+            </MagneticButton>
           </Reveal>
 
           <Reveal delay={0.45} y={12} className="mt-10 sm:mt-14">

@@ -9,6 +9,7 @@ export const PAGE_COLORS: Record<string, PageColorEntry> = {
   "/about": { accent: "#34D399", label: "ABOUT" },
   "/experience": { accent: "#60A5FA", label: "LOG" },
   "/contact": { accent: "#FF5D73", label: "CONTACT" },
+  "/resume": { accent: "#FB923C", label: "CV" },
 };
 
 export function getPageColor(pathname: string): PageColorEntry {

@@ -48,6 +48,9 @@ export default function ContactPage() {
         <MagneticButton href={PROFILE.linkedin} variant="ghost" external>
           LinkedIn
         </MagneticButton>
+        <MagneticButton href="/resume" variant="ghost" transitionLabel="CV">
+          CV / Résumé
+        </MagneticButton>
         <MagneticButton href={PROFILE.business} variant="ghost" external>
           3D Bytes
         </MagneticButton>

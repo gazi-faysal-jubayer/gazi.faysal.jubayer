@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { PAGES, PROFILE } from "@/lib/constants";
+import { PAGE_COLORS } from "@/lib/page-colors";
 import { TransitionLink } from "@/components/transition/TransitionLink";
 
 function useClock() {
@@ -31,7 +32,9 @@ export function TopBar() {
 
   const section = pathname.startsWith("/projects")
     ? "WORK / DETAIL"
-    : PAGES.find((p) => p.href === pathname)?.label ?? "INDEX";
+    : PAGES.find((p) => p.href === pathname)?.label ??
+      PAGE_COLORS[pathname]?.label ??
+      "INDEX";
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-line bg-void/80 backdrop-blur-sm">

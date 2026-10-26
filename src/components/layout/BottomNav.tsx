@@ -30,12 +30,10 @@ export function BottomNav() {
   useEffect(() => setHint(null), [pathname]);
 
   const workIndex = PAGES.findIndex((p) => p.href === "/work");
+  // -1 on pages outside the nav (e.g. /resume): nothing is highlighted.
   const activeIndex = pathname.startsWith("/projects")
     ? Math.max(0, workIndex)
-    : Math.max(
-        0,
-        PAGES.findIndex((p) => p.href === pathname)
-      );
+    : PAGES.findIndex((p) => p.href === pathname);
 
   return (
     <nav
@@ -45,7 +43,7 @@ export function BottomNav() {
       <div className="flex h-12 items-center gap-2 px-2 sm:h-14 sm:gap-3 sm:px-4 md:px-10 lg:px-16">
         <p className="hidden shrink-0 font-mono text-[10px] tracking-[0.15em] text-dim min-[380px]:block sm:text-xs sm:tracking-[0.2em]">
           <span className="text-accent">
-            {String(activeIndex + 1).padStart(2, "0")}
+            {activeIndex >= 0 ? String(activeIndex + 1).padStart(2, "0") : "--"}
           </span>
           <span className="text-dim"> / {String(PAGES.length).padStart(2, "0")}</span>
         </p>

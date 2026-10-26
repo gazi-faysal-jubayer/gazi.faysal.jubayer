@@ -1,0 +1,263 @@
+%-------------------------
+% CV — Gazi Faysal Jubayer
+% Build: pdflatex resume.tex  → copy resume.pdf to public/resume.pdf
+% Based on Jake Gutierrez's resume template (MIT).
+%-------------------------
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\input{glyphtounicode}
+
+\hypersetup{
+  pdftitle={Gazi Faysal Jubayer — CV},
+  pdfauthor={Gazi Faysal Jubayer},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={Mechanical Engineering, Formula Student, CAD, SolidWorks, Machine Learning, Full-Stack}
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{\item\small{{#1 \vspace{-2pt}}}}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Gazi Faysal Jubayer} \\ \vspace{2pt}
+    \small Mechanical Engineer $|$ CAD \& Formula Student $|$ Machine Learning \& Full-Stack \\ \vspace{2pt}
+    \small \faEnvelope\ \href{mailto:gazi.faysal.jubayer@gmail.com}{gazi.faysal.jubayer@gmail.com} $|$
+    \faGlobe\ \href{https://gazifaysaljubayer.tech}{gazifaysaljubayer.tech} $|$
+    \faMapMarker*\ Khulna, Bangladesh \\ \vspace{1pt}
+    \faLinkedin\ \href{https://www.linkedin.com/in/gazi-faysal-jubayer/}{linkedin.com/in/gazi-faysal-jubayer} $|$
+    \faGithub\ \href{https://github.com/gazi-faysal-jubayer}{github.com/gazi-faysal-jubayer}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+\small{Mechanical Engineering student at KUET who builds across CAD and software. Vice Captain (Technical) of Team Kilo Flight, leading the design and build of a Formula Student race car. Champion of CAD Conqueror (EELEVEN AutoFest 2026) and 4-time national CAD contest podium winner; CSWA, CSWP, CSWPA-SM and CSWPA-WD certified. 2-time NASA Space Apps Global Nominee and published researcher who ships ML, computer-vision and full-stack products.}
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Khulna University of Engineering and Technology (KUET)}{Khulna, Bangladesh}
+      {Bachelor of Technology in Mechanical Engineering}{Dec. 2022 -- June 2027}
+    \resumeSubheading
+      {Khulna Public College}{Khulna, Bangladesh}
+      {Higher Secondary Certificate (HSC), Science}{2019 -- 2021}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Team Kilo Flight --- KUET Formula Student}{Khulna, Bangladesh}
+      {Vice Captain (Technical)}{Oct. 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Lead technical operations across chassis \& suspension, body \& aerodynamics, powertrain, electrical \& DAQ and braking \& steering to build \textbf{KILOFLIGHT PHOENIX}, a combustion Formula Student car for \textbf{FSAE Dynamix India 2027}}
+        \resumeItem{Design and optimize the powertrain in SolidWorks: 292\,cc CFMoto 300SR single-cylinder engine integration, chain final drive, fuel and cooling systems; mentor sub-teams on CAD best practices}
+        \resumeItem{Placed \textbf{3rd} at the International FS Concept Challenge 2025 (Formula Bharat); previously Senior Executive, Mechanical Powertrain}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {ONNEXX}{Texas, USA (Remote)}
+      {Jr. Mechanical Engineer (Part-time)}{Oct. 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Mechanical engineering for the Project ONNEXX sound system}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {3D Bytes}{Khulna, Bangladesh}
+      {Founder \& Technical Lead}{Jan. 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Run a commercial 3D printing service for prototyping and custom fabrication on Bambu Lab P1S, tuning Bambu Studio / OrcaSlicer profiles for strong, engineering-grade parts}
+        \resumeItem{Built the studio's Next.js + Supabase platform with an in-browser Gridfinity generator (OpenSCAD WASM, STL export)}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Team Durbar --- KUET Mars Rover}{Khulna, Bangladesh}
+      {Autonomous Lead}{Sept. 2025 -- Present}
+      \resumeItemListStart
+        \resumeItem{Direct rover autonomy (perception, path planning, sensor integration) with ROS, OpenCV and Python; \textbf{2nd place}, NASA Texas Space Grant Mars Autonomous Rover Rally 2025; member since July 2024}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Team BengalSub --- RoboSub 2025}{Khulna, Bangladesh}
+      {Website Team Lead \& Mechanical Designer}{May 2025 -- Jan. 2026}
+      \resumeItemListStart
+        \resumeItem{Led the team website (bengalsub.com) and designed AUV mechanical components in SolidWorks for hydrodynamics and structural integrity}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {Uddhar (uddharbd.org)}{Bangladesh}
+      {Co-Founder \& Chief Information Officer}{Aug. 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{Co-founded a disaster-relief platform during the 2024 Feni flood; lead a 30+ member technical team building the Django web platform and Flutter app}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {VSB --- Virtual Solution Book (vsbbd.com)}{Remote}
+      {Co-Founder \& Tech Lead}{Jan. 2024 -- Present}
+      \resumeItemListStart
+        \resumeItem{Co-founded an EdTech platform serving 1000+ HSC and university-admission students; lead Django development with Selenium content automation}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {LOOP}{Khulna, Bangladesh}
+      {Project Manager (promoted from Assistant PM, Oct. 2025)}{Sept. 2026 -- Present}
+      \vspace{6pt} % no bullet list follows to absorb the heading's negative space
+
+    \resumeSubheading
+      {CADers, KUET}{Khulna, Bangladesh}
+      {Chief Policy Analyst --- KUET's CAD club, 100+ members}{Jan. 2025 -- Present}
+      \vspace{6pt}
+
+    \resumeSubheading
+      {Fab Lab KUET}{Khulna, Bangladesh}
+      {Student Operator}{July 2026 -- Present}
+      \resumeItemListStart
+        \resumeItem{Operate 3D printers, laser cutters and CNC routers, helping students and researchers turn CAD designs into prototypes}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Notable Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Mars Autonomous Rover Navigation} $|$ \emph{ROS, Python, Space Teams PRO}}{2025}
+          \resumeItemListStart
+            \resumeItem{Autonomous navigation for Mars Kaiser Crater in a physics-based simulation: path planning and obstacle avoidance; \textbf{2nd place}, NASA Texas Space Grant rally}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{ExoBengal --- AI Exoplanet Detection} $|$ \emph{TensorFlow, Scikit-learn, Next.js, FastAPI}}{2024}
+          \resumeItemListStart
+            \resumeItem{PyPI package of RF, CNN, KNN and Decision Tree models at 90\% accuracy (0.90 AUC-ROC) on NASA Kepler Q1--Q17, with a Next.js site of 3D orbit visualizations and an AI chatbot}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Custom TPMS Infill for OrcaSlicer} $|$ \emph{C++, OrcaSlicer, Claude AI}}{2026}
+          \resumeItemListStart
+            \resumeItem{Reverse-engineered OrcaSlicer's infill code to add equation-driven TPMS-P and TPMS-IWP patterns with an adaptive-density gradient (1m 10s and 0.36 g saved per test bar, slicer estimate)}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Mine Shredder Machine} $|$ \emph{SOLIDWORKS}}{2024}
+          \resumeItemListStart
+            \resumeItem{21-item belt-driven rotary shredder with fixed and adjustable blades on 6008 bearings; full assembly and exploded drawings, motion study; 180+ GrabCAD downloads}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Human Body Blur} $|$ \emph{Python, YOLOv8, ByteTrack, OpenCV}}{2025}
+          \resumeItemListStart
+            \resumeItem{Anonymizes chosen people in video with YOLOv8 instance masks and ByteTrack IDs, blurring only selected tracks while preserving audio}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Bangla Civic Intelligence Suite} $|$ \emph{Next.js, Hugging Face, Transformers.js}}{2025}
+          \resumeItemListStart
+            \resumeItem{Serverless Bangla platform: OCR + voice document Q\&A with spoken answers, and AI civic-hotspot detection on Leaflet heatmaps, using free open-source models}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{WealthPilot} (Team Joker) $|$ \emph{Next.js, Prisma, PostgreSQL}}{2026}
+          \resumeItemListStart
+            \resumeItem{Personal-finance workspace for the Shenzhen International FinTech Competition 2026: exact-money ledger, on-device statement/receipt import, grounded AI copilot}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------ACHIEVEMENTS-----------
+\section{Achievements \& Awards}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Champion} --- CAD Conqueror, EELEVEN Bangladesh AutoFest 2026 (car concept design \& fabrication) \\
+     \textbf{Champion} --- MIE Robolution CAD Contest, CUET (Team Phenol; 17,000 BDT prize) \\
+     \textbf{4-time national CAD podium} --- also 1st Runner-Up at Calibration 1.0 (Feb. 2024), Calibration 2.0 (May 2026) and Energy Fest 1.0 \\
+     \textbf{3rd Place} --- International FS Concept Challenge 2025, Formula Bharat (Team Kilo Flight) \\
+     \textbf{2nd Place} --- NASA Texas Space Grant Mars Autonomous Rover Rally 2025 (Team Durbar) \\
+     \textbf{2$\times$ Galactic Problem Solver \& Global Nominee} --- NASA Space Apps Challenge 2023 (Regional 1st Runner-Up) and 2024 (Regional 2nd Runner-Up) \\
+     \textbf{RoboSub 2025 Competitor} --- Team BengalSub, autonomous underwater vehicle
+    }}
+ \end{itemize}
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{CAD \& Fabrication}{: SolidWorks (CSWP, CSWPA-SM, CSWPA-WD), AutoCAD, Ansys, Blender, KeyShot, 3D printing, Sheet Metal \& Weldments} \\
+     \textbf{Programming}{: Python, C++, C, TypeScript, JavaScript, Dart, SQL} \\
+     \textbf{ML \& Robotics}{: TensorFlow, Scikit-learn, PyTorch, OpenCV, YOLOv8, ROS, Pandas, NumPy} \\
+     \textbf{Web \& Apps}{: Next.js, React, Django, FastAPI, Flask, Flutter, Tailwind CSS, Supabase, PostgreSQL, Docker}
+    }}
+ \end{itemize}
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Dassault Syst\`emes}: CSWPA-WD (Weldments), CSWPA-SM (Sheet Metal), CSWP (Mechanical Design), CSWA --- April--July 2024 \\
+     \textbf{IBM}: Python Project for AI \& Application Development; Developing AI Applications with Python \& Flask; Python for Data Science, AI \& Development (2024)
+    }}
+ \end{itemize}
+
+%-----------PUBLICATIONS-----------
+\section{Publications}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     M. A. Alam, M. Rafiquzzaman, M. H. Ali, \textbf{G. F. Jubayer}, ``Analyzing the impact of opportunistic maintenance optimization on manufacturing industries in Bangladesh: An empirical study,'' \textit{BenchCouncil Transactions on Benchmarks, Standards and Evaluations}, vol.~4, no.~2, 100172, 2024. \href{https://doi.org/10.1016/j.tbench.2024.100172}{doi:10.1016/j.tbench.2024.100172}
+    }}
+ \end{itemize}
+
+\end{document}

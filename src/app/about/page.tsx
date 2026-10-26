@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { Reveal } from "@/components/motion/Reveal";
 import HeroShutterText from "@/components/ui/hero-shutter-text";
 import { GallerySection } from "@/components/home/GallerySection";
+import { MagneticButton } from "@/components/motion/MagneticButton";
 
 export const metadata: Metadata = {
   title: "About — Gazi Faysal Jubayer",
@@ -28,6 +29,15 @@ export default function AboutPage() {
             <p className="text-base leading-relaxed text-bone sm:text-xl md:text-2xl md:leading-relaxed">
               {PROFILE.bio}
             </p>
+          </Reveal>
+
+          <Reveal delay={0.05} className="mt-8 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
+            <MagneticButton href="/resume" transitionLabel="CV">
+              View CV
+            </MagneticButton>
+            <MagneticButton href="/resume.pdf" variant="ghost" download>
+              Download PDF
+            </MagneticButton>
           </Reveal>
 
           <Reveal delay={0.1} className="mt-10 grid gap-8 sm:mt-12 sm:grid-cols-2 sm:gap-10">

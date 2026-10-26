@@ -17,6 +17,8 @@ type MagneticButtonProps = {
   onClick?: () => void;
   variant?: "primary" | "ghost";
   external?: boolean;
+  /** Save the linked file instead of navigating to it */
+  download?: boolean;
   transitionLabel?: string;
 };
 
@@ -27,6 +29,7 @@ export function MagneticButton({
   onClick,
   variant = "primary",
   external,
+  download,
   transitionLabel,
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
@@ -67,7 +70,7 @@ export function MagneticButton({
     whileTap: reduce ? undefined : { scale: 0.97 },
   };
 
-  const isInternal = href?.startsWith("/") && !external;
+  const isInternal = href?.startsWith("/") && !external && !download;
 
   if (href) {
     return (
@@ -78,6 +81,7 @@ export function MagneticButton({
         {...(external
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
+        {...(download ? { download: "" } : {})}
         onClick={(e) => {
           if (!isInternal) return;
           if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
